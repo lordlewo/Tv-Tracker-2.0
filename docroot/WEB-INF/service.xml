@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="hu.webtown.liferay.portlet">
+	<author>czeni</author>
+	<namespace>TvT</namespace>
+
+	<entity name="TvShow" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="tvShowId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+		<!-- Other fields -->
+
+		<column name="tvShowTitle" type="String"></column>
+		<column name="tvShowPremierDate" type="Date"></column>
+		<column name="tvShowDescription" type="String"></column>
+		<column name="tvShowImageUrl" type="String"></column>
+		<column name="tvShowImageUuid" type="String"></column>
+		<column name="tvShowImageTitle" type="String"></column>
+		<column name="tvShowImageVersion" type="String"></column>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="tvShowTitle"></order-column>
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		<finder name="G_T" return-type="Object">
+			<finder-column name="tvShowId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+
+		<!-- References -->
+
+		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+		<reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
+		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
+	</entity>
+	<entity name="Season" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="seasonId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		
+		<!-- Other fields -->
+		
+		<column name="seasonTitle" type="String"></column>
+		<column name="seasonPremierDate" type="Date"></column>
+		<column name="seasonNumber" type="int"></column>
+		<column name="seasonDescription" type="String"></column>
+		<column name="seasonImageUrl" type="String"></column>
+		<column name="seasonImageUuid" type="String"></column>
+		<column name="seasonImageTitle" type="String"></column>
+		<column name="sesonImageVersion" type="String"></column>
+		
+		<!-- FK fields -->
+		
+		<column name="tvShowId" type="long"></column>
+		
+		<!-- Order -->
+		
+		<order by="asc">
+			<order-column name="seasonNumber"></order-column>
+		</order>
+		
+		<!-- Finder methods -->
+		
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		<finder name="G_T" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="tvShowId"></finder-column>
+		</finder>
+		<finder name="G_S" return-type="Object">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="seasonId"></finder-column>
+		</finder>
+		
+		<!-- References -->
+		
+		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+		<reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
+		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
+	</entity>
+	<entity name="Episode" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="episodeId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		
+		<!-- Other fields -->
+		
+		<column name="episodeTitle" type="String"></column>
+		<column name="episodeAirDate" type="Date"></column>
+		<column name="episodeNumber" type="int"></column>
+		<column name="episodeDescription" type="String"></column>
+		<column name="episodeImageUrl" type="String"></column>
+		<column name="episodeImageUuid" type="String"></column>
+		<column name="episodeImageTitle" type="String"></column>
+		<column name="episodeImageVersion" type="String"></column>
+		<column name="seasonId" type="long"></column>
+		
+		<!-- Order -->
+		
+		<order by="asc">
+			<order-column name="episodeAirDate"></order-column>
+		</order>
+		
+		<!-- Finder methods -->
+		
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		<finder name="G_S" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="seasonId"></finder-column>
+		</finder>
+		
+		<!-- References -->
+		
+		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+		<reference package-path="com.liferay.portlet.asset" entity="AssetLink" />
+		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
+	</entity>
+		
+	<exceptions>
+		<exception>TvShowTitle</exception>
+		<exception>TvShowPremierDate</exception>
+		<exception>TvShowDescription</exception>
+		<exception>TvShowImage</exception>
+		<exception>SeasonTitle</exception>
+		<exception>SeasonNumber</exception>
+		<exception>SeasonPremierDate</exception>
+		<exception>SeasonDescription</exception>
+		<exception>SeasonImage</exception>
+		<exception>EpisodeTitle</exception>
+		<exception>EpisodeAirDate</exception>
+		<exception>EpisodeNumber</exception>
+		<exception>EpisodeDescription</exception>
+		<exception>EpisodeImage</exception>
+	</exceptions>
+		
+</service-builder>

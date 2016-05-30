@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="hu.webtown.liferay.portlet.service.EpisodeLocalService" class="hu.webtown.liferay.portlet.service.impl.EpisodeLocalServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.EpisodeService" class="hu.webtown.liferay.portlet.service.impl.EpisodeServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.persistence.EpisodePersistence" class="hu.webtown.liferay.portlet.service.persistence.EpisodePersistenceImpl" parent="basePersistence" />
+	<bean id="hu.webtown.liferay.portlet.service.SeasonLocalService" class="hu.webtown.liferay.portlet.service.impl.SeasonLocalServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.SeasonService" class="hu.webtown.liferay.portlet.service.impl.SeasonServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.persistence.SeasonPersistence" class="hu.webtown.liferay.portlet.service.persistence.SeasonPersistenceImpl" parent="basePersistence" />
+	<bean id="hu.webtown.liferay.portlet.service.TvShowLocalService" class="hu.webtown.liferay.portlet.service.impl.TvShowLocalServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.TvShowService" class="hu.webtown.liferay.portlet.service.impl.TvShowServiceImpl" />
+	<bean id="hu.webtown.liferay.portlet.service.persistence.TvShowPersistence" class="hu.webtown.liferay.portlet.service.persistence.TvShowPersistenceImpl" parent="basePersistence" />
+</beans>

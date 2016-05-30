@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl">
+		<attributes>
+			<id name="episodeId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="episodeTitle" />
+			<basic name="episodeAirDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="episodeNumber" />
+			<basic name="episodeDescription" />
+			<basic name="episodeImageUrl" />
+			<basic name="episodeImageUuid" />
+			<basic name="episodeImageTitle" />
+			<basic name="episodeImageVersion" />
+			<basic name="seasonId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.SeasonModelImpl">
+		<attributes>
+			<id name="seasonId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="seasonTitle" />
+			<basic name="seasonPremierDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="seasonNumber" />
+			<basic name="seasonDescription" />
+			<basic name="seasonImageUrl" />
+			<basic name="seasonImageUuid" />
+			<basic name="seasonImageTitle" />
+			<basic name="sesonImageVersion" />
+			<basic name="tvShowId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.TvShowModelImpl">
+		<attributes>
+			<id name="tvShowId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="tvShowTitle" />
+			<basic name="tvShowPremierDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="tvShowDescription" />
+			<basic name="tvShowImageUrl" />
+			<basic name="tvShowImageUuid" />
+			<basic name="tvShowImageTitle" />
+			<basic name="tvShowImageVersion" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="hu.webtown.liferay.portlet.model.impl.EpisodeImpl" name="Episode">
+		<table name="TvT_Episode" />
+		<attributes />
+	</entity>
+	<entity class="hu.webtown.liferay.portlet.model.impl.SeasonImpl" name="Season">
+		<table name="TvT_Season" />
+		<attributes />
+	</entity>
+	<entity class="hu.webtown.liferay.portlet.model.impl.TvShowImpl" name="TvShow">
+		<table name="TvT_TvShow" />
+		<attributes />
+	</entity>
+</entity-mappings>

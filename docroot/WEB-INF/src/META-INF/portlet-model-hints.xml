@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="hu.webtown.liferay.portlet.model.Episode">
+		<field name="episodeId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="episodeTitle" type="String" />
+		<field name="episodeAirDate" type="Date" />
+		<field name="episodeNumber" type="int" />
+		<field name="episodeDescription" type="String" />
+		<field name="episodeImageUrl" type="String" />
+		<field name="episodeImageUuid" type="String" />
+		<field name="episodeImageTitle" type="String" />
+		<field name="episodeImageVersion" type="String" />
+		<field name="seasonId" type="long" />
+	</model>
+	<model name="hu.webtown.liferay.portlet.model.Season">
+		<field name="seasonId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="seasonTitle" type="String" />
+		<field name="seasonPremierDate" type="Date" />
+		<field name="seasonNumber" type="int" />
+		<field name="seasonDescription" type="String" />
+		<field name="seasonImageUrl" type="String" />
+		<field name="seasonImageUuid" type="String" />
+		<field name="seasonImageTitle" type="String" />
+		<field name="sesonImageVersion" type="String" />
+		<field name="tvShowId" type="long" />
+	</model>
+	<model name="hu.webtown.liferay.portlet.model.TvShow">
+		<field name="tvShowId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="tvShowTitle" type="String" />
+		<field name="tvShowPremierDate" type="Date" />
+		<field name="tvShowDescription" type="String" />
+		<field name="tvShowImageUrl" type="String" />
+		<field name="tvShowImageUuid" type="String" />
+		<field name="tvShowImageTitle" type="String" />
+		<field name="tvShowImageVersion" type="String" />
+	</model>
+</model-hints>
