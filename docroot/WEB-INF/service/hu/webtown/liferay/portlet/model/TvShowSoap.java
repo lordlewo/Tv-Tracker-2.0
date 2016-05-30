@@ -31,6 +31,7 @@ public class TvShowSoap implements Serializable {
 	public static TvShowSoap toSoapModel(TvShow model) {
 		TvShowSoap soapModel = new TvShowSoap();
 
+		soapModel.setUuid(model.getUuid());
 		soapModel.setTvShowId(model.getTvShowId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
@@ -95,6 +96,14 @@ public class TvShowSoap implements Serializable {
 
 	public void setPrimaryKey(long pk) {
 		setTvShowId(pk);
+	}
+
+	public String getUuid() {
+		return _uuid;
+	}
+
+	public void setUuid(String uuid) {
+		_uuid = uuid;
 	}
 
 	public long getTvShowId() {
@@ -209,6 +218,7 @@ public class TvShowSoap implements Serializable {
 		_tvShowImageVersion = tvShowImageVersion;
 	}
 
+	private String _uuid;
 	private long _tvShowId;
 	private long _groupId;
 	private long _companyId;

@@ -186,6 +186,36 @@ public class SeasonLocalServiceWrapper implements SeasonLocalService,
 	}
 
 	/**
+	* Returns the season with the matching UUID and company.
+	*
+	* @param uuid the season's UUID
+	* @param companyId the primary key of the company
+	* @return the matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.Season fetchSeasonByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.fetchSeasonByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the season matching the UUID and group.
+	*
+	* @param uuid the season's UUID
+	* @param groupId the primary key of the group
+	* @return the matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.Season fetchSeasonByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.fetchSeasonByUuidAndGroupId(uuid, groupId);
+	}
+
+	/**
 	* Returns the season with the primary key.
 	*
 	* @param seasonId the primary key of the season
@@ -206,6 +236,40 @@ public class SeasonLocalServiceWrapper implements SeasonLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _seasonLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Returns the season with the matching UUID and company.
+	*
+	* @param uuid the season's UUID
+	* @param companyId the primary key of the company
+	* @return the matching season
+	* @throws PortalException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.Season getSeasonByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasonByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the season matching the UUID and group.
+	*
+	* @param uuid the season's UUID
+	* @param groupId the primary key of the group
+	* @return the matching season
+	* @throws PortalException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.Season getSeasonByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasonByUuidAndGroupId(uuid, groupId);
 	}
 
 	/**

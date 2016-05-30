@@ -10,6 +10,9 @@
 	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl">
 		<attributes>
 			<id name="episodeId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
 			<basic name="groupId" />
 			<basic name="companyId" />
 			<basic name="userId" />
@@ -40,6 +43,9 @@
 	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.SeasonModelImpl">
 		<attributes>
 			<id name="seasonId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
 			<basic name="groupId" />
 			<basic name="companyId" />
 			<basic name="userId" />
@@ -70,6 +76,9 @@
 	<mapped-superclass class="hu.webtown.liferay.portlet.model.impl.TvShowModelImpl">
 		<attributes>
 			<id name="tvShowId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
 			<basic name="groupId" />
 			<basic name="companyId" />
 			<basic name="userId" />

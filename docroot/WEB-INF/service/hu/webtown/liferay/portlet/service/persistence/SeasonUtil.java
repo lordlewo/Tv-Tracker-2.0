@@ -109,6 +109,413 @@ public class SeasonUtil {
 	}
 
 	/**
+	* Returns all the seasons where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @return the matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid(
+		java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUuid(uuid);
+	}
+
+	/**
+	* Returns a range of all the seasons where uuid = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @return the range of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid(
+		java.lang.String uuid, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUuid(uuid, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the seasons where uuid = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid(
+		java.lang.String uuid, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUuid(uuid, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first season in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season findByUuid_First(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence().findByUuid_First(uuid, orderByComparator);
+	}
+
+	/**
+	* Returns the first season in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUuid_First(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUuid_First(uuid, orderByComparator);
+	}
+
+	/**
+	* Returns the last season in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season findByUuid_Last(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence().findByUuid_Last(uuid, orderByComparator);
+	}
+
+	/**
+	* Returns the last season in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUuid_Last(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUuid_Last(uuid, orderByComparator);
+	}
+
+	/**
+	* Returns the seasons before and after the current season in the ordered set where uuid = &#63;.
+	*
+	* @param seasonId the primary key of the current season
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a season with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season[] findByUuid_PrevAndNext(
+		long seasonId, java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .findByUuid_PrevAndNext(seasonId, uuid, orderByComparator);
+	}
+
+	/**
+	* Removes all the seasons where uuid = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUuid(java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByUuid(uuid);
+	}
+
+	/**
+	* Returns the number of seasons where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @return the number of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUuid(java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByUuid(uuid);
+	}
+
+	/**
+	* Returns the season where uuid = &#63; and groupId = &#63; or throws a {@link hu.webtown.liferay.portlet.NoSuchSeasonException} if it could not be found.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season findByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence().findByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the season where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the season where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUUID_G(
+		java.lang.String uuid, long groupId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUUID_G(uuid, groupId, retrieveFromCache);
+	}
+
+	/**
+	* Removes the season where uuid = &#63; and groupId = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the season that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season removeByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence().removeByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the number of seasons where uuid = &#63; and groupId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the number of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUUID_G(java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns all the seasons where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @return the matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid_C(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUuid_C(uuid, companyId);
+	}
+
+	/**
+	* Returns a range of all the seasons where uuid = &#63; and companyId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @return the range of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid_C(
+		java.lang.String uuid, long companyId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUuid_C(uuid, companyId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the seasons where uuid = &#63; and companyId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> findByUuid_C(
+		java.lang.String uuid, long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByUuid_C(uuid, companyId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first season in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season findByUuid_C_First(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .findByUuid_C_First(uuid, companyId, orderByComparator);
+	}
+
+	/**
+	* Returns the first season in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUuid_C_First(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByUuid_C_First(uuid, companyId, orderByComparator);
+	}
+
+	/**
+	* Returns the last season in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season findByUuid_C_Last(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .findByUuid_C_Last(uuid, companyId, orderByComparator);
+	}
+
+	/**
+	* Returns the last season in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching season, or <code>null</code> if a matching season could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season fetchByUuid_C_Last(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByUuid_C_Last(uuid, companyId, orderByComparator);
+	}
+
+	/**
+	* Returns the seasons before and after the current season in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param seasonId the primary key of the current season
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a season with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season[] findByUuid_C_PrevAndNext(
+		long seasonId, java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .findByUuid_C_PrevAndNext(seasonId, uuid, companyId,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the seasons where uuid = &#63; and companyId = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUuid_C(java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByUuid_C(uuid, companyId);
+	}
+
+	/**
+	* Returns the number of seasons where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @return the number of matching seasons
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUuid_C(java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByUuid_C(uuid, companyId);
+	}
+
+	/**
 	* Returns all the seasons where groupId = &#63;.
 	*
 	* @param groupId the group ID
@@ -247,6 +654,80 @@ public class SeasonUtil {
 	}
 
 	/**
+	* Returns all the seasons that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByGroupId(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByGroupId(groupId);
+	}
+
+	/**
+	* Returns a range of all the seasons that the user has permission to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @return the range of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByGroupId(groupId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the seasons that the user has permissions to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByGroupId(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByGroupId(groupId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the seasons before and after the current season in the ordered set of seasons that the user has permission to view where groupId = &#63;.
+	*
+	* @param seasonId the primary key of the current season
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a season with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season[] filterFindByGroupId_PrevAndNext(
+		long seasonId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .filterFindByGroupId_PrevAndNext(seasonId, groupId,
+			orderByComparator);
+	}
+
+	/**
 	* Removes all the seasons where groupId = &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -267,6 +748,18 @@ public class SeasonUtil {
 	public static int countByGroupId(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByGroupId(groupId);
+	}
+
+	/**
+	* Returns the number of seasons that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the number of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int filterCountByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterCountByGroupId(groupId);
 	}
 
 	/**
@@ -585,6 +1078,85 @@ public class SeasonUtil {
 	}
 
 	/**
+	* Returns all the seasons that the user has permission to view where groupId = &#63; and tvShowId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param tvShowId the tv show ID
+	* @return the matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByG_T(
+		long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByG_T(groupId, tvShowId);
+	}
+
+	/**
+	* Returns a range of all the seasons that the user has permission to view where groupId = &#63; and tvShowId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param tvShowId the tv show ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @return the range of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByG_T(
+		long groupId, long tvShowId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByG_T(groupId, tvShowId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the seasons that the user has permissions to view where groupId = &#63; and tvShowId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.SeasonModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param tvShowId the tv show ID
+	* @param start the lower bound of the range of seasons
+	* @param end the upper bound of the range of seasons (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<hu.webtown.liferay.portlet.model.Season> filterFindByG_T(
+		long groupId, long tvShowId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByG_T(groupId, tvShowId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the seasons before and after the current season in the ordered set of seasons that the user has permission to view where groupId = &#63; and tvShowId = &#63;.
+	*
+	* @param seasonId the primary key of the current season
+	* @param groupId the group ID
+	* @param tvShowId the tv show ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next season
+	* @throws hu.webtown.liferay.portlet.NoSuchSeasonException if a season with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Season[] filterFindByG_T_PrevAndNext(
+		long seasonId, long groupId, long tvShowId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchSeasonException {
+		return getPersistence()
+				   .filterFindByG_T_PrevAndNext(seasonId, groupId, tvShowId,
+			orderByComparator);
+	}
+
+	/**
 	* Removes all the seasons where groupId = &#63; and tvShowId = &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -607,6 +1179,19 @@ public class SeasonUtil {
 	public static int countByG_T(long groupId, long tvShowId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByG_T(groupId, tvShowId);
+	}
+
+	/**
+	* Returns the number of seasons that the user has permission to view where groupId = &#63; and tvShowId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param tvShowId the tv show ID
+	* @return the number of matching seasons that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int filterCountByG_T(long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterCountByG_T(groupId, tvShowId);
 	}
 
 	/**

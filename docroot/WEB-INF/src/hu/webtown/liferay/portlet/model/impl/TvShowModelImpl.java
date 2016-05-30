@@ -17,6 +17,7 @@ package hu.webtown.liferay.portlet.model.impl;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -66,6 +67,7 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	 */
 	public static final String TABLE_NAME = "TvT_TvShow";
 	public static final Object[][] TABLE_COLUMNS = {
+			{ "uuid_", Types.VARCHAR },
 			{ "tvShowId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
@@ -81,7 +83,7 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 			{ "tvShowImageTitle", Types.VARCHAR },
 			{ "tvShowImageVersion", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TvT_TvShow (tvShowId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,tvShowTitle VARCHAR(75) null,tvShowPremierDate DATE null,tvShowDescription VARCHAR(75) null,tvShowImageUrl VARCHAR(75) null,tvShowImageUuid VARCHAR(75) null,tvShowImageTitle VARCHAR(75) null,tvShowImageVersion VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table TvT_TvShow (uuid_ VARCHAR(75) null,tvShowId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,tvShowTitle VARCHAR(75) null,tvShowPremierDate DATE null,tvShowDescription VARCHAR(75) null,tvShowImageUrl VARCHAR(75) null,tvShowImageUuid VARCHAR(75) null,tvShowImageTitle VARCHAR(75) null,tvShowImageVersion VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table TvT_TvShow";
 	public static final String ORDER_BY_JPQL = " ORDER BY tvShow.tvShowTitle ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TvT_TvShow.tvShowTitle ASC";
@@ -100,7 +102,8 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	public static long COMPANYID_COLUMN_BITMASK = 1L;
 	public static long GROUPID_COLUMN_BITMASK = 2L;
 	public static long TVSHOWID_COLUMN_BITMASK = 4L;
-	public static long TVSHOWTITLE_COLUMN_BITMASK = 8L;
+	public static long UUID_COLUMN_BITMASK = 8L;
+	public static long TVSHOWTITLE_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -115,6 +118,7 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 
 		TvShow model = new TvShowImpl();
 
+		model.setUuid(soapModel.getUuid());
 		model.setTvShowId(soapModel.getTvShowId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
@@ -193,6 +197,7 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("tvShowId", getTvShowId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -213,6 +218,12 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long tvShowId = (Long)attributes.get("tvShowId");
 
 		if (tvShowId != null) {
@@ -296,6 +307,30 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 		if (tvShowImageVersion != null) {
 			setTvShowImageVersion(tvShowImageVersion);
 		}
+	}
+
+	@JSON
+	@Override
+	public String getUuid() {
+		if (_uuid == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _uuid;
+		}
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		if (_originalUuid == null) {
+			_originalUuid = _uuid;
+		}
+
+		_uuid = uuid;
+	}
+
+	public String getOriginalUuid() {
+		return GetterUtil.getString(_originalUuid);
 	}
 
 	@JSON
@@ -535,6 +570,12 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 		_tvShowImageVersion = tvShowImageVersion;
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				TvShow.class.getName()));
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -566,6 +607,7 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	public Object clone() {
 		TvShowImpl tvShowImpl = new TvShowImpl();
 
+		tvShowImpl.setUuid(getUuid());
 		tvShowImpl.setTvShowId(getTvShowId());
 		tvShowImpl.setGroupId(getGroupId());
 		tvShowImpl.setCompanyId(getCompanyId());
@@ -630,6 +672,8 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	public void resetOriginalValues() {
 		TvShowModelImpl tvShowModelImpl = this;
 
+		tvShowModelImpl._originalUuid = tvShowModelImpl._uuid;
+
 		tvShowModelImpl._originalTvShowId = tvShowModelImpl._tvShowId;
 
 		tvShowModelImpl._setOriginalTvShowId = false;
@@ -648,6 +692,14 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 	@Override
 	public CacheModel<TvShow> toCacheModel() {
 		TvShowCacheModel tvShowCacheModel = new TvShowCacheModel();
+
+		tvShowCacheModel.uuid = getUuid();
+
+		String uuid = tvShowCacheModel.uuid;
+
+		if ((uuid != null) && (uuid.length() == 0)) {
+			tvShowCacheModel.uuid = null;
+		}
 
 		tvShowCacheModel.tvShowId = getTvShowId();
 
@@ -745,9 +797,11 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(31);
 
-		sb.append("{tvShowId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", tvShowId=");
 		sb.append(getTvShowId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -782,12 +836,16 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.TvShow");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>tvShowId</column-name><column-value><![CDATA[");
 		sb.append(getTvShowId());
@@ -852,6 +910,8 @@ public class TvShowModelImpl extends BaseModelImpl<TvShow>
 
 	private static ClassLoader _classLoader = TvShow.class.getClassLoader();
 	private static Class<?>[] _escapedModelInterfaces = new Class[] { TvShow.class };
+	private String _uuid;
+	private String _originalUuid;
 	private long _tvShowId;
 	private long _originalTvShowId;
 	private boolean _setOriginalTvShowId;

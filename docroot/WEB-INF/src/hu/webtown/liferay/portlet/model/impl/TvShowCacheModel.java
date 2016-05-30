@@ -37,9 +37,11 @@ import java.util.Date;
 public class TvShowCacheModel implements CacheModel<TvShow>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(31);
 
-		sb.append("{tvShowId=");
+		sb.append("{uuid=");
+		sb.append(uuid);
+		sb.append(", tvShowId=");
 		sb.append(tvShowId);
 		sb.append(", groupId=");
 		sb.append(groupId);
@@ -75,6 +77,13 @@ public class TvShowCacheModel implements CacheModel<TvShow>, Externalizable {
 	@Override
 	public TvShow toEntityModel() {
 		TvShowImpl tvShowImpl = new TvShowImpl();
+
+		if (uuid == null) {
+			tvShowImpl.setUuid(StringPool.BLANK);
+		}
+		else {
+			tvShowImpl.setUuid(uuid);
+		}
 
 		tvShowImpl.setTvShowId(tvShowId);
 		tvShowImpl.setGroupId(groupId);
@@ -158,6 +167,7 @@ public class TvShowCacheModel implements CacheModel<TvShow>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
+		uuid = objectInput.readUTF();
 		tvShowId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		companyId = objectInput.readLong();
@@ -177,6 +187,13 @@ public class TvShowCacheModel implements CacheModel<TvShow>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
+		if (uuid == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(uuid);
+		}
+
 		objectOutput.writeLong(tvShowId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(companyId);
@@ -237,6 +254,7 @@ public class TvShowCacheModel implements CacheModel<TvShow>, Externalizable {
 		}
 	}
 
+	public String uuid;
 	public long tvShowId;
 	public long groupId;
 	public long companyId;

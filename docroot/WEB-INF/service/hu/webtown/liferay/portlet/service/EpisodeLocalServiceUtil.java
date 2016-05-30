@@ -188,6 +188,34 @@ public class EpisodeLocalServiceUtil {
 	}
 
 	/**
+	* Returns the episode with the matching UUID and company.
+	*
+	* @param uuid the episode's UUID
+	* @param companyId the primary key of the company
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Episode fetchEpisodeByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchEpisodeByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the episode matching the UUID and group.
+	*
+	* @param uuid the episode's UUID
+	* @param groupId the primary key of the group
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Episode fetchEpisodeByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchEpisodeByUuidAndGroupId(uuid, groupId);
+	}
+
+	/**
 	* Returns the episode with the primary key.
 	*
 	* @param episodeId the primary key of the episode
@@ -207,6 +235,38 @@ public class EpisodeLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Returns the episode with the matching UUID and company.
+	*
+	* @param uuid the episode's UUID
+	* @param companyId the primary key of the company
+	* @return the matching episode
+	* @throws PortalException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Episode getEpisodeByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodeByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the episode matching the UUID and group.
+	*
+	* @param uuid the episode's UUID
+	* @param groupId the primary key of the group
+	* @return the matching episode
+	* @throws PortalException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static hu.webtown.liferay.portlet.model.Episode getEpisodeByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodeByUuidAndGroupId(uuid, groupId);
 	}
 
 	/**

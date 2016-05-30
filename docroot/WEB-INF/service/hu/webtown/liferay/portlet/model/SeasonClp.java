@@ -16,6 +16,7 @@ package hu.webtown.liferay.portlet.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
@@ -74,6 +75,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("seasonId", getSeasonId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -96,6 +98,12 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long seasonId = (Long)attributes.get("seasonId");
 
 		if (seasonId != null) {
@@ -190,6 +198,29 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 
 		if (tvShowId != null) {
 			setTvShowId(tvShowId);
+		}
+	}
+
+	@Override
+	public String getUuid() {
+		return _uuid;
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		_uuid = uuid;
+
+		if (_seasonRemoteModel != null) {
+			try {
+				Class<?> clazz = _seasonRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUuid", String.class);
+
+				method.invoke(_seasonRemoteModel, uuid);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
 		}
 	}
 
@@ -577,6 +608,12 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		}
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				Season.class.getName()));
+	}
+
 	public BaseModel<?> getSeasonRemoteModel() {
 		return _seasonRemoteModel;
 	}
@@ -646,6 +683,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 	public Object clone() {
 		SeasonClp clone = new SeasonClp();
 
+		clone.setUuid(getUuid());
 		clone.setSeasonId(getSeasonId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
@@ -720,9 +758,11 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(35);
 
-		sb.append("{seasonId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", seasonId=");
 		sb.append(getSeasonId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -761,12 +801,16 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.Season");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>seasonId</column-name><column-value><![CDATA[");
 		sb.append(getSeasonId());
@@ -837,6 +881,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		return sb.toString();
 	}
 
+	private String _uuid;
 	private long _seasonId;
 	private long _groupId;
 	private long _companyId;

@@ -16,6 +16,7 @@ package hu.webtown.liferay.portlet.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
@@ -74,6 +75,7 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("tvShowId", getTvShowId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -94,6 +96,12 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long tvShowId = (Long)attributes.get("tvShowId");
 
 		if (tvShowId != null) {
@@ -176,6 +184,29 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 
 		if (tvShowImageVersion != null) {
 			setTvShowImageVersion(tvShowImageVersion);
+		}
+	}
+
+	@Override
+	public String getUuid() {
+		return _uuid;
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		_uuid = uuid;
+
+		if (_tvShowRemoteModel != null) {
+			try {
+				Class<?> clazz = _tvShowRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUuid", String.class);
+
+				method.invoke(_tvShowRemoteModel, uuid);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
 		}
 	}
 
@@ -517,6 +548,12 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 		}
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				TvShow.class.getName()));
+	}
+
 	public BaseModel<?> getTvShowRemoteModel() {
 		return _tvShowRemoteModel;
 	}
@@ -586,6 +623,7 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 	public Object clone() {
 		TvShowClp clone = new TvShowClp();
 
+		clone.setUuid(getUuid());
 		clone.setTvShowId(getTvShowId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
@@ -650,9 +688,11 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(31);
 
-		sb.append("{tvShowId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", tvShowId=");
 		sb.append(getTvShowId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -687,12 +727,16 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.TvShow");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>tvShowId</column-name><column-value><![CDATA[");
 		sb.append(getTvShowId());
@@ -755,6 +799,7 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 		return sb.toString();
 	}
 
+	private String _uuid;
 	private long _tvShowId;
 	private long _groupId;
 	private long _companyId;

@@ -16,6 +16,7 @@ package hu.webtown.liferay.portlet.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -75,6 +76,7 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("episodeId", getEpisodeId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -97,6 +99,12 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long episodeId = (Long)attributes.get("episodeId");
 
 		if (episodeId != null) {
@@ -192,6 +200,29 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 
 		if (seasonId != null) {
 			setSeasonId(seasonId);
+		}
+	}
+
+	@Override
+	public String getUuid() {
+		return _uuid;
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		_uuid = uuid;
+
+		if (_episodeRemoteModel != null) {
+			try {
+				Class<?> clazz = _episodeRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUuid", String.class);
+
+				method.invoke(_episodeRemoteModel, uuid);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
 		}
 	}
 
@@ -578,6 +609,12 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 		}
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				Episode.class.getName()));
+	}
+
 	public BaseModel<?> getEpisodeRemoteModel() {
 		return _episodeRemoteModel;
 	}
@@ -647,6 +684,7 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 	public Object clone() {
 		EpisodeClp clone = new EpisodeClp();
 
+		clone.setUuid(getUuid());
 		clone.setEpisodeId(getEpisodeId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
@@ -714,9 +752,11 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(35);
 
-		sb.append("{episodeId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", episodeId=");
 		sb.append(getEpisodeId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -755,12 +795,16 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.Episode");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>episodeId</column-name><column-value><![CDATA[");
 		sb.append(getEpisodeId());
@@ -831,6 +875,7 @@ public class EpisodeClp extends BaseModelImpl<Episode> implements Episode {
 		return sb.toString();
 	}
 
+	private String _uuid;
 	private long _episodeId;
 	private long _groupId;
 	private long _companyId;

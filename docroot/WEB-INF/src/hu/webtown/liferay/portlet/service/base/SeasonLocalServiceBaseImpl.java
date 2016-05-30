@@ -218,6 +218,34 @@ public abstract class SeasonLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
+	 * Returns the season with the matching UUID and company.
+	 *
+	 * @param uuid the season's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching season, or <code>null</code> if a matching season could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Season fetchSeasonByUuidAndCompanyId(String uuid, long companyId)
+		throws SystemException {
+		return seasonPersistence.fetchByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the season matching the UUID and group.
+	 *
+	 * @param uuid the season's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching season, or <code>null</code> if a matching season could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Season fetchSeasonByUuidAndGroupId(String uuid, long groupId)
+		throws SystemException {
+		return seasonPersistence.fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
 	 * Returns the season with the primary key.
 	 *
 	 * @param seasonId the primary key of the season
@@ -235,6 +263,36 @@ public abstract class SeasonLocalServiceBaseImpl extends BaseLocalServiceImpl
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException, SystemException {
 		return seasonPersistence.findByPrimaryKey(primaryKeyObj);
+	}
+
+	/**
+	 * Returns the season with the matching UUID and company.
+	 *
+	 * @param uuid the season's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching season
+	 * @throws PortalException if a matching season could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Season getSeasonByUuidAndCompanyId(String uuid, long companyId)
+		throws PortalException, SystemException {
+		return seasonPersistence.findByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the season matching the UUID and group.
+	 *
+	 * @param uuid the season's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching season
+	 * @throws PortalException if a matching season could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Season getSeasonByUuidAndGroupId(String uuid, long groupId)
+		throws PortalException, SystemException {
+		return seasonPersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

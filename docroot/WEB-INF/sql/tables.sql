@@ -1,4 +1,5 @@
 create table TvT_Episode (
+	uuid_ VARCHAR(75) null,
 	episodeId LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
@@ -18,6 +19,7 @@ create table TvT_Episode (
 );
 
 create table TvT_Season (
+	uuid_ VARCHAR(75) null,
 	seasonId LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
@@ -37,6 +39,7 @@ create table TvT_Season (
 );
 
 create table TvT_TvShow (
+	uuid_ VARCHAR(75) null,
 	tvShowId LONG not null primary key,
 	groupId LONG,
 	companyId LONG,

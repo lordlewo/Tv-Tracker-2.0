@@ -38,6 +38,355 @@ public interface EpisodePersistence extends BasePersistence<Episode> {
 	 */
 
 	/**
+	* Returns all the episodes where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @return the matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid(
+		java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the episodes where uuid = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @return the range of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid(
+		java.lang.String uuid, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the episodes where uuid = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid(
+		java.lang.String uuid, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first episode in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByUuid_First(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the first episode in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUuid_First(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the last episode in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByUuid_Last(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the last episode in the ordered set where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUuid_Last(
+		java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episodes before and after the current episode in the ordered set where uuid = &#63;.
+	*
+	* @param episodeId the primary key of the current episode
+	* @param uuid the uuid
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a episode with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode[] findByUuid_PrevAndNext(
+		long episodeId, java.lang.String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Removes all the episodes where uuid = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByUuid(java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of episodes where uuid = &#63;.
+	*
+	* @param uuid the uuid
+	* @return the number of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUuid(java.lang.String uuid)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episode where uuid = &#63; and groupId = &#63; or throws a {@link hu.webtown.liferay.portlet.NoSuchEpisodeException} if it could not be found.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the episode where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episode where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUUID_G(
+		java.lang.String uuid, long groupId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Removes the episode where uuid = &#63; and groupId = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the episode that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode removeByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the number of episodes where uuid = &#63; and groupId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the number of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUUID_G(java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns all the episodes where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @return the matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid_C(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the episodes where uuid = &#63; and companyId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @return the range of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid_C(
+		java.lang.String uuid, long companyId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the episodes where uuid = &#63; and companyId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> findByUuid_C(
+		java.lang.String uuid, long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first episode in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByUuid_C_First(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the first episode in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUuid_C_First(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the last episode in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByUuid_C_Last(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the last episode in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByUuid_C_Last(
+		java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episodes before and after the current episode in the ordered set where uuid = &#63; and companyId = &#63;.
+	*
+	* @param episodeId the primary key of the current episode
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a episode with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode[] findByUuid_C_PrevAndNext(
+		long episodeId, java.lang.String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Removes all the episodes where uuid = &#63; and companyId = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByUuid_C(java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of episodes where uuid = &#63; and companyId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param companyId the company ID
+	* @return the number of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUuid_C(java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Returns all the episodes where groupId = &#63;.
 	*
 	* @param groupId the group ID
@@ -157,6 +506,69 @@ public interface EpisodePersistence extends BasePersistence<Episode> {
 			hu.webtown.liferay.portlet.NoSuchEpisodeException;
 
 	/**
+	* Returns all the episodes that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByGroupId(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the episodes that the user has permission to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @return the range of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the episodes that the user has permissions to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByGroupId(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episodes before and after the current episode in the ordered set of episodes that the user has permission to view where groupId = &#63;.
+	*
+	* @param episodeId the primary key of the current episode
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a episode with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode[] filterFindByGroupId_PrevAndNext(
+		long episodeId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
 	* Removes all the episodes where groupId = &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -173,6 +585,16 @@ public interface EpisodePersistence extends BasePersistence<Episode> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of episodes that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the number of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public int filterCountByGroupId(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -441,6 +863,73 @@ public interface EpisodePersistence extends BasePersistence<Episode> {
 			hu.webtown.liferay.portlet.NoSuchEpisodeException;
 
 	/**
+	* Returns all the episodes that the user has permission to view where groupId = &#63; and seasonId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param seasonId the season ID
+	* @return the matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByG_S(
+		long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the episodes that the user has permission to view where groupId = &#63; and seasonId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param seasonId the season ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @return the range of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByG_S(
+		long groupId, long seasonId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the episodes that the user has permissions to view where groupId = &#63; and seasonId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param seasonId the season ID
+	* @param start the lower bound of the range of episodes
+	* @param end the upper bound of the range of episodes (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<hu.webtown.liferay.portlet.model.Episode> filterFindByG_S(
+		long groupId, long seasonId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episodes before and after the current episode in the ordered set of episodes that the user has permission to view where groupId = &#63; and seasonId = &#63;.
+	*
+	* @param episodeId the primary key of the current episode
+	* @param groupId the group ID
+	* @param seasonId the season ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a episode with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode[] filterFindByG_S_PrevAndNext(
+		long episodeId, long groupId, long seasonId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
 	* Removes all the episodes where groupId = &#63; and seasonId = &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -459,6 +948,80 @@ public interface EpisodePersistence extends BasePersistence<Episode> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByG_S(long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of episodes that the user has permission to view where groupId = &#63; and seasonId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param seasonId the season ID
+	* @return the number of matching episodes that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public int filterCountByG_S(long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episode where groupId = &#63; and episodeId = &#63; or throws a {@link hu.webtown.liferay.portlet.NoSuchEpisodeException} if it could not be found.
+	*
+	* @param groupId the group ID
+	* @param episodeId the episode ID
+	* @return the matching episode
+	* @throws hu.webtown.liferay.portlet.NoSuchEpisodeException if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode findByG_E(long groupId,
+		long episodeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the episode where groupId = &#63; and episodeId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param groupId the group ID
+	* @param episodeId the episode ID
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByG_E(long groupId,
+		long episodeId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the episode where groupId = &#63; and episodeId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param groupId the group ID
+	* @param episodeId the episode ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching episode, or <code>null</code> if a matching episode could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode fetchByG_E(long groupId,
+		long episodeId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Removes the episode where groupId = &#63; and episodeId = &#63; from the database.
+	*
+	* @param groupId the group ID
+	* @param episodeId the episode ID
+	* @return the episode that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public hu.webtown.liferay.portlet.model.Episode removeByG_E(long groupId,
+		long episodeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			hu.webtown.liferay.portlet.NoSuchEpisodeException;
+
+	/**
+	* Returns the number of episodes where groupId = &#63; and episodeId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param episodeId the episode ID
+	* @return the number of matching episodes
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByG_E(long groupId, long episodeId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

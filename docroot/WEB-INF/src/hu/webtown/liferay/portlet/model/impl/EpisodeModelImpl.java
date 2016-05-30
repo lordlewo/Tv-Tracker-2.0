@@ -17,6 +17,7 @@ package hu.webtown.liferay.portlet.model.impl;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -67,6 +68,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	 */
 	public static final String TABLE_NAME = "TvT_Episode";
 	public static final Object[][] TABLE_COLUMNS = {
+			{ "uuid_", Types.VARCHAR },
 			{ "episodeId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
@@ -84,7 +86,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 			{ "episodeImageVersion", Types.VARCHAR },
 			{ "seasonId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TvT_Episode (episodeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,episodeTitle VARCHAR(75) null,episodeAirDate DATE null,episodeNumber INTEGER,episodeDescription VARCHAR(75) null,episodeImageUrl VARCHAR(75) null,episodeImageUuid VARCHAR(75) null,episodeImageTitle VARCHAR(75) null,episodeImageVersion VARCHAR(75) null,seasonId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table TvT_Episode (uuid_ VARCHAR(75) null,episodeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,episodeTitle VARCHAR(75) null,episodeAirDate DATE null,episodeNumber INTEGER,episodeDescription VARCHAR(75) null,episodeImageUrl VARCHAR(75) null,episodeImageUuid VARCHAR(75) null,episodeImageTitle VARCHAR(75) null,episodeImageVersion VARCHAR(75) null,seasonId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table TvT_Episode";
 	public static final String ORDER_BY_JPQL = " ORDER BY episode.episodeAirDate ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TvT_Episode.episodeAirDate ASC";
@@ -101,9 +103,11 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 				"value.object.column.bitmask.enabled.hu.webtown.liferay.portlet.model.Episode"),
 			true);
 	public static long COMPANYID_COLUMN_BITMASK = 1L;
-	public static long GROUPID_COLUMN_BITMASK = 2L;
-	public static long SEASONID_COLUMN_BITMASK = 4L;
-	public static long EPISODEAIRDATE_COLUMN_BITMASK = 8L;
+	public static long EPISODEID_COLUMN_BITMASK = 2L;
+	public static long GROUPID_COLUMN_BITMASK = 4L;
+	public static long SEASONID_COLUMN_BITMASK = 8L;
+	public static long UUID_COLUMN_BITMASK = 16L;
+	public static long EPISODEAIRDATE_COLUMN_BITMASK = 32L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -118,6 +122,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 
 		Episode model = new EpisodeImpl();
 
+		model.setUuid(soapModel.getUuid());
 		model.setEpisodeId(soapModel.getEpisodeId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
@@ -198,6 +203,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("episodeId", getEpisodeId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -220,6 +226,12 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long episodeId = (Long)attributes.get("episodeId");
 
 		if (episodeId != null) {
@@ -320,13 +332,49 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 
 	@JSON
 	@Override
+	public String getUuid() {
+		if (_uuid == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _uuid;
+		}
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		if (_originalUuid == null) {
+			_originalUuid = _uuid;
+		}
+
+		_uuid = uuid;
+	}
+
+	public String getOriginalUuid() {
+		return GetterUtil.getString(_originalUuid);
+	}
+
+	@JSON
+	@Override
 	public long getEpisodeId() {
 		return _episodeId;
 	}
 
 	@Override
 	public void setEpisodeId(long episodeId) {
+		_columnBitmask |= EPISODEID_COLUMN_BITMASK;
+
+		if (!_setOriginalEpisodeId) {
+			_setOriginalEpisodeId = true;
+
+			_originalEpisodeId = _episodeId;
+		}
+
 		_episodeId = episodeId;
+	}
+
+	public long getOriginalEpisodeId() {
+		return _originalEpisodeId;
 	}
 
 	@JSON
@@ -577,6 +625,12 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 		return _originalSeasonId;
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				Episode.class.getName()));
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -608,6 +662,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	public Object clone() {
 		EpisodeImpl episodeImpl = new EpisodeImpl();
 
+		episodeImpl.setUuid(getUuid());
 		episodeImpl.setEpisodeId(getEpisodeId());
 		episodeImpl.setGroupId(getGroupId());
 		episodeImpl.setCompanyId(getCompanyId());
@@ -675,6 +730,12 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	public void resetOriginalValues() {
 		EpisodeModelImpl episodeModelImpl = this;
 
+		episodeModelImpl._originalUuid = episodeModelImpl._uuid;
+
+		episodeModelImpl._originalEpisodeId = episodeModelImpl._episodeId;
+
+		episodeModelImpl._setOriginalEpisodeId = false;
+
 		episodeModelImpl._originalGroupId = episodeModelImpl._groupId;
 
 		episodeModelImpl._setOriginalGroupId = false;
@@ -693,6 +754,14 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	@Override
 	public CacheModel<Episode> toCacheModel() {
 		EpisodeCacheModel episodeCacheModel = new EpisodeCacheModel();
+
+		episodeCacheModel.uuid = getUuid();
+
+		String uuid = episodeCacheModel.uuid;
+
+		if ((uuid != null) && (uuid.length() == 0)) {
+			episodeCacheModel.uuid = null;
+		}
 
 		episodeCacheModel.episodeId = getEpisodeId();
 
@@ -795,9 +864,11 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(35);
 
-		sb.append("{episodeId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", episodeId=");
 		sb.append(getEpisodeId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -836,12 +907,16 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.Episode");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>episodeId</column-name><column-value><![CDATA[");
 		sb.append(getEpisodeId());
@@ -916,7 +991,11 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			Episode.class
 		};
+	private String _uuid;
+	private String _originalUuid;
 	private long _episodeId;
+	private long _originalEpisodeId;
+	private boolean _setOriginalEpisodeId;
 	private long _groupId;
 	private long _originalGroupId;
 	private boolean _setOriginalGroupId;

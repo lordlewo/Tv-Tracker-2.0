@@ -2,6 +2,7 @@
 
 <model-hints>
 	<model name="hu.webtown.liferay.portlet.model.Episode">
+		<field name="uuid" type="String" />
 		<field name="episodeId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
@@ -20,6 +21,7 @@
 		<field name="seasonId" type="long" />
 	</model>
 	<model name="hu.webtown.liferay.portlet.model.Season">
+		<field name="uuid" type="String" />
 		<field name="seasonId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
@@ -38,6 +40,7 @@
 		<field name="tvShowId" type="long" />
 	</model>
 	<model name="hu.webtown.liferay.portlet.model.TvShow">
+		<field name="uuid" type="String" />
 		<field name="tvShowId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />

@@ -14,6 +14,7 @@
 
 package hu.webtown.liferay.portlet.model;
 
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
@@ -49,6 +50,7 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("seasonId", getSeasonId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -71,6 +73,12 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long seasonId = (Long)attributes.get("seasonId");
 
 		if (seasonId != null) {
@@ -186,6 +194,26 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_season.setPrimaryKey(primaryKey);
+	}
+
+	/**
+	* Returns the uuid of this season.
+	*
+	* @return the uuid of this season
+	*/
+	@Override
+	public java.lang.String getUuid() {
+		return _season.getUuid();
+	}
+
+	/**
+	* Sets the uuid of this season.
+	*
+	* @param uuid the uuid of this season
+	*/
+	@Override
+	public void setUuid(java.lang.String uuid) {
+		_season.setUuid(uuid);
 	}
 
 	/**
@@ -651,6 +679,11 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 		}
 
 		return false;
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return _season.getStagedModelType();
 	}
 
 	/**

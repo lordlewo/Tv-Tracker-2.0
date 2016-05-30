@@ -186,6 +186,36 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 	}
 
 	/**
+	* Returns the tv show with the matching UUID and company.
+	*
+	* @param uuid the tv show's UUID
+	* @param companyId the primary key of the company
+	* @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow fetchTvShowByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.fetchTvShowByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the tv show matching the UUID and group.
+	*
+	* @param uuid the tv show's UUID
+	* @param groupId the primary key of the group
+	* @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow fetchTvShowByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.fetchTvShowByUuidAndGroupId(uuid, groupId);
+	}
+
+	/**
 	* Returns the tv show with the primary key.
 	*
 	* @param tvShowId the primary key of the tv show
@@ -206,6 +236,40 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _tvShowLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Returns the tv show with the matching UUID and company.
+	*
+	* @param uuid the tv show's UUID
+	* @param companyId the primary key of the company
+	* @return the matching tv show
+	* @throws PortalException if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow getTvShowByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShowByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the tv show matching the UUID and group.
+	*
+	* @param uuid the tv show's UUID
+	* @param groupId the primary key of the group
+	* @return the matching tv show
+	* @throws PortalException if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow getTvShowByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShowByUuidAndGroupId(uuid, groupId);
 	}
 
 	/**

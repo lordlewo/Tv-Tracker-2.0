@@ -17,6 +17,7 @@ package hu.webtown.liferay.portlet.model.impl;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -66,6 +67,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	 */
 	public static final String TABLE_NAME = "TvT_Season";
 	public static final Object[][] TABLE_COLUMNS = {
+			{ "uuid_", Types.VARCHAR },
 			{ "seasonId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
@@ -83,7 +85,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 			{ "sesonImageVersion", Types.VARCHAR },
 			{ "tvShowId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TvT_Season (seasonId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,seasonTitle VARCHAR(75) null,seasonPremierDate DATE null,seasonNumber INTEGER,seasonDescription VARCHAR(75) null,seasonImageUrl VARCHAR(75) null,seasonImageUuid VARCHAR(75) null,seasonImageTitle VARCHAR(75) null,sesonImageVersion VARCHAR(75) null,tvShowId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table TvT_Season (uuid_ VARCHAR(75) null,seasonId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,seasonTitle VARCHAR(75) null,seasonPremierDate DATE null,seasonNumber INTEGER,seasonDescription VARCHAR(75) null,seasonImageUrl VARCHAR(75) null,seasonImageUuid VARCHAR(75) null,seasonImageTitle VARCHAR(75) null,sesonImageVersion VARCHAR(75) null,tvShowId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table TvT_Season";
 	public static final String ORDER_BY_JPQL = " ORDER BY season.seasonNumber ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TvT_Season.seasonNumber ASC";
@@ -103,7 +105,8 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	public static long GROUPID_COLUMN_BITMASK = 2L;
 	public static long SEASONID_COLUMN_BITMASK = 4L;
 	public static long TVSHOWID_COLUMN_BITMASK = 8L;
-	public static long SEASONNUMBER_COLUMN_BITMASK = 16L;
+	public static long UUID_COLUMN_BITMASK = 16L;
+	public static long SEASONNUMBER_COLUMN_BITMASK = 32L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -118,6 +121,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 
 		Season model = new SeasonImpl();
 
+		model.setUuid(soapModel.getUuid());
 		model.setSeasonId(soapModel.getSeasonId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
@@ -198,6 +202,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("seasonId", getSeasonId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -220,6 +225,12 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long seasonId = (Long)attributes.get("seasonId");
 
 		if (seasonId != null) {
@@ -315,6 +326,30 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 		if (tvShowId != null) {
 			setTvShowId(tvShowId);
 		}
+	}
+
+	@JSON
+	@Override
+	public String getUuid() {
+		if (_uuid == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _uuid;
+		}
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		if (_originalUuid == null) {
+			_originalUuid = _uuid;
+		}
+
+		_uuid = uuid;
+	}
+
+	public String getOriginalUuid() {
+		return GetterUtil.getString(_originalUuid);
 	}
 
 	@JSON
@@ -588,6 +623,12 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 		return _originalTvShowId;
 	}
 
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				Season.class.getName()));
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -619,6 +660,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	public Object clone() {
 		SeasonImpl seasonImpl = new SeasonImpl();
 
+		seasonImpl.setUuid(getUuid());
 		seasonImpl.setSeasonId(getSeasonId());
 		seasonImpl.setGroupId(getGroupId());
 		seasonImpl.setCompanyId(getCompanyId());
@@ -693,6 +735,8 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	public void resetOriginalValues() {
 		SeasonModelImpl seasonModelImpl = this;
 
+		seasonModelImpl._originalUuid = seasonModelImpl._uuid;
+
 		seasonModelImpl._originalSeasonId = seasonModelImpl._seasonId;
 
 		seasonModelImpl._setOriginalSeasonId = false;
@@ -715,6 +759,14 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 	@Override
 	public CacheModel<Season> toCacheModel() {
 		SeasonCacheModel seasonCacheModel = new SeasonCacheModel();
+
+		seasonCacheModel.uuid = getUuid();
+
+		String uuid = seasonCacheModel.uuid;
+
+		if ((uuid != null) && (uuid.length() == 0)) {
+			seasonCacheModel.uuid = null;
+		}
 
 		seasonCacheModel.seasonId = getSeasonId();
 
@@ -816,9 +868,11 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(35);
 
-		sb.append("{seasonId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", seasonId=");
 		sb.append(getSeasonId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
@@ -857,12 +911,16 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("hu.webtown.liferay.portlet.model.Season");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>seasonId</column-name><column-value><![CDATA[");
 		sb.append(getSeasonId());
@@ -935,6 +993,8 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 
 	private static ClassLoader _classLoader = Season.class.getClassLoader();
 	private static Class<?>[] _escapedModelInterfaces = new Class[] { Season.class };
+	private String _uuid;
+	private String _originalUuid;
 	private long _seasonId;
 	private long _originalSeasonId;
 	private boolean _setOriginalSeasonId;

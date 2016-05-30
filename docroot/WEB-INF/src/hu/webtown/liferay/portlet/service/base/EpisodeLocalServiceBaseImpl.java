@@ -218,6 +218,34 @@ public abstract class EpisodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
+	 * Returns the episode with the matching UUID and company.
+	 *
+	 * @param uuid the episode's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching episode, or <code>null</code> if a matching episode could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Episode fetchEpisodeByUuidAndCompanyId(String uuid, long companyId)
+		throws SystemException {
+		return episodePersistence.fetchByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the episode matching the UUID and group.
+	 *
+	 * @param uuid the episode's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching episode, or <code>null</code> if a matching episode could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Episode fetchEpisodeByUuidAndGroupId(String uuid, long groupId)
+		throws SystemException {
+		return episodePersistence.fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
 	 * Returns the episode with the primary key.
 	 *
 	 * @param episodeId the primary key of the episode
@@ -235,6 +263,36 @@ public abstract class EpisodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException, SystemException {
 		return episodePersistence.findByPrimaryKey(primaryKeyObj);
+	}
+
+	/**
+	 * Returns the episode with the matching UUID and company.
+	 *
+	 * @param uuid the episode's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching episode
+	 * @throws PortalException if a matching episode could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Episode getEpisodeByUuidAndCompanyId(String uuid, long companyId)
+		throws PortalException, SystemException {
+		return episodePersistence.findByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the episode matching the UUID and group.
+	 *
+	 * @param uuid the episode's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching episode
+	 * @throws PortalException if a matching episode could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public Episode getEpisodeByUuidAndGroupId(String uuid, long groupId)
+		throws PortalException, SystemException {
+		return episodePersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

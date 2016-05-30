@@ -218,6 +218,34 @@ public abstract class TvShowLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
+	 * Returns the tv show with the matching UUID and company.
+	 *
+	 * @param uuid the tv show's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TvShow fetchTvShowByUuidAndCompanyId(String uuid, long companyId)
+		throws SystemException {
+		return tvShowPersistence.fetchByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the tv show matching the UUID and group.
+	 *
+	 * @param uuid the tv show's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TvShow fetchTvShowByUuidAndGroupId(String uuid, long groupId)
+		throws SystemException {
+		return tvShowPersistence.fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
 	 * Returns the tv show with the primary key.
 	 *
 	 * @param tvShowId the primary key of the tv show
@@ -235,6 +263,36 @@ public abstract class TvShowLocalServiceBaseImpl extends BaseLocalServiceImpl
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException, SystemException {
 		return tvShowPersistence.findByPrimaryKey(primaryKeyObj);
+	}
+
+	/**
+	 * Returns the tv show with the matching UUID and company.
+	 *
+	 * @param uuid the tv show's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching tv show
+	 * @throws PortalException if a matching tv show could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TvShow getTvShowByUuidAndCompanyId(String uuid, long companyId)
+		throws PortalException, SystemException {
+		return tvShowPersistence.findByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the tv show matching the UUID and group.
+	 *
+	 * @param uuid the tv show's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching tv show
+	 * @throws PortalException if a matching tv show could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TvShow getTvShowByUuidAndGroupId(String uuid, long groupId)
+		throws PortalException, SystemException {
+		return tvShowPersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

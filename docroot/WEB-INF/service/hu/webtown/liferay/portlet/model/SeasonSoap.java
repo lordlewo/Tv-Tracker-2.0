@@ -31,6 +31,7 @@ public class SeasonSoap implements Serializable {
 	public static SeasonSoap toSoapModel(Season model) {
 		SeasonSoap soapModel = new SeasonSoap();
 
+		soapModel.setUuid(model.getUuid());
 		soapModel.setSeasonId(model.getSeasonId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
@@ -97,6 +98,14 @@ public class SeasonSoap implements Serializable {
 
 	public void setPrimaryKey(long pk) {
 		setSeasonId(pk);
+	}
+
+	public String getUuid() {
+		return _uuid;
+	}
+
+	public void setUuid(String uuid) {
+		_uuid = uuid;
 	}
 
 	public long getSeasonId() {
@@ -227,6 +236,7 @@ public class SeasonSoap implements Serializable {
 		_tvShowId = tvShowId;
 	}
 
+	private String _uuid;
 	private long _seasonId;
 	private long _groupId;
 	private long _companyId;

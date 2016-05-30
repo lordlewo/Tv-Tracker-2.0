@@ -14,6 +14,7 @@
 
 package hu.webtown.liferay.portlet.model;
 
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
@@ -49,6 +50,7 @@ public class TvShowWrapper implements TvShow, ModelWrapper<TvShow> {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("tvShowId", getTvShowId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -69,6 +71,12 @@ public class TvShowWrapper implements TvShow, ModelWrapper<TvShow> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long tvShowId = (Long)attributes.get("tvShowId");
 
 		if (tvShowId != null) {
@@ -172,6 +180,26 @@ public class TvShowWrapper implements TvShow, ModelWrapper<TvShow> {
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_tvShow.setPrimaryKey(primaryKey);
+	}
+
+	/**
+	* Returns the uuid of this tv show.
+	*
+	* @return the uuid of this tv show
+	*/
+	@Override
+	public java.lang.String getUuid() {
+		return _tvShow.getUuid();
+	}
+
+	/**
+	* Sets the uuid of this tv show.
+	*
+	* @param uuid the uuid of this tv show
+	*/
+	@Override
+	public void setUuid(java.lang.String uuid) {
+		_tvShow.setUuid(uuid);
 	}
 
 	/**
@@ -597,6 +625,11 @@ public class TvShowWrapper implements TvShow, ModelWrapper<TvShow> {
 		}
 
 		return false;
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return _tvShow.getStagedModelType();
 	}
 
 	/**

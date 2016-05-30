@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
-import com.liferay.portal.model.GroupedModel;
+import com.liferay.portal.model.StagedGroupedModel;
 import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
@@ -40,7 +40,7 @@ import java.util.Date;
  * @see hu.webtown.liferay.portlet.model.impl.EpisodeModelImpl
  * @generated
  */
-public interface EpisodeModel extends BaseModel<Episode>, GroupedModel {
+public interface EpisodeModel extends BaseModel<Episode>, StagedGroupedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
@@ -60,6 +60,23 @@ public interface EpisodeModel extends BaseModel<Episode>, GroupedModel {
 	 * @param primaryKey the primary key of this episode
 	 */
 	public void setPrimaryKey(long primaryKey);
+
+	/**
+	 * Returns the uuid of this episode.
+	 *
+	 * @return the uuid of this episode
+	 */
+	@AutoEscape
+	@Override
+	public String getUuid();
+
+	/**
+	 * Sets the uuid of this episode.
+	 *
+	 * @param uuid the uuid of this episode
+	 */
+	@Override
+	public void setUuid(String uuid);
 
 	/**
 	 * Returns the episode ID of this episode.

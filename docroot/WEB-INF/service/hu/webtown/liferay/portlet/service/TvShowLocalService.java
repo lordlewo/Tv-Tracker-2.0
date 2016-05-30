@@ -173,6 +173,32 @@ public interface TvShowLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Returns the tv show with the matching UUID and company.
+	*
+	* @param uuid the tv show's UUID
+	* @param companyId the primary key of the company
+	* @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public hu.webtown.liferay.portlet.model.TvShow fetchTvShowByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the tv show matching the UUID and group.
+	*
+	* @param uuid the tv show's UUID
+	* @param groupId the primary key of the group
+	* @return the matching tv show, or <code>null</code> if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public hu.webtown.liferay.portlet.model.TvShow fetchTvShowByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Returns the tv show with the primary key.
 	*
 	* @param tvShowId the primary key of the tv show
@@ -189,6 +215,36 @@ public interface TvShowLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.model.PersistedModel getPersistedModel(
 		java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the tv show with the matching UUID and company.
+	*
+	* @param uuid the tv show's UUID
+	* @param companyId the primary key of the company
+	* @return the matching tv show
+	* @throws PortalException if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public hu.webtown.liferay.portlet.model.TvShow getTvShowByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the tv show matching the UUID and group.
+	*
+	* @param uuid the tv show's UUID
+	* @param groupId the primary key of the group
+	* @return the matching tv show
+	* @throws PortalException if a matching tv show could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public hu.webtown.liferay.portlet.model.TvShow getTvShowByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
