@@ -3,4 +3,11 @@
 
 <display>
 	
+	<category name="category.sample">
+		<portlet id="tv-tracker-public"></portlet>
+	</category>
+	<category name="category.hidden">
+		<portlet id="tv-tracker-tv-show-admin"></portlet>
+		<portlet id="tv-tracker-episode-admin"></portlet>
+	</category>
 </display>

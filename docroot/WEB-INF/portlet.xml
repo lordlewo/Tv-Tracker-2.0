@@ -2,4 +2,116 @@
 
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
 	
+	<portlet>
+		<portlet-name>tv-tracker-public</portlet-name>
+		<display-name>Tv Tracker Public</display-name>
+		<portlet-class>
+			hu.webtown.liferay.portlet.tvtracker.tvtpublic.TvTrackerPublicPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/portlet/tvtracker/tvtpublic/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>
+			content.TvTrackerPublicLanguage
+		</resource-bundle>
+		<portlet-info>
+			<title>Tv Tracker Public</title>
+			<short-title>Tv Tracker Public</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>tv-tracker-tv-show-admin</portlet-name>
+		<display-name>Tv Tracker Tv Show Admin</display-name>
+		<portlet-class>
+			hu.webtown.liferay.portlet.tvtracker.tvtadmin.TvTrackerTvShowAdminPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/portlet/tvtracker/tvtadmin/tvshow/view.jsp
+			</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>
+			content.TvTrackerTvShowAdminLanguage
+		</resource-bundle>
+		<portlet-info>
+			<title>Tv Tracker Tv Show Admin</title>
+			<short-title>Tv Tracker Tv Show Admin</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>tv-tracker-episode-admin</portlet-name>
+		<display-name>Tv Tracker Episode Admin</display-name>
+		<portlet-class>
+			hu.webtown.liferay.portlet.tvtracker.tvtadmin.TvTrackerEpisodeAdminPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/portlet/tvtracker/tvtadmin/episode/view.jsp
+			</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>
+			content.TvTrackerEpisodeAdminLanguage
+		</resource-bundle>
+		<portlet-info>
+			<title>Tv Tracker Episode Admin</title>
+			<short-title>Tv Tracker Episode Admin</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
 </portlet-app>

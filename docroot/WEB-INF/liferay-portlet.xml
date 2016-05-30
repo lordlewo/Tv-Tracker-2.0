@@ -3,6 +3,45 @@
 
 <liferay-portlet-app>
 	
+	<portlet>
+		<portlet-name>tv-tracker-public</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>tv-tracker-public-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>tv-tracker-tv-show-admin</portlet-name>
+		<icon>/icon.png</icon>
+		<control-panel-entry-category>
+			site_administration.content
+		</control-panel-entry-category>
+		<control-panel-entry-weight>1.0</control-panel-entry-weight>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			tv-tracker-tv-show-admin-portlet
+		</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>tv-tracker-episode-admin</portlet-name>
+		<icon>/icon.png</icon>
+		<control-panel-entry-category>
+			site_administration.content
+		</control-panel-entry-category>
+		<control-panel-entry-weight>1.5</control-panel-entry-weight>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			tv-tracker-episode-admin-portlet
+		</css-class-wrapper>
+	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>
