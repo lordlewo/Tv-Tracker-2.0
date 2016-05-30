@@ -129,6 +129,10 @@ public class EpisodeLocalServiceClpInvoker {
 		_methodName67 = "setBeanIdentifier";
 
 		_methodParameterTypes67 = new String[] { "java.lang.String" };
+
+		_methodName72 = "getEpisode";
+
+		_methodParameterTypes72 = new String[] { "long", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -256,6 +260,12 @@ public class EpisodeLocalServiceClpInvoker {
 			return null;
 		}
 
+		if (_methodName72.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
+			return EpisodeLocalServiceUtil.getEpisode(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -303,4 +313,6 @@ public class EpisodeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes66;
 	private String _methodName67;
 	private String[] _methodParameterTypes67;
+	private String _methodName72;
+	private String[] _methodParameterTypes72;
 }

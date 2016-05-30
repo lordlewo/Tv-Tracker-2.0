@@ -129,6 +129,10 @@ public class EpisodeLocalServiceClp implements EpisodeLocalService {
 		_methodName21 = "setBeanIdentifier";
 
 		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "getEpisode";
+
+		_methodParameterTypes23 = new String[] { "long", "long" };
 	}
 
 	@Override
@@ -809,6 +813,40 @@ public class EpisodeLocalServiceClp implements EpisodeLocalService {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.Episode getEpisode(long groupId,
+		long episodeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23, new Object[] { groupId, episodeId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (hu.webtown.liferay.portlet.model.Episode)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -854,4 +892,6 @@ public class EpisodeLocalServiceClp implements EpisodeLocalService {
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }

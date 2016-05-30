@@ -335,6 +335,13 @@ public class SeasonLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.Season getSeason(
+		long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getSeason(groupId, seasonId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

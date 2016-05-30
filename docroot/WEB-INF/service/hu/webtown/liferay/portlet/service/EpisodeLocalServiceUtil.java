@@ -335,6 +335,13 @@ public class EpisodeLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.Episode getEpisode(
+		long groupId, long episodeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisode(groupId, episodeId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

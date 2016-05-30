@@ -14,6 +14,10 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+
+import hu.webtown.liferay.portlet.model.Episode;
 import hu.webtown.liferay.portlet.service.base.EpisodeLocalServiceBaseImpl;
 
 /**
@@ -36,4 +40,13 @@ public class EpisodeLocalServiceImpl extends EpisodeLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.EpisodeLocalServiceUtil} to access the episode local service.
 	 */
+	
+	public Episode getEpisode(long groupId, long episodeId) throws PortalException, SystemException{
+		
+		// using of the finder method to retrive the requested entity instance
+		
+		Episode episode = episodePersistence.findByG_E(groupId, episodeId);
+		
+		return episode;
+	}
 }

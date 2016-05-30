@@ -14,6 +14,10 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+
+import hu.webtown.liferay.portlet.model.TvShow;
 import hu.webtown.liferay.portlet.service.base.TvShowLocalServiceBaseImpl;
 
 /**
@@ -36,4 +40,13 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.TvShowLocalServiceUtil} to access the tv show local service.
 	 */
+	
+	public TvShow getTvShow(long groupId, long tvShowId) throws PortalException, SystemException {
+		
+		// using of the finder method to retrive the requested entity instance
+		
+		TvShow tvShow = tvShowPersistence.findByG_T(tvShowId, groupId);
+
+		return tvShow;
+	}
 }

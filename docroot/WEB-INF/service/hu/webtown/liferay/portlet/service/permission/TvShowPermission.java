@@ -115,8 +115,7 @@ public class TvShowPermission {
 
 		// retrieve the appropriate entity instance from the database
 
-		TvShow tvShow = TvShowLocalServiceUtil.getTvShow(tvShowId);
-		// TODO get with groupId
+		TvShow tvShow = TvShowLocalServiceUtil.getTvShow(groupId, tvShowId);
 		
 		return contains(permissionChecker, tvShow, actionId);
 	}

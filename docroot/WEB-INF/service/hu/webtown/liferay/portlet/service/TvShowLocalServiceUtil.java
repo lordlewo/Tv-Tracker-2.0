@@ -335,6 +335,13 @@ public class TvShowLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.TvShow getTvShow(
+		long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShow(groupId, tvShowId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

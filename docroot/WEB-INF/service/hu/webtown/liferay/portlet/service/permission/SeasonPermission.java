@@ -115,8 +115,7 @@ public class SeasonPermission {
 
 		// retrieve the appropriate entity instance from the database
 
-		Season season = SeasonLocalServiceUtil.getSeason(seasonId);
-		// TODO get with groupId
+		Season season = SeasonLocalServiceUtil.getSeason(groupId, seasonId);
 		
 		return contains(permissionChecker, season, actionId);
 	}

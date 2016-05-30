@@ -344,6 +344,14 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 		return _tvShowLocalService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow getTvShow(long groupId,
+		long tvShowId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShow(groupId, tvShowId);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

@@ -344,6 +344,14 @@ public class SeasonLocalServiceWrapper implements SeasonLocalService,
 		return _seasonLocalService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.Season getSeason(long groupId,
+		long seasonId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeason(groupId, seasonId);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

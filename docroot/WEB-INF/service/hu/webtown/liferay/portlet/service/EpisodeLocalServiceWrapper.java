@@ -347,6 +347,14 @@ public class EpisodeLocalServiceWrapper implements EpisodeLocalService,
 		return _episodeLocalService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.Episode getEpisode(long groupId,
+		long episodeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _episodeLocalService.getEpisode(groupId, episodeId);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

@@ -115,8 +115,7 @@ public class EpisodePermission {
 
 		// retrieve the appropriate entity instance from the database
 
-		Episode episode = EpisodeLocalServiceUtil.getEpisode(episodeId);
-		// TODO get with groupId
+		Episode episode = EpisodeLocalServiceUtil.getEpisode(groupId, episodeId);
 		
 		return contains(permissionChecker, episode, actionId);
 	}

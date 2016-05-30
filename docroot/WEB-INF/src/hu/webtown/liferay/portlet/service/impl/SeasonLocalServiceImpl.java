@@ -14,6 +14,11 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+
+import hu.webtown.liferay.portlet.NoSuchSeasonException;
+import hu.webtown.liferay.portlet.model.Season;
 import hu.webtown.liferay.portlet.service.base.SeasonLocalServiceBaseImpl;
 
 /**
@@ -36,4 +41,13 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.SeasonLocalServiceUtil} to access the season local service.
 	 */
+	
+	public Season getSeason(long groupId, long seasonId) throws PortalException, SystemException{
+		
+		// using of the finder method to retrive the requested entity instance
+		
+		Season season = seasonPersistence.findByG_S(groupId, seasonId);
+
+		return season;
+	}
 }
