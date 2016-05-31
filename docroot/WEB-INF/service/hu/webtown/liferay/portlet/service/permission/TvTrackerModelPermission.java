@@ -8,6 +8,10 @@ public class TvTrackerModelPermission {
 
 	public static final String RESOURCE_NAME = "hu.webtown.liferay.portlet.model";
 
+	/***************************************************************************/
+	/********** Check **********************************************************/
+	/***************************************************************************/
+	
 	public static void check(PermissionChecker permissionChecker, long groupId,
 			String actionId) throws PortalException {
 
@@ -21,6 +25,10 @@ public class TvTrackerModelPermission {
 		}
 	}
 
+	/***************************************************************************/
+	/********** Contains *******************************************************/
+	/***************************************************************************/
+	
 	public static boolean contains(PermissionChecker permissionChecker,
 			long groupId, String actionId) {
 
