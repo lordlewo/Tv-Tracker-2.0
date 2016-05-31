@@ -342,6 +342,174 @@ public class EpisodeLocalServiceUtil {
 		return getService().getEpisode(groupId, episodeId);
 	}
 
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, seasonId);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, start, end);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, long seasonId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, seasonId, start, end);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, orderByComparator);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, long seasonId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, seasonId, orderByComparator);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodes(groupId, start, end, orderByComparator);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.Episode> getEpisodes(
+		long groupId, long seasonId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getEpisodes(groupId, seasonId, start, end, orderByComparator);
+	}
+
+	public static int getEpisodesCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodesCount(groupId);
+	}
+
+	public static int getEpisodesCount(long groupId, long seasonId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getEpisodesCount(groupId, seasonId);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode addEpisode(
+		long userId, long groupId, long seasonId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addEpisode(userId, groupId, seasonId, episodeTitle,
+			episodeAirDate, episodeNumber, episodeDescription, episodeImageUrl,
+			episodeImageUuid, episodeImageTitle, episodeImageVersion,
+			serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode updateEpisode(
+		long userId, long groupId, long seasonId, long episodeId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateEpisode(userId, groupId, seasonId, episodeId,
+			episodeTitle, episodeAirDate, episodeNumber, episodeDescription,
+			episodeImageUrl, episodeImageUuid, episodeImageTitle,
+			episodeImageVersion, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long episodeId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteEpisode(episodeId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteEpisode(groupId, episodeId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		hu.webtown.liferay.portlet.model.Episode episode,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteEpisode(episode, serviceContext);
+	}
+
+	public static void addEpisodeResources(
+		hu.webtown.liferay.portlet.model.Episode episode,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addEpisodeResources(episode, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	public static void addEpisodeModelResources(
+		hu.webtown.liferay.portlet.model.Episode episode,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addEpisodeModelResources(episode, groupPermissions,
+			guestPermissions);
+	}
+
+	public static void updateEpisodeResources(
+		hu.webtown.liferay.portlet.model.Episode episode,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateEpisodeResources(episode, groupPermissions, guestPermissions);
+	}
+
+	public static void updateEpisodeModelResources(
+		hu.webtown.liferay.portlet.model.Episode episode,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().updateEpisodeModelResources(episode, serviceContext);
+	}
+
+	public static void updateEpisodeAsset(long userId,
+		hu.webtown.liferay.portlet.model.Episode episode,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateEpisodeAsset(userId, episode, assetCategoryIds,
+			assetTagNames, assetLinkEntryIds);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

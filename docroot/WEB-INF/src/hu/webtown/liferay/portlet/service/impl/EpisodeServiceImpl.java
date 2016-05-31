@@ -14,7 +14,18 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.service.ServiceContext;
+
+import hu.webtown.liferay.portlet.model.Episode;
+import hu.webtown.liferay.portlet.service.EpisodeLocalService;
 import hu.webtown.liferay.portlet.service.base.EpisodeServiceBaseImpl;
+import hu.webtown.liferay.portlet.service.permission.CustomActionKeys;
+import hu.webtown.liferay.portlet.service.permission.EpisodePermission;
+import hu.webtown.liferay.portlet.service.permission.TvTrackerModelPermission;
+
+import java.util.Date;
 
 /**
  * The implementation of the episode remote service.
@@ -36,4 +47,52 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.EpisodeServiceUtil} to access the episode remote service.
 	 */
+	
+	public Episode addEpisode(
+			long userId, long groupId, long seasonId, 
+			String episodeTitle, Date episodeAirDate, 
+			int episodeNumber, String episodeDescription, 
+			String episodeImageUrl, String episodeImageUuid, 
+			String episodeImageTitle, String episodeImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		TvTrackerModelPermission.check(getPermissionChecker(), groupId, CustomActionKeys.ADD_EPISODE);
+		
+		return episodeLocalService.addEpisode(
+				userId, groupId, seasonId, 
+				episodeTitle, episodeAirDate, 
+				episodeNumber, episodeDescription, 
+				episodeImageUrl, episodeImageUuid, 
+				episodeImageTitle, episodeImageVersion, 
+				serviceContext);
+	}
+	
+	public Episode updateEpisode(
+			long userId, long groupId, 
+			long seasonId, long episodeId,
+			String episodeTitle, Date episodeAirDate, 
+			int episodeNumber, String episodeDescription, 
+			String episodeImageUrl, String episodeImageUuid, 
+			String episodeImageTitle, String episodeImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
+		
+		return episodeLocalService.updateEpisode(
+				userId, groupId, seasonId, episodeId, 
+				episodeTitle, episodeAirDate, 
+				episodeNumber, episodeDescription, 
+				episodeImageUrl, episodeImageUuid, 
+				episodeImageTitle, episodeImageVersion, 
+				serviceContext);
+	}
+	
+	public Episode deleteEpisode(long groupId, long episodeId, ServiceContext serviceContext) 
+			throws PortalException, SystemException { 
+		
+		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
+		
+		return episodeLocalService.deleteEpisode(groupId, episodeId, serviceContext);
+	}
+	
 }

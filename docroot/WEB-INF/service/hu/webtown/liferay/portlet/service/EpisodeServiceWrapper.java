@@ -56,6 +56,48 @@ public class EpisodeServiceWrapper implements EpisodeService,
 		return _episodeService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.Episode addEpisode(long userId,
+		long groupId, long seasonId, java.lang.String episodeTitle,
+		java.util.Date episodeAirDate, int episodeNumber,
+		java.lang.String episodeDescription, java.lang.String episodeImageUrl,
+		java.lang.String episodeImageUuid, java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _episodeService.addEpisode(userId, groupId, seasonId,
+			episodeTitle, episodeAirDate, episodeNumber, episodeDescription,
+			episodeImageUrl, episodeImageUuid, episodeImageTitle,
+			episodeImageVersion, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Episode updateEpisode(long userId,
+		long groupId, long seasonId, long episodeId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _episodeService.updateEpisode(userId, groupId, seasonId,
+			episodeId, episodeTitle, episodeAirDate, episodeNumber,
+			episodeDescription, episodeImageUrl, episodeImageUuid,
+			episodeImageTitle, episodeImageVersion, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _episodeService.deleteEpisode(groupId, episodeId, serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

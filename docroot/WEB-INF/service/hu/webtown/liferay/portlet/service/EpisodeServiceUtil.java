@@ -63,6 +63,48 @@ public class EpisodeServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.Episode addEpisode(
+		long userId, long groupId, long seasonId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addEpisode(userId, groupId, seasonId, episodeTitle,
+			episodeAirDate, episodeNumber, episodeDescription, episodeImageUrl,
+			episodeImageUuid, episodeImageTitle, episodeImageVersion,
+			serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode updateEpisode(
+		long userId, long groupId, long seasonId, long episodeId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateEpisode(userId, groupId, seasonId, episodeId,
+			episodeTitle, episodeAirDate, episodeNumber, episodeDescription,
+			episodeImageUrl, episodeImageUuid, episodeImageTitle,
+			episodeImageVersion, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteEpisode(groupId, episodeId, serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

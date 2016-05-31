@@ -32,6 +32,9 @@
 		<column name="episodeImageUuid" type="String"></column>
 		<column name="episodeImageTitle" type="String"></column>
 		<column name="episodeImageVersion" type="String"></column>
+		
+		<!-- FK fields -->
+		
 		<column name="seasonId" type="long"></column>
 
 		<!-- Order -->
