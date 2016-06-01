@@ -29,6 +29,29 @@ public class TvShowImpl extends TvShowBaseImpl {
 	 *
 	 * Never reference this class directly. All methods that expect a tv show model instance should use the {@link hu.webtown.liferay.portlet.model.TvShow} interface instead.
 	 */
+	
+	private int tvShowPremierYear;
+	
+	private int tvShowSeasonCount;
+	
 	public TvShowImpl() {
 	}
+
+	public int getTvShowPremierYear() {
+		return tvShowPremierYear;
+	}
+
+	public void setTvShowPremierYear(int tvShowPremierYear) {
+		this.tvShowPremierYear = tvShowPremierYear;
+	}
+
+	public int getTvShowSeasonCount() {
+		return tvShowSeasonCount;
+	}
+
+	public void setTvShowSeasonCount(int tvShowSeasonCount) {
+		this.tvShowSeasonCount = tvShowSeasonCount;
+	}
+	
+	
 }

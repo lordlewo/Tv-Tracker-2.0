@@ -29,6 +29,17 @@ public class SeasonImpl extends SeasonBaseImpl {
 	 *
 	 * Never reference this class directly. All methods that expect a season model instance should use the {@link hu.webtown.liferay.portlet.model.Season} interface instead.
 	 */
+	
+	private int seasonEpisodeCount;
+	
 	public SeasonImpl() {
+	}
+
+	public int getSeasonEpisodeCount() {
+		return seasonEpisodeCount;
+	}
+
+	public void setSeasonEpisodeCount(int seasonEpisodeCount) {
+		this.seasonEpisodeCount = seasonEpisodeCount;
 	}
 }
