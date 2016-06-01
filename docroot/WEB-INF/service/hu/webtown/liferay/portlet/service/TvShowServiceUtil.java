@@ -63,6 +63,43 @@ public class TvShowServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.TvShow addTvShow(
+		long userId, long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTvShow(userId, groupId, tvShowTitle, tvShowPremierDate,
+			tvShowDescription, tvShowImageUrl, tvShowImageUuid,
+			tvShowImageTitle, tvShowImageVersion, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		long groupId, long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteTvShow(groupId, tvShowId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow updateTvShow(
+		long userId, long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateTvShow(userId, groupId, tvShowId, tvShowTitle,
+			tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

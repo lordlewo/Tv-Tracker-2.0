@@ -14,7 +14,18 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.service.ServiceContext;
+
+import hu.webtown.liferay.portlet.model.Episode;
+import hu.webtown.liferay.portlet.model.TvShow;
 import hu.webtown.liferay.portlet.service.base.TvShowServiceBaseImpl;
+import hu.webtown.liferay.portlet.service.permission.CustomActionKeys;
+import hu.webtown.liferay.portlet.service.permission.TvShowPermission;
+import hu.webtown.liferay.portlet.service.permission.TvTrackerModelPermission;
+
+import java.util.Date;
 
 /**
  * The implementation of the tv show remote service.
@@ -36,4 +47,61 @@ public class TvShowServiceImpl extends TvShowServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.TvShowServiceUtil} to access the tv show remote service.
 	 */
+	
+	/***************************************************************************/
+	/********** BLL - CREATE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow addTvShow(
+			long userId, long groupId,
+			String tvShowTitle, Date tvShowPremierDate, 
+			String tvShowDescription, 
+			String tvShowImageUrl, String tvShowImageUuid, 
+			String tvShowImageTitle, String tvShowImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		TvTrackerModelPermission.check(getPermissionChecker(), groupId, CustomActionKeys.ADD_TVSHOW);
+		
+		return tvShowLocalService.addTvShow(
+				userId, groupId, 
+				tvShowTitle, tvShowPremierDate, 
+				tvShowDescription, 
+				tvShowImageUrl, tvShowImageUuid, 
+				tvShowImageTitle, tvShowImageVersion, 
+				serviceContext);
+	}
+	
+	/***************************************************************************/
+	/********** BLL - DELETE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow deleteTvShow(long groupId, long tvShowId,	ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		TvShowPermission.check(getPermissionChecker(), groupId, tvShowId, CustomActionKeys.DELETE);
+	
+		return tvShowLocalService.deleteTvShow(groupId, tvShowId, serviceContext);
+	}
+	
+	/***************************************************************************/
+	/********** BLL - UPDATE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow updateTvShow(
+			long userId, long groupId, long tvShowId,
+			String tvShowTitle, Date tvShowPremierDate, 
+			String tvShowDescription, 
+			String tvShowImageUrl, String tvShowImageUuid, 
+			String tvShowImageTitle, String tvShowImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		TvShowPermission.check(getPermissionChecker(), groupId, tvShowId, CustomActionKeys.UPDATE);
+		
+		return tvShowLocalService.updateTvShow(
+				userId, groupId, tvShowId, 
+				tvShowTitle, tvShowPremierDate, 
+				tvShowDescription, 
+				tvShowImageUrl, tvShowImageUuid, 
+				tvShowImageTitle, tvShowImageVersion, 
+				serviceContext);
+	}
 }

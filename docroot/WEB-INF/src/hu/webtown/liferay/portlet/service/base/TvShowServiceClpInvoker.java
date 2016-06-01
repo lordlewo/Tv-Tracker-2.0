@@ -31,6 +31,30 @@ public class TvShowServiceClpInvoker {
 		_methodName47 = "setBeanIdentifier";
 
 		_methodParameterTypes47 = new String[] { "java.lang.String" };
+
+		_methodName52 = "addTvShow";
+
+		_methodParameterTypes52 = new String[] {
+				"long", "long", "java.lang.String", "java.util.Date",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName53 = "deleteTvShow";
+
+		_methodParameterTypes53 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName54 = "updateTvShow";
+
+		_methodParameterTypes54 = new String[] {
+				"long", "long", "long", "java.lang.String", "java.util.Date",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -47,6 +71,36 @@ public class TvShowServiceClpInvoker {
 			return null;
 		}
 
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+			return TvShowServiceUtil.addTvShow(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(java.lang.String)arguments[2], (java.util.Date)arguments[3],
+				(java.lang.String)arguments[4], (java.lang.String)arguments[5],
+				(java.lang.String)arguments[6], (java.lang.String)arguments[7],
+				(java.lang.String)arguments[8],
+				(com.liferay.portal.service.ServiceContext)arguments[9]);
+		}
+
+		if (_methodName53.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
+			return TvShowServiceUtil.deleteTvShow(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName54.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
+			return TvShowServiceUtil.updateTvShow(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				(java.lang.String)arguments[3], (java.util.Date)arguments[4],
+				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
+				(java.lang.String)arguments[7], (java.lang.String)arguments[8],
+				(java.lang.String)arguments[9],
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -54,4 +108,10 @@ public class TvShowServiceClpInvoker {
 	private String[] _methodParameterTypes46;
 	private String _methodName47;
 	private String[] _methodParameterTypes47;
+	private String _methodName52;
+	private String[] _methodParameterTypes52;
+	private String _methodName53;
+	private String[] _methodParameterTypes53;
+	private String _methodName54;
+	private String[] _methodParameterTypes54;
 }

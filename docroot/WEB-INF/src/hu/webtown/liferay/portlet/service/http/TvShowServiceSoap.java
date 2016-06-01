@@ -14,6 +14,13 @@
 
 package hu.webtown.liferay.portlet.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import hu.webtown.liferay.portlet.service.TvShowServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
  * {@link hu.webtown.liferay.portlet.service.TvShowServiceUtil} service utility. The
@@ -55,4 +62,66 @@ package hu.webtown.liferay.portlet.service.http;
  * @generated
  */
 public class TvShowServiceSoap {
+	public static hu.webtown.liferay.portlet.model.TvShowSoap addTvShow(
+		long userId, long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.TvShow returnValue = TvShowServiceUtil.addTvShow(userId,
+					groupId, tvShowTitle, tvShowPremierDate, tvShowDescription,
+					tvShowImageUrl, tvShowImageUuid, tvShowImageTitle,
+					tvShowImageVersion, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.TvShowSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShowSoap deleteTvShow(
+		long groupId, long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.TvShow returnValue = TvShowServiceUtil.deleteTvShow(groupId,
+					tvShowId, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.TvShowSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShowSoap updateTvShow(
+		long userId, long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.TvShow returnValue = TvShowServiceUtil.updateTvShow(userId,
+					groupId, tvShowId, tvShowTitle, tvShowPremierDate,
+					tvShowDescription, tvShowImageUrl, tvShowImageUuid,
+					tvShowImageTitle, tvShowImageVersion, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.TvShowSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(TvShowServiceSoap.class);
 }

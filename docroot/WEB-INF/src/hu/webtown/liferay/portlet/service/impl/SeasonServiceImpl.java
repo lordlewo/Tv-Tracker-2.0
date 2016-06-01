@@ -77,7 +77,7 @@ public class SeasonServiceImpl extends SeasonServiceBaseImpl {
 	public Season deleteSeason(long groupId, long seasonId, ServiceContext serviceContext) 
 			throws PortalException, SystemException { 
 		
-		SeasonPermission.check(getPermissionChecker(), groupId, seasonId, CustomActionKeys.UPDATE);
+		SeasonPermission.check(getPermissionChecker(), groupId, seasonId, CustomActionKeys.DELETE);
 		
 		return seasonLocalService.deleteSeason(groupId, seasonId, serviceContext);
 	}

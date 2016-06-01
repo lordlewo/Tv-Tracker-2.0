@@ -56,6 +56,44 @@ public class TvShowServiceWrapper implements TvShowService,
 		return _tvShowService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,
+		long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowService.addTvShow(userId, groupId, tvShowTitle,
+			tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long groupId,
+		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowService.deleteTvShow(groupId, tvShowId, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow updateTvShow(long userId,
+		long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowService.updateTvShow(userId, groupId, tvShowId,
+			tvShowTitle, tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

@@ -78,7 +78,7 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 	public Episode deleteEpisode(long groupId, long episodeId, ServiceContext serviceContext) 
 			throws PortalException, SystemException { 
 		
-		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
+		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.DELETE);
 		
 		return episodeLocalService.deleteEpisode(groupId, episodeId, serviceContext);
 	}
