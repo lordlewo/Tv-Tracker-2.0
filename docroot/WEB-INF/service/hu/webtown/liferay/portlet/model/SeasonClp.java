@@ -90,7 +90,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		attributes.put("seasonImageUrl", getSeasonImageUrl());
 		attributes.put("seasonImageUuid", getSeasonImageUuid());
 		attributes.put("seasonImageTitle", getSeasonImageTitle());
-		attributes.put("sesonImageVersion", getSesonImageVersion());
+		attributes.put("seasonImageVersion", getSeasonImageVersion());
 		attributes.put("tvShowId", getTvShowId());
 
 		return attributes;
@@ -188,10 +188,10 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 			setSeasonImageTitle(seasonImageTitle);
 		}
 
-		String sesonImageVersion = (String)attributes.get("sesonImageVersion");
+		String seasonImageVersion = (String)attributes.get("seasonImageVersion");
 
-		if (sesonImageVersion != null) {
-			setSesonImageVersion(sesonImageVersion);
+		if (seasonImageVersion != null) {
+			setSeasonImageVersion(seasonImageVersion);
 		}
 
 		Long tvShowId = (Long)attributes.get("tvShowId");
@@ -562,22 +562,22 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 	}
 
 	@Override
-	public String getSesonImageVersion() {
-		return _sesonImageVersion;
+	public String getSeasonImageVersion() {
+		return _seasonImageVersion;
 	}
 
 	@Override
-	public void setSesonImageVersion(String sesonImageVersion) {
-		_sesonImageVersion = sesonImageVersion;
+	public void setSeasonImageVersion(String seasonImageVersion) {
+		_seasonImageVersion = seasonImageVersion;
 
 		if (_seasonRemoteModel != null) {
 			try {
 				Class<?> clazz = _seasonRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setSesonImageVersion",
+				Method method = clazz.getMethod("setSeasonImageVersion",
 						String.class);
 
-				method.invoke(_seasonRemoteModel, sesonImageVersion);
+				method.invoke(_seasonRemoteModel, seasonImageVersion);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -698,7 +698,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		clone.setSeasonImageUrl(getSeasonImageUrl());
 		clone.setSeasonImageUuid(getSeasonImageUuid());
 		clone.setSeasonImageTitle(getSeasonImageTitle());
-		clone.setSesonImageVersion(getSesonImageVersion());
+		clone.setSeasonImageVersion(getSeasonImageVersion());
 		clone.setTvShowId(getTvShowId());
 
 		return clone;
@@ -790,8 +790,8 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		sb.append(getSeasonImageUuid());
 		sb.append(", seasonImageTitle=");
 		sb.append(getSeasonImageTitle());
-		sb.append(", sesonImageVersion=");
-		sb.append(getSesonImageVersion());
+		sb.append(", seasonImageVersion=");
+		sb.append(getSeasonImageVersion());
 		sb.append(", tvShowId=");
 		sb.append(getTvShowId());
 		sb.append("}");
@@ -868,8 +868,8 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 		sb.append(getSeasonImageTitle());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>sesonImageVersion</column-name><column-value><![CDATA[");
-		sb.append(getSesonImageVersion());
+			"<column><column-name>seasonImageVersion</column-name><column-value><![CDATA[");
+		sb.append(getSeasonImageVersion());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>tvShowId</column-name><column-value><![CDATA[");
@@ -897,7 +897,7 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 	private String _seasonImageUrl;
 	private String _seasonImageUuid;
 	private String _seasonImageTitle;
-	private String _sesonImageVersion;
+	private String _seasonImageVersion;
 	private long _tvShowId;
 	private BaseModel<?> _seasonRemoteModel;
 	private Class<?> _clpSerializerClass = hu.webtown.liferay.portlet.service.ClpSerializer.class;

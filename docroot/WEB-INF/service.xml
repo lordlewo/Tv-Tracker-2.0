@@ -94,7 +94,7 @@
 		<column name="seasonImageUrl" type="String"></column>
 		<column name="seasonImageUuid" type="String"></column>
 		<column name="seasonImageTitle" type="String"></column>
-		<column name="sesonImageVersion" type="String"></column>
+		<column name="seasonImageVersion" type="String"></column>
 
 		<!-- FK fields -->
 

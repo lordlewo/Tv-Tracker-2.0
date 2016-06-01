@@ -41,19 +41,19 @@ public class EpisodeServiceClp implements EpisodeService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName4 = "updateEpisode";
+		_methodName4 = "deleteEpisode";
 
 		_methodParameterTypes4 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName5 = "updateEpisode";
+
+		_methodParameterTypes5 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.util.Date", "int", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName5 = "deleteEpisode";
-
-		_methodParameterTypes5 = new String[] {
-				"long", "long", "com.liferay.portal.service.ServiceContext"
 			};
 	}
 
@@ -172,13 +172,8 @@ public class EpisodeServiceClp implements EpisodeService {
 	}
 
 	@Override
-	public hu.webtown.liferay.portlet.model.Episode updateEpisode(long userId,
-		long groupId, long seasonId, long episodeId,
-		java.lang.String episodeTitle, java.util.Date episodeAirDate,
-		int episodeNumber, java.lang.String episodeDescription,
-		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
-		java.lang.String episodeImageTitle,
-		java.lang.String episodeImageVersion,
+	public hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -188,29 +183,9 @@ public class EpisodeServiceClp implements EpisodeService {
 			returnObj = _invokableService.invokeMethod(_methodName4,
 					_methodParameterTypes4,
 					new Object[] {
-						userId,
-						
-					groupId,
-						
-					seasonId,
+						groupId,
 						
 					episodeId,
-						
-					ClpSerializer.translateInput(episodeTitle),
-						
-					ClpSerializer.translateInput(episodeAirDate),
-						
-					episodeNumber,
-						
-					ClpSerializer.translateInput(episodeDescription),
-						
-					ClpSerializer.translateInput(episodeImageUrl),
-						
-					ClpSerializer.translateInput(episodeImageUuid),
-						
-					ClpSerializer.translateInput(episodeImageTitle),
-						
-					ClpSerializer.translateInput(episodeImageVersion),
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -239,8 +214,13 @@ public class EpisodeServiceClp implements EpisodeService {
 	}
 
 	@Override
-	public hu.webtown.liferay.portlet.model.Episode deleteEpisode(
-		long groupId, long episodeId,
+	public hu.webtown.liferay.portlet.model.Episode updateEpisode(long userId,
+		long groupId, long seasonId, long episodeId,
+		java.lang.String episodeTitle, java.util.Date episodeAirDate,
+		int episodeNumber, java.lang.String episodeDescription,
+		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
+		java.lang.String episodeImageTitle,
+		java.lang.String episodeImageVersion,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -250,9 +230,29 @@ public class EpisodeServiceClp implements EpisodeService {
 			returnObj = _invokableService.invokeMethod(_methodName5,
 					_methodParameterTypes5,
 					new Object[] {
-						groupId,
+						userId,
+						
+					groupId,
+						
+					seasonId,
 						
 					episodeId,
+						
+					ClpSerializer.translateInput(episodeTitle),
+						
+					ClpSerializer.translateInput(episodeAirDate),
+						
+					episodeNumber,
+						
+					ClpSerializer.translateInput(episodeDescription),
+						
+					ClpSerializer.translateInput(episodeImageUrl),
+						
+					ClpSerializer.translateInput(episodeImageUuid),
+						
+					ClpSerializer.translateInput(episodeImageTitle),
+						
+					ClpSerializer.translateInput(episodeImageVersion),
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

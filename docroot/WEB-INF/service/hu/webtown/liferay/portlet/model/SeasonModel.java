@@ -310,19 +310,19 @@ public interface SeasonModel extends BaseModel<Season>, StagedGroupedModel {
 	public void setSeasonImageTitle(String seasonImageTitle);
 
 	/**
-	 * Returns the seson image version of this season.
+	 * Returns the season image version of this season.
 	 *
-	 * @return the seson image version of this season
+	 * @return the season image version of this season
 	 */
 	@AutoEscape
-	public String getSesonImageVersion();
+	public String getSeasonImageVersion();
 
 	/**
-	 * Sets the seson image version of this season.
+	 * Sets the season image version of this season.
 	 *
-	 * @param sesonImageVersion the seson image version of this season
+	 * @param seasonImageVersion the season image version of this season
 	 */
-	public void setSesonImageVersion(String sesonImageVersion);
+	public void setSeasonImageVersion(String seasonImageVersion);
 
 	/**
 	 * Returns the tv show ID of this season.

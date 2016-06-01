@@ -99,7 +99,8 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
 		
 		return episodeLocalService.updateEpisode(
-				userId, groupId, seasonId, episodeId, 
+				userId, groupId, 
+				seasonId, episodeId, 
 				episodeTitle, episodeAirDate, 
 				episodeNumber, episodeDescription, 
 				episodeImageUrl, episodeImageUuid, 

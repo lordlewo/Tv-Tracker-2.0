@@ -65,7 +65,7 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 		attributes.put("seasonImageUrl", getSeasonImageUrl());
 		attributes.put("seasonImageUuid", getSeasonImageUuid());
 		attributes.put("seasonImageTitle", getSeasonImageTitle());
-		attributes.put("sesonImageVersion", getSesonImageVersion());
+		attributes.put("seasonImageVersion", getSeasonImageVersion());
 		attributes.put("tvShowId", getTvShowId());
 
 		return attributes;
@@ -163,10 +163,10 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 			setSeasonImageTitle(seasonImageTitle);
 		}
 
-		String sesonImageVersion = (String)attributes.get("sesonImageVersion");
+		String seasonImageVersion = (String)attributes.get("seasonImageVersion");
 
-		if (sesonImageVersion != null) {
-			setSesonImageVersion(sesonImageVersion);
+		if (seasonImageVersion != null) {
+			setSeasonImageVersion(seasonImageVersion);
 		}
 
 		Long tvShowId = (Long)attributes.get("tvShowId");
@@ -519,23 +519,23 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 	}
 
 	/**
-	* Returns the seson image version of this season.
+	* Returns the season image version of this season.
 	*
-	* @return the seson image version of this season
+	* @return the season image version of this season
 	*/
 	@Override
-	public java.lang.String getSesonImageVersion() {
-		return _season.getSesonImageVersion();
+	public java.lang.String getSeasonImageVersion() {
+		return _season.getSeasonImageVersion();
 	}
 
 	/**
-	* Sets the seson image version of this season.
+	* Sets the season image version of this season.
 	*
-	* @param sesonImageVersion the seson image version of this season
+	* @param seasonImageVersion the season image version of this season
 	*/
 	@Override
-	public void setSesonImageVersion(java.lang.String sesonImageVersion) {
-		_season.setSesonImageVersion(sesonImageVersion);
+	public void setSeasonImageVersion(java.lang.String seasonImageVersion) {
+		_season.setSeasonImageVersion(seasonImageVersion);
 	}
 
 	/**

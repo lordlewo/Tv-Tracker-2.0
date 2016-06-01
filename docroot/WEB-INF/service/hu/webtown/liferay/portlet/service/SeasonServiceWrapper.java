@@ -56,6 +56,46 @@ public class SeasonServiceWrapper implements SeasonService,
 		return _seasonService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	@Override
+	public hu.webtown.liferay.portlet.model.Season addSeason(long userId,
+		long groupId, long tvShowId, java.lang.String seasonTitle,
+		java.util.Date seasonPremierDate, int seasonNumber,
+		java.lang.String seasonDescription, java.lang.String seasonImageUrl,
+		java.lang.String seasonImageUuid, java.lang.String seasonImageTitle,
+		java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonService.addSeason(userId, groupId, tvShowId, seasonTitle,
+			seasonPremierDate, seasonNumber, seasonDescription, seasonImageUrl,
+			seasonImageUuid, seasonImageTitle, seasonImageVersion,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(long groupId,
+		long seasonId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonService.deleteSeason(groupId, seasonId, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season updateSeason(long userId,
+		long groupId, long tvShowId, long seasonId,
+		java.lang.String seasonTitle, java.util.Date seasonPremierDate,
+		int seasonNumber, java.lang.String seasonDescription,
+		java.lang.String seasonImageUrl, java.lang.String seasonImageUuid,
+		java.lang.String seasonImageTitle, java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonService.updateSeason(userId, groupId, tvShowId, seasonId,
+			seasonTitle, seasonPremierDate, seasonNumber, seasonDescription,
+			seasonImageUrl, seasonImageUuid, seasonImageTitle,
+			seasonImageVersion, serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

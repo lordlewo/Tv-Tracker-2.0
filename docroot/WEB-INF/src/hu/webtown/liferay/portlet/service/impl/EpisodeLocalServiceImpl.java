@@ -323,7 +323,7 @@ public class EpisodeLocalServiceImpl extends EpisodeLocalServiceBaseImpl {
 		
 		// get the editable entity instance and fill up with the prepared newly parameters
 		
-		Episode episode = getEpisode(episodeId);
+		Episode episode = getEpisode(groupId, episodeId);
 		
 		episode.setCompanyId(companyId);
 		episode.setGroupId(groupId);
@@ -504,7 +504,6 @@ public class EpisodeLocalServiceImpl extends EpisodeLocalServiceBaseImpl {
             companyId, groupId, userId, className,
             episodeId, groupPermissions, guestPermissions);
     }
-	
    
     /***************************************************************************/
 	/********** Resource updating **********************************************/
@@ -574,7 +573,6 @@ public class EpisodeLocalServiceImpl extends EpisodeLocalServiceBaseImpl {
 		assetLinkLocalService.updateLinks(userId, entryId, assetLinkEntryIds, typeId);
     }
     
-	
     /***************************************************************************/
 	/********** Validation *****************************************************/
 	/***************************************************************************/

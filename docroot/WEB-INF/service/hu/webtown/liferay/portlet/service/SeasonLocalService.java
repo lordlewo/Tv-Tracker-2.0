@@ -311,4 +311,123 @@ public interface SeasonLocalService extends BaseLocalService,
 		long seasonId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getSeasonsCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getSeasonsCount(long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.Season addSeason(long userId,
+		long groupId, long tvShowId, java.lang.String seasonTitle,
+		java.util.Date seasonPremierDate, int seasonNumber,
+		java.lang.String seasonDescription, java.lang.String seasonImageUrl,
+		java.lang.String seasonImageUuid, java.lang.String seasonImageTitle,
+		java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.Season updateSeason(long userId,
+		long groupId, long tvShowId, long seasonId,
+		java.lang.String seasonTitle, java.util.Date seasonPremierDate,
+		int seasonNumber, java.lang.String seasonDescription,
+		java.lang.String seasonImageUrl, java.lang.String seasonImageUuid,
+		java.lang.String seasonImageTitle, java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(long seasonId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(long groupId,
+		long seasonId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(
+		hu.webtown.liferay.portlet.model.Season season,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addSeasonResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addSeasonModelResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateSeasonResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateSeasonModelResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateSeasonAsset(long userId,
+		hu.webtown.liferay.portlet.model.Season season,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

@@ -69,8 +69,8 @@ public class SeasonCacheModel implements CacheModel<Season>, Externalizable {
 		sb.append(seasonImageUuid);
 		sb.append(", seasonImageTitle=");
 		sb.append(seasonImageTitle);
-		sb.append(", sesonImageVersion=");
-		sb.append(sesonImageVersion);
+		sb.append(", seasonImageVersion=");
+		sb.append(seasonImageVersion);
 		sb.append(", tvShowId=");
 		sb.append(tvShowId);
 		sb.append("}");
@@ -159,11 +159,11 @@ public class SeasonCacheModel implements CacheModel<Season>, Externalizable {
 			seasonImpl.setSeasonImageTitle(seasonImageTitle);
 		}
 
-		if (sesonImageVersion == null) {
-			seasonImpl.setSesonImageVersion(StringPool.BLANK);
+		if (seasonImageVersion == null) {
+			seasonImpl.setSeasonImageVersion(StringPool.BLANK);
 		}
 		else {
-			seasonImpl.setSesonImageVersion(sesonImageVersion);
+			seasonImpl.setSeasonImageVersion(seasonImageVersion);
 		}
 
 		seasonImpl.setTvShowId(tvShowId);
@@ -190,7 +190,7 @@ public class SeasonCacheModel implements CacheModel<Season>, Externalizable {
 		seasonImageUrl = objectInput.readUTF();
 		seasonImageUuid = objectInput.readUTF();
 		seasonImageTitle = objectInput.readUTF();
-		sesonImageVersion = objectInput.readUTF();
+		seasonImageVersion = objectInput.readUTF();
 		tvShowId = objectInput.readLong();
 	}
 
@@ -257,11 +257,11 @@ public class SeasonCacheModel implements CacheModel<Season>, Externalizable {
 			objectOutput.writeUTF(seasonImageTitle);
 		}
 
-		if (sesonImageVersion == null) {
+		if (seasonImageVersion == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(sesonImageVersion);
+			objectOutput.writeUTF(seasonImageVersion);
 		}
 
 		objectOutput.writeLong(tvShowId);
@@ -282,6 +282,6 @@ public class SeasonCacheModel implements CacheModel<Season>, Externalizable {
 	public String seasonImageUrl;
 	public String seasonImageUuid;
 	public String seasonImageTitle;
-	public String sesonImageVersion;
+	public String seasonImageVersion;
 	public long tvShowId;
 }

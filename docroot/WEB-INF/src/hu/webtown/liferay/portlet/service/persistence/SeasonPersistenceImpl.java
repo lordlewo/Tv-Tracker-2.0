@@ -4382,7 +4382,7 @@ public class SeasonPersistenceImpl extends BasePersistenceImpl<Season>
 		seasonImpl.setSeasonImageUrl(season.getSeasonImageUrl());
 		seasonImpl.setSeasonImageUuid(season.getSeasonImageUuid());
 		seasonImpl.setSeasonImageTitle(season.getSeasonImageTitle());
-		seasonImpl.setSesonImageVersion(season.getSesonImageVersion());
+		seasonImpl.setSeasonImageVersion(season.getSeasonImageVersion());
 		seasonImpl.setTvShowId(season.getTvShowId());
 
 		return seasonImpl;

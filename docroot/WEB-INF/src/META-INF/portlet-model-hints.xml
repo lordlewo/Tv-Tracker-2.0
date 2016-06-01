@@ -36,7 +36,7 @@
 		<field name="seasonImageUrl" type="String" />
 		<field name="seasonImageUuid" type="String" />
 		<field name="seasonImageTitle" type="String" />
-		<field name="sesonImageVersion" type="String" />
+		<field name="seasonImageVersion" type="String" />
 		<field name="tvShowId" type="long" />
 	</model>
 	<model name="hu.webtown.liferay.portlet.model.TvShow">

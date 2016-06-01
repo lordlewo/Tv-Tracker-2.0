@@ -352,6 +352,189 @@ public class SeasonLocalServiceWrapper implements SeasonLocalService,
 		return _seasonLocalService.getSeason(groupId, seasonId);
 	}
 
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, tvShowId);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, start, end);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, tvShowId, start, end);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, orderByComparator);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, tvShowId,
+			orderByComparator);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, start, end,
+			orderByComparator);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.Season> getSeasons(
+		long groupId, long tvShowId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasons(groupId, tvShowId, start, end,
+			orderByComparator);
+	}
+
+	@Override
+	public int getSeasonsCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasonsCount(groupId);
+	}
+
+	@Override
+	public int getSeasonsCount(long groupId, long tvShowId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.getSeasonsCount(groupId, tvShowId);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season addSeason(long userId,
+		long groupId, long tvShowId, java.lang.String seasonTitle,
+		java.util.Date seasonPremierDate, int seasonNumber,
+		java.lang.String seasonDescription, java.lang.String seasonImageUrl,
+		java.lang.String seasonImageUuid, java.lang.String seasonImageTitle,
+		java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.addSeason(userId, groupId, tvShowId,
+			seasonTitle, seasonPremierDate, seasonNumber, seasonDescription,
+			seasonImageUrl, seasonImageUuid, seasonImageTitle,
+			seasonImageVersion, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season updateSeason(long userId,
+		long groupId, long tvShowId, long seasonId,
+		java.lang.String seasonTitle, java.util.Date seasonPremierDate,
+		int seasonNumber, java.lang.String seasonDescription,
+		java.lang.String seasonImageUrl, java.lang.String seasonImageUuid,
+		java.lang.String seasonImageTitle, java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.updateSeason(userId, groupId, tvShowId,
+			seasonId, seasonTitle, seasonPremierDate, seasonNumber,
+			seasonDescription, seasonImageUrl, seasonImageUuid,
+			seasonImageTitle, seasonImageVersion, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(long seasonId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.deleteSeason(seasonId, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(long groupId,
+		long seasonId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.deleteSeason(groupId, seasonId,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.Season deleteSeason(
+		hu.webtown.liferay.portlet.model.Season season,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _seasonLocalService.deleteSeason(season, serviceContext);
+	}
+
+	@Override
+	public void addSeasonResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_seasonLocalService.addSeasonResources(season, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	@Override
+	public void addSeasonModelResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_seasonLocalService.addSeasonModelResources(season, groupPermissions,
+			guestPermissions);
+	}
+
+	@Override
+	public void updateSeasonResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_seasonLocalService.updateSeasonResources(season, groupPermissions,
+			guestPermissions);
+	}
+
+	@Override
+	public void updateSeasonModelResources(
+		hu.webtown.liferay.portlet.model.Season season,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_seasonLocalService.updateSeasonModelResources(season, serviceContext);
+	}
+
+	@Override
+	public void updateSeasonAsset(long userId,
+		hu.webtown.liferay.portlet.model.Season season,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_seasonLocalService.updateSeasonAsset(userId, season, assetCategoryIds,
+			assetTagNames, assetLinkEntryIds);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

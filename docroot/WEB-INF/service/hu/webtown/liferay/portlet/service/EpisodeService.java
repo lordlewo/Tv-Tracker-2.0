@@ -74,6 +74,12 @@ public interface EpisodeService extends BaseService, InvokableService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	public hu.webtown.liferay.portlet.model.Episode updateEpisode(long userId,
 		long groupId, long seasonId, long episodeId,
 		java.lang.String episodeTitle, java.util.Date episodeAirDate,
@@ -81,12 +87,6 @@ public interface EpisodeService extends BaseService, InvokableService {
 		java.lang.String episodeImageUrl, java.lang.String episodeImageUuid,
 		java.lang.String episodeImageTitle,
 		java.lang.String episodeImageVersion,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
-
-	public hu.webtown.liferay.portlet.model.Episode deleteEpisode(
-		long groupId, long episodeId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

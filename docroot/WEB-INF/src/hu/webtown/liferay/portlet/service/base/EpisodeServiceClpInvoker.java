@@ -41,19 +41,19 @@ public class EpisodeServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName53 = "updateEpisode";
+		_methodName53 = "deleteEpisode";
 
 		_methodParameterTypes53 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName54 = "updateEpisode";
+
+		_methodParameterTypes54 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.util.Date", "int", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName54 = "deleteEpisode";
-
-		_methodParameterTypes54 = new String[] {
-				"long", "long", "com.liferay.portal.service.ServiceContext"
 			};
 	}
 
@@ -86,6 +86,13 @@ public class EpisodeServiceClpInvoker {
 
 		if (_methodName53.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
+			return EpisodeServiceUtil.deleteEpisode(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName54.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
 			return EpisodeServiceUtil.updateEpisode(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -97,13 +104,6 @@ public class EpisodeServiceClpInvoker {
 				(java.lang.String)arguments[10],
 				(java.lang.String)arguments[11],
 				(com.liferay.portal.service.ServiceContext)arguments[12]);
-		}
-
-		if (_methodName54.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
-			return EpisodeServiceUtil.deleteEpisode(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
 		throw new UnsupportedOperationException();

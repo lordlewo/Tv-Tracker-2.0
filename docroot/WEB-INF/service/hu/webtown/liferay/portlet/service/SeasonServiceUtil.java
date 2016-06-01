@@ -63,6 +63,46 @@ public class SeasonServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static hu.webtown.liferay.portlet.model.Season addSeason(
+		long userId, long groupId, long tvShowId, java.lang.String seasonTitle,
+		java.util.Date seasonPremierDate, int seasonNumber,
+		java.lang.String seasonDescription, java.lang.String seasonImageUrl,
+		java.lang.String seasonImageUuid, java.lang.String seasonImageTitle,
+		java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addSeason(userId, groupId, tvShowId, seasonTitle,
+			seasonPremierDate, seasonNumber, seasonDescription, seasonImageUrl,
+			seasonImageUuid, seasonImageTitle, seasonImageVersion,
+			serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Season deleteSeason(
+		long groupId, long seasonId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteSeason(groupId, seasonId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.Season updateSeason(
+		long userId, long groupId, long tvShowId, long seasonId,
+		java.lang.String seasonTitle, java.util.Date seasonPremierDate,
+		int seasonNumber, java.lang.String seasonDescription,
+		java.lang.String seasonImageUrl, java.lang.String seasonImageUuid,
+		java.lang.String seasonImageTitle, java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateSeason(userId, groupId, tvShowId, seasonId,
+			seasonTitle, seasonPremierDate, seasonNumber, seasonDescription,
+			seasonImageUrl, seasonImageUuid, seasonImageTitle,
+			seasonImageVersion, serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -65,7 +65,7 @@
 			<basic name="seasonImageUrl" />
 			<basic name="seasonImageUuid" />
 			<basic name="seasonImageTitle" />
-			<basic name="sesonImageVersion" />
+			<basic name="seasonImageVersion" />
 			<basic name="tvShowId" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />

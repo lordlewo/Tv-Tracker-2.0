@@ -34,7 +34,7 @@ create table TvT_Season (
 	seasonImageUrl VARCHAR(75) null,
 	seasonImageUuid VARCHAR(75) null,
 	seasonImageTitle VARCHAR(75) null,
-	sesonImageVersion VARCHAR(75) null,
+	seasonImageVersion VARCHAR(75) null,
 	tvShowId LONG
 );
 

@@ -87,6 +87,23 @@ public class EpisodeServiceSoap {
 		}
 	}
 
+	public static hu.webtown.liferay.portlet.model.EpisodeSoap deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.Episode returnValue = EpisodeServiceUtil.deleteEpisode(groupId,
+					episodeId, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.EpisodeSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	public static hu.webtown.liferay.portlet.model.EpisodeSoap updateEpisode(
 		long userId, long groupId, long seasonId, long episodeId,
 		java.lang.String episodeTitle, java.util.Date episodeAirDate,
@@ -102,23 +119,6 @@ public class EpisodeServiceSoap {
 					episodeNumber, episodeDescription, episodeImageUrl,
 					episodeImageUuid, episodeImageTitle, episodeImageVersion,
 					serviceContext);
-
-			return hu.webtown.liferay.portlet.model.EpisodeSoap.toSoapModel(returnValue);
-		}
-		catch (Exception e) {
-			_log.error(e, e);
-
-			throw new RemoteException(e.getMessage());
-		}
-	}
-
-	public static hu.webtown.liferay.portlet.model.EpisodeSoap deleteEpisode(
-		long groupId, long episodeId,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws RemoteException {
-		try {
-			hu.webtown.liferay.portlet.model.Episode returnValue = EpisodeServiceUtil.deleteEpisode(groupId,
-					episodeId, serviceContext);
 
 			return hu.webtown.liferay.portlet.model.EpisodeSoap.toSoapModel(returnValue);
 		}

@@ -46,7 +46,7 @@
 		<property name="seasonImageUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="seasonImageUuid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="seasonImageTitle" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="sesonImageVersion" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="seasonImageVersion" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="tvShowId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class name="hu.webtown.liferay.portlet.model.impl.TvShowImpl" table="TvT_TvShow">

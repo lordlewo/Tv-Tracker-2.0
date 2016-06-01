@@ -14,6 +14,13 @@
 
 package hu.webtown.liferay.portlet.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import hu.webtown.liferay.portlet.service.SeasonServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
  * {@link hu.webtown.liferay.portlet.service.SeasonServiceUtil} service utility. The
@@ -55,4 +62,70 @@ package hu.webtown.liferay.portlet.service.http;
  * @generated
  */
 public class SeasonServiceSoap {
+	public static hu.webtown.liferay.portlet.model.SeasonSoap addSeason(
+		long userId, long groupId, long tvShowId, java.lang.String seasonTitle,
+		java.util.Date seasonPremierDate, int seasonNumber,
+		java.lang.String seasonDescription, java.lang.String seasonImageUrl,
+		java.lang.String seasonImageUuid, java.lang.String seasonImageTitle,
+		java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.Season returnValue = SeasonServiceUtil.addSeason(userId,
+					groupId, tvShowId, seasonTitle, seasonPremierDate,
+					seasonNumber, seasonDescription, seasonImageUrl,
+					seasonImageUuid, seasonImageTitle, seasonImageVersion,
+					serviceContext);
+
+			return hu.webtown.liferay.portlet.model.SeasonSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static hu.webtown.liferay.portlet.model.SeasonSoap deleteSeason(
+		long groupId, long seasonId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.Season returnValue = SeasonServiceUtil.deleteSeason(groupId,
+					seasonId, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.SeasonSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static hu.webtown.liferay.portlet.model.SeasonSoap updateSeason(
+		long userId, long groupId, long tvShowId, long seasonId,
+		java.lang.String seasonTitle, java.util.Date seasonPremierDate,
+		int seasonNumber, java.lang.String seasonDescription,
+		java.lang.String seasonImageUrl, java.lang.String seasonImageUuid,
+		java.lang.String seasonImageTitle, java.lang.String seasonImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			hu.webtown.liferay.portlet.model.Season returnValue = SeasonServiceUtil.updateSeason(userId,
+					groupId, tvShowId, seasonId, seasonTitle,
+					seasonPremierDate, seasonNumber, seasonDescription,
+					seasonImageUrl, seasonImageUuid, seasonImageTitle,
+					seasonImageVersion, serviceContext);
+
+			return hu.webtown.liferay.portlet.model.SeasonSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(SeasonServiceSoap.class);
 }

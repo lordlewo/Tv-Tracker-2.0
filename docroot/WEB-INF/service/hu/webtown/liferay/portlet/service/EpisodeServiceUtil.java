@@ -80,6 +80,14 @@ public class EpisodeServiceUtil {
 			serviceContext);
 	}
 
+	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
+		long groupId, long episodeId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteEpisode(groupId, episodeId, serviceContext);
+	}
+
 	public static hu.webtown.liferay.portlet.model.Episode updateEpisode(
 		long userId, long groupId, long seasonId, long episodeId,
 		java.lang.String episodeTitle, java.util.Date episodeAirDate,
@@ -95,14 +103,6 @@ public class EpisodeServiceUtil {
 			episodeTitle, episodeAirDate, episodeNumber, episodeDescription,
 			episodeImageUrl, episodeImageUuid, episodeImageTitle,
 			episodeImageVersion, serviceContext);
-	}
-
-	public static hu.webtown.liferay.portlet.model.Episode deleteEpisode(
-		long groupId, long episodeId,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteEpisode(groupId, episodeId, serviceContext);
 	}
 
 	public static void clearService() {

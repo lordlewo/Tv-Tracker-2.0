@@ -46,7 +46,7 @@ public class SeasonSoap implements Serializable {
 		soapModel.setSeasonImageUrl(model.getSeasonImageUrl());
 		soapModel.setSeasonImageUuid(model.getSeasonImageUuid());
 		soapModel.setSeasonImageTitle(model.getSeasonImageTitle());
-		soapModel.setSesonImageVersion(model.getSesonImageVersion());
+		soapModel.setSeasonImageVersion(model.getSeasonImageVersion());
 		soapModel.setTvShowId(model.getTvShowId());
 
 		return soapModel;
@@ -220,12 +220,12 @@ public class SeasonSoap implements Serializable {
 		_seasonImageTitle = seasonImageTitle;
 	}
 
-	public String getSesonImageVersion() {
-		return _sesonImageVersion;
+	public String getSeasonImageVersion() {
+		return _seasonImageVersion;
 	}
 
-	public void setSesonImageVersion(String sesonImageVersion) {
-		_sesonImageVersion = sesonImageVersion;
+	public void setSeasonImageVersion(String seasonImageVersion) {
+		_seasonImageVersion = seasonImageVersion;
 	}
 
 	public long getTvShowId() {
@@ -251,6 +251,6 @@ public class SeasonSoap implements Serializable {
 	private String _seasonImageUrl;
 	private String _seasonImageUuid;
 	private String _seasonImageTitle;
-	private String _sesonImageVersion;
+	private String _seasonImageVersion;
 	private long _tvShowId;
 }
