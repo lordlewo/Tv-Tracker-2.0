@@ -48,6 +48,10 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.EpisodeServiceUtil} to access the episode remote service.
 	 */
 	
+	/***************************************************************************/
+	/********** BLL - CREATE Entity ********************************************/
+	/***************************************************************************/
+	
 	public Episode addEpisode(
 			long userId, long groupId, long seasonId, 
 			String episodeTitle, Date episodeAirDate, 
@@ -66,6 +70,22 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 				episodeImageTitle, episodeImageVersion, 
 				serviceContext);
 	}
+	
+	/***************************************************************************/
+	/********** BLL - DELETE Entity ********************************************/
+	/***************************************************************************/
+	
+	public Episode deleteEpisode(long groupId, long episodeId, ServiceContext serviceContext) 
+			throws PortalException, SystemException { 
+		
+		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
+		
+		return episodeLocalService.deleteEpisode(groupId, episodeId, serviceContext);
+	}
+	
+	/***************************************************************************/
+	/********** BLL - UPDATE Entity ********************************************/
+	/***************************************************************************/
 	
 	public Episode updateEpisode(
 			long userId, long groupId, 
@@ -86,13 +106,4 @@ public class EpisodeServiceImpl extends EpisodeServiceBaseImpl {
 				episodeImageTitle, episodeImageVersion, 
 				serviceContext);
 	}
-	
-	public Episode deleteEpisode(long groupId, long episodeId, ServiceContext serviceContext) 
-			throws PortalException, SystemException { 
-		
-		EpisodePermission.check(getPermissionChecker(), groupId, episodeId, CustomActionKeys.UPDATE);
-		
-		return episodeLocalService.deleteEpisode(groupId, episodeId, serviceContext);
-	}
-	
 }
