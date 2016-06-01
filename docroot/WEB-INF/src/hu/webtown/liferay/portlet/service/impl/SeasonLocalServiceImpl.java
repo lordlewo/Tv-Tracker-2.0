@@ -71,6 +71,11 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		Season season = seasonPersistence.findByPrimaryKey(seasonId);
 
+		long groupId = season.getGroupId();
+		
+		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+		season.setSeasonEpisodeCount(seasonEpisodeCount);
+		
 		return season;
 	}
 	
@@ -79,6 +84,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method to retrive the requested entity instance
 		
 		Season season = seasonPersistence.findByG_S(groupId, seasonId);
+		
+		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+		season.setSeasonEpisodeCount(seasonEpisodeCount);
 
 		return season;
 	}
@@ -91,28 +99,60 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		// using of the finder method
 
-		return seasonPersistence.findByGroupId(groupId);
+		List<Season> seasons = seasonPersistence.findByGroupId(groupId);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	public List<Season> getSeasons(long groupId, long tvShowId) throws SystemException{
 		
 		// using of the finder method
 		
-		return seasonPersistence.findByG_T(groupId, tvShowId);
+		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	public List<Season> getSeasons(long groupId, int start, int end) throws SystemException {
 		
 		// using of the finder method
 		
-		return seasonPersistence.findByGroupId(groupId, start, end);
+		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	public List<Season> getSeasons(long groupId, long tvShowId, int start, int end) throws SystemException {
 		
 		// using of the finder method
 		
-		return seasonPersistence.findByG_T(groupId, tvShowId, start, end);
+		List<Season> seasons =  seasonPersistence.findByG_T(groupId, tvShowId, start, end);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	public List<Season> getSeasons(long groupId, OrderByComparator orderByComparator) throws SystemException {
@@ -135,14 +175,30 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		// using of the finder method
 		
-		return seasonPersistence.findByGroupId(groupId, start, end, orderByComparator);
+		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end, orderByComparator);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	public List<Season> getSeasons(long groupId, long tvShowId, int start, int end, OrderByComparator orderByComparator) throws SystemException {
 		
 		// using of the finder method
 		
-		return seasonPersistence.findByG_T(groupId, tvShowId, start, end, orderByComparator);
+		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId, start, end, orderByComparator);
+		
+		for (Season season : seasons) {
+			long seasonId = season.getSeasonId();
+			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+			season.setSeasonEpisodeCount(seasonEpisodeCount);
+		}
+		
+		return seasons;
 	}
 	
 	/***************************************************************************/
