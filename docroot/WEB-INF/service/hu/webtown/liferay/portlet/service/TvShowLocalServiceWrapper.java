@@ -352,6 +352,149 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 		return _tvShowLocalService.getTvShow(groupId, tvShowId);
 	}
 
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShows(groupId);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShows(groupId, start, end);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShows(groupId, orderByComparator);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShows(groupId, start, end,
+			orderByComparator);
+	}
+
+	@Override
+	public int getTvShowsCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.getTvShowsCount(groupId);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,
+		long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.addTvShow(userId, groupId, tvShowTitle,
+			tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow updateTvShow(long userId,
+		long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.updateTvShow(userId, groupId, tvShowId,
+			tvShowTitle, tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.deleteTvShow(tvShowId, serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long groupId,
+		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.deleteTvShow(groupId, tvShowId,
+			serviceContext);
+	}
+
+	@Override
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.deleteTvShow(tvShow, serviceContext);
+	}
+
+	@Override
+	public void addTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tvShowLocalService.addTvShowResources(tvShow, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	@Override
+	public void addTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tvShowLocalService.addTvShowModelResources(tvShow, groupPermissions,
+			guestPermissions);
+	}
+
+	@Override
+	public void updateTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tvShowLocalService.updateTvShowResources(tvShow, groupPermissions,
+			guestPermissions);
+	}
+
+	@Override
+	public void updateTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tvShowLocalService.updateTvShowModelResources(tvShow, serviceContext);
+	}
+
+	@Override
+	public void updateTvShowAsset(long userId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tvShowLocalService.updateTvShowAsset(userId, tvShow, assetCategoryIds,
+			assetTagNames, assetLinkEntryIds);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

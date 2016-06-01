@@ -71,6 +71,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		Season season = seasonPersistence.findByPrimaryKey(seasonId);
 
+		
+		// episode count
+		
 		long groupId = season.getGroupId();
 		
 		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
@@ -84,6 +87,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method to retrive the requested entity instance
 		
 		Season season = seasonPersistence.findByG_S(groupId, seasonId);
+
+		
+		// episode count
 		
 		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
 		season.setSeasonEpisodeCount(seasonEpisodeCount);
@@ -100,6 +106,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();
@@ -115,6 +124,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 		
 		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();
@@ -130,6 +142,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 		
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();
@@ -145,6 +160,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 		
 		List<Season> seasons =  seasonPersistence.findByG_T(groupId, tvShowId, start, end);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();
@@ -176,6 +194,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 		
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end, orderByComparator);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();
@@ -191,6 +212,9 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		// using of the finder method
 		
 		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId, start, end, orderByComparator);
+
+		
+		// episode count
 		
 		for (Season season : seasons) {
 			long seasonId = season.getSeasonId();

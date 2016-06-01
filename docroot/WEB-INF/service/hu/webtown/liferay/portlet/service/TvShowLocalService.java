@@ -311,4 +311,95 @@ public interface TvShowLocalService extends BaseLocalService,
 		long tvShowId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getTvShowsCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,
+		long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.TvShow updateTvShow(long userId,
+		long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long groupId,
+		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateTvShowAsset(long userId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

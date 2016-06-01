@@ -342,6 +342,135 @@ public class TvShowLocalServiceUtil {
 		return getService().getTvShow(groupId, tvShowId);
 	}
 
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShows(groupId);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShows(groupId, start, end);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShows(groupId, orderByComparator);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> getTvShows(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShows(groupId, start, end, orderByComparator);
+	}
+
+	public static int getTvShowsCount(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTvShowsCount(groupId);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow addTvShow(
+		long userId, long groupId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTvShow(userId, groupId, tvShowTitle, tvShowPremierDate,
+			tvShowDescription, tvShowImageUrl, tvShowImageUuid,
+			tvShowImageTitle, tvShowImageVersion, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow updateTvShow(
+		long userId, long groupId, long tvShowId, java.lang.String tvShowTitle,
+		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
+		java.lang.String tvShowImageUrl, java.lang.String tvShowImageUuid,
+		java.lang.String tvShowImageTitle, java.lang.String tvShowImageVersion,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateTvShow(userId, groupId, tvShowId, tvShowTitle,
+			tvShowPremierDate, tvShowDescription, tvShowImageUrl,
+			tvShowImageUuid, tvShowImageTitle, tvShowImageVersion,
+			serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteTvShow(tvShowId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		long groupId, long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteTvShow(groupId, tvShowId, serviceContext);
+	}
+
+	public static hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().deleteTvShow(tvShow, serviceContext);
+	}
+
+	public static void addTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTvShowResources(tvShow, addGroupPermissions, addGuestPermissions);
+	}
+
+	public static void addTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTvShowModelResources(tvShow, groupPermissions, guestPermissions);
+	}
+
+	public static void updateTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateTvShowResources(tvShow, groupPermissions, guestPermissions);
+	}
+
+	public static void updateTvShowModelResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().updateTvShowModelResources(tvShow, serviceContext);
+	}
+
+	public static void updateTvShowAsset(long userId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames,
+		long[] assetLinkEntryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateTvShowAsset(userId, tvShow, assetCategoryIds, assetTagNames,
+			assetLinkEntryIds);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

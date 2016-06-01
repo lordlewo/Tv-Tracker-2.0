@@ -14,11 +14,34 @@
 
 package hu.webtown.liferay.portlet.service.impl;
 
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.search.Indexer;
+import com.liferay.portal.kernel.search.IndexerRegistryUtil;
+import com.liferay.portal.kernel.util.ContentTypes;
+import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.model.User;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portlet.asset.model.AssetEntry;
+import com.liferay.portlet.asset.model.AssetLinkConstants;
+import com.liferay.portlet.expando.model.ExpandoBridge;
 
+import hu.webtown.liferay.portlet.TvShowDescriptionException;
+import hu.webtown.liferay.portlet.TvShowImageException;
+import hu.webtown.liferay.portlet.TvShowPremierDateException;
+import hu.webtown.liferay.portlet.TvShowTitleException;
 import hu.webtown.liferay.portlet.model.TvShow;
 import hu.webtown.liferay.portlet.service.base.TvShowLocalServiceBaseImpl;
+import hu.webtown.liferay.portlet.util.CustomCalendarUtil;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * The implementation of the tv show local service.
@@ -41,12 +64,650 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.TvShowLocalServiceUtil} to access the tv show local service.
 	 */
 	
+	/***************************************************************************/
+	/********** BLL - GET Entity ***********************************************/
+	/***************************************************************************/
+	
+	public TvShow getTvShow(long tvShowId) throws PortalException, SystemException{
+			
+		// using of the finder method to retrive the requested entity instance
+		
+		TvShow tvShow = tvShowPersistence.findByPrimaryKey(tvShowId);
+		
+		
+		// premier year
+		
+		long userId = tvShow.getUserId();
+		User user = userLocalService.fetchUserById(userId);
+		
+		Locale locale = user.getLocale();
+		TimeZone timeZone = user.getTimeZone();
+		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+		
+		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+		calendar.setTime(tvShowPremierDate);
+		
+		int tvShowPremierYear = calendar.get(Calendar.YEAR);
+		tvShow.setTvShowPremierYear(tvShowPremierYear);
+		
+		calendar.clear();
+		
+		
+		// season count
+		
+		long groupId = tvShow.getGroupId();
+		
+		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		
+		return tvShow;
+	}
+	
 	public TvShow getTvShow(long groupId, long tvShowId) throws PortalException, SystemException {
 		
 		// using of the finder method to retrive the requested entity instance
 		
 		TvShow tvShow = tvShowPersistence.findByG_T(tvShowId, groupId);
 
+
+		// premier year
+		
+		long userId = tvShow.getUserId();
+		User user = userLocalService.fetchUserById(userId);
+		
+		Locale locale = user.getLocale();
+		TimeZone timeZone = user.getTimeZone();
+		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+		
+		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+		calendar.setTime(tvShowPremierDate);
+		
+		int tvShowPremierYear = calendar.get(Calendar.YEAR);
+		tvShow.setTvShowPremierYear(tvShowPremierYear);
+		
+		calendar.clear();
+		
+		
+		// season count
+		
+		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		
 		return tvShow;
+	}
+
+	/***************************************************************************/
+	/********** BLL - GET Entities *********************************************/
+	/***************************************************************************/
+	
+	public List<TvShow> getTvShows(long groupId) throws SystemException{
+		
+		// using of the finder method
+
+		List<TvShow> tvShows = tvShowPersistence.findByGroupId(groupId);
+		
+		
+		for (TvShow tvShow : tvShows) {
+			
+			// premier year
+			
+			long userId = tvShow.getUserId();
+			User user = userLocalService.fetchUserById(userId);
+			
+			Locale locale = user.getLocale();
+			TimeZone timeZone = user.getTimeZone();
+			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+			
+			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+			calendar.setTime(tvShowPremierDate);
+			
+			int tvShowPremierYear = calendar.get(Calendar.YEAR);
+			tvShow.setTvShowPremierYear(tvShowPremierYear);
+			
+			calendar.clear();
+			
+			
+			// season count
+			
+			long tvShowId = tvShow.getTvShowId();
+			
+			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		}
+		
+		return tvShows;
+	}
+	
+	public List<TvShow> getTvShows(long groupId, int start, int end) throws SystemException {
+		
+		// using of the finder method
+		
+		List<TvShow> tvShows = tvShowPersistence.findByGroupId(groupId, start, end);
+		
+		
+		for (TvShow tvShow : tvShows) {
+			
+			// premier year
+			
+			long userId = tvShow.getUserId();
+			User user = userLocalService.fetchUserById(userId);
+			
+			Locale locale = user.getLocale();
+			TimeZone timeZone = user.getTimeZone();
+			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+			
+			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+			calendar.setTime(tvShowPremierDate);
+			
+			int tvShowPremierYear = calendar.get(Calendar.YEAR);
+			tvShow.setTvShowPremierYear(tvShowPremierYear);
+			
+			calendar.clear();
+			
+			
+			// season count
+			
+			long tvShowId = tvShow.getTvShowId();
+			
+			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		}
+		
+		return tvShows;
+	}
+	
+	public List<TvShow> getTvShows(long groupId, OrderByComparator orderByComparator) throws SystemException {
+		
+		int start = QueryUtil.ALL_POS;
+		int end = QueryUtil.ALL_POS;
+		
+		return getTvShows(groupId, start, end, orderByComparator);
+	}
+	
+	public List<TvShow> getTvShows(long groupId, int start, int end, OrderByComparator orderByComparator) throws SystemException {
+		
+		// using of the finder method
+		
+		List<TvShow> tvShows = tvShowPersistence.findByGroupId(groupId, start, end, orderByComparator);
+		
+		
+		for (TvShow tvShow : tvShows) {
+			
+			// premier year
+			
+			long userId = tvShow.getUserId();
+			User user = userLocalService.fetchUserById(userId);
+			
+			Locale locale = user.getLocale();
+			TimeZone timeZone = user.getTimeZone();
+			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+			
+			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+			calendar.setTime(tvShowPremierDate);
+			
+			int tvShowPremierYear = calendar.get(Calendar.YEAR);
+			tvShow.setTvShowPremierYear(tvShowPremierYear);
+			
+			calendar.clear();
+			
+			
+			// season count
+			
+			long tvShowId = tvShow.getTvShowId();
+			
+			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		}
+		
+		return tvShows;
+	}
+	
+	/***************************************************************************/
+	/********** BLL - Count Entities *******************************************/
+	/***************************************************************************/
+	
+	public int getTvShowsCount(long groupId) throws SystemException {
+		
+		// using of the appropriate method generated by service builder
+		
+		return tvShowPersistence.countByGroupId(groupId);
+	}
+	
+	/***************************************************************************/
+	/********** BLL - CREATE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow addTvShow(
+			long userId, long groupId,
+			String tvShowTitle, Date tvShowPremierDate, 
+			String tvShowDescription, 
+			String tvShowImageUrl, String tvShowImageUuid, 
+			String tvShowImageTitle, String tvShowImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		
+		// unbox and prepare the necessary parameters
+		
+		long companyId = serviceContext.getCompanyId();
+		String uuid = serviceContext.getUuid();
+		
+		User user = userPersistence.findByPrimaryKey(userId);
+		String userName = user.getFullName();
+		String userUuid = user.getUserUuid();
+		
+		Date now = new Date();
+		Date createDate = serviceContext.getCreateDate(now);
+		Date modifiedDate = serviceContext.getModifiedDate(now);
+			
+		
+		// check the validity of the input parameters
+		
+		validate(
+				tvShowTitle, 
+				tvShowPremierDate, 
+				tvShowDescription, 
+				tvShowImageUrl, 
+				tvShowImageUuid, 
+				tvShowImageTitle, 
+				tvShowImageVersion);
+		
+		
+		// create new entity instance and fill up with the prepared parameters
+		
+		String className = TvShow.class.getName();
+		
+		long tvShowId = counterLocalService.increment(className);
+		TvShow tvShow = tvShowPersistence.create(tvShowId);
+		
+		tvShow.setCompanyId(companyId);
+		tvShow.setGroupId(groupId);
+		tvShow.setUuid(uuid);
+		tvShow.setUserId(userId);
+		tvShow.setUserUuid(userUuid);
+		tvShow.setUserName(userName);
+		tvShow.setCreateDate(createDate);
+		tvShow.setModifiedDate(modifiedDate);
+		//tvShow.setExpandoBridgeAttributes(serviceContext);
+		tvShow.setTvShowTitle(tvShowTitle);
+		tvShow.setTvShowPremierDate(tvShowPremierDate);
+		tvShow.setTvShowDescription(tvShowDescription);
+		tvShow.setTvShowImageUrl(tvShowImageUrl);
+		tvShow.setTvShowImageUuid(tvShowImageUuid);
+		tvShow.setTvShowImageTitle(tvShowImageTitle);
+		tvShow.setTvShowImageVersion(tvShowImageVersion);
+		
+		
+		// persist the properly created instance
+		
+		tvShowPersistence.update(tvShow);
+		
+		
+		// Permission/Resource 
+		
+		boolean addGroupPermissions = serviceContext.isAddGroupPermissions();
+		boolean addGuestPermissions = serviceContext.isAddGuestPermissions();
+		
+        if (addGroupPermissions || addGuestPermissions) {
+        	
+            addTvShowResources(tvShow, addGroupPermissions, addGuestPermissions);
+            
+        } else {
+        	
+        	String[] groupPermissions = serviceContext.getGroupPermissions();
+    		String[] guestPermissions = serviceContext.getGuestPermissions();
+        	
+            addTvShowModelResources(tvShow, groupPermissions, guestPermissions);
+        }
+		
+
+		// Expando
+
+        ExpandoBridge expandoBridge = tvShow.getExpandoBridge();
+
+        expandoBridge.setAttributes(serviceContext);
+		
+        
+		// Asset
+
+        long[] assetCategoryIds = serviceContext.getAssetCategoryIds();
+		String[] assetTagNames = serviceContext.getAssetTagNames();
+		long[] assetLinkEntryIds = serviceContext.getAssetLinkEntryIds();
+		
+		updateTvShowAsset(userId, tvShow, assetCategoryIds, assetTagNames, assetLinkEntryIds);
+		
+		
+		// Search/Index
+		
+		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(TvShow.class);
+		
+		indexer.reindex(tvShow);
+		
+		
+		return tvShow;
+	}
+	
+	/***************************************************************************/
+	/********** BLL - UPDATE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow updateTvShow(
+			long userId, long groupId, long tvShowId,
+			String tvShowTitle, Date tvShowPremierDate, 
+			String tvShowDescription, 
+			String tvShowImageUrl, String tvShowImageUuid, 
+			String tvShowImageTitle, String tvShowImageVersion, 
+			ServiceContext serviceContext) throws PortalException, SystemException {
+		
+		
+		// unbox and prepare the necessary parameters
+		
+		long companyId = serviceContext.getCompanyId();
+		String uuid = serviceContext.getUuid();
+		
+		User user = userPersistence.findByPrimaryKey(userId);
+		String userName = user.getFullName();
+		String userUuid = user.getUserUuid();
+		
+		Date now = new Date();
+		Date createDate = serviceContext.getCreateDate(now);
+		Date modifiedDate = serviceContext.getModifiedDate(now);
+			
+		
+		// check the validity of the input parameters
+		
+		validate(
+				tvShowTitle, 
+				tvShowPremierDate, 
+				tvShowDescription, 
+				tvShowImageUrl, 
+				tvShowImageUuid, 
+				tvShowImageTitle, 
+				tvShowImageVersion);
+		
+		
+		// get the editable entity instance and fill up with the prepared newly parameters
+		
+		TvShow tvShow = getTvShow(groupId, tvShowId);
+		
+		tvShow.setCompanyId(companyId);
+		tvShow.setGroupId(groupId);
+		tvShow.setUuid(uuid);
+		tvShow.setUserId(userId);
+		tvShow.setUserUuid(userUuid);
+		tvShow.setUserName(userName);
+		tvShow.setCreateDate(createDate);
+		tvShow.setModifiedDate(modifiedDate);
+		//tvShow.setExpandoBridgeAttributes(serviceContext);
+		tvShow.setTvShowTitle(tvShowTitle);
+		tvShow.setTvShowPremierDate(tvShowPremierDate);
+		tvShow.setTvShowDescription(tvShowDescription);
+		tvShow.setTvShowImageUrl(tvShowImageUrl);
+		tvShow.setTvShowImageUuid(tvShowImageUuid);
+		tvShow.setTvShowImageTitle(tvShowImageTitle);
+		tvShow.setTvShowImageVersion(tvShowImageVersion);
+		
+		
+		// persist the updated entity instance
+		
+		tvShowPersistence.update(tvShow);
+		
+		
+		// Permission/Resource 
+		
+		boolean addGroupPermissions = serviceContext.isAddGroupPermissions();
+		boolean addGuestPermissions = serviceContext.isAddGuestPermissions();
+		
+        if (addGroupPermissions || addGuestPermissions) {
+        	
+        	String[] groupPermissions = serviceContext.getGroupPermissions();
+    		String[] guestPermissions = serviceContext.getGuestPermissions();
+        	
+            updateTvShowResources(tvShow, groupPermissions, guestPermissions);
+            
+        } else {
+        	
+        	updateTvShowModelResources(tvShow, serviceContext);
+        }
+		
+        
+		// Expando
+
+        ExpandoBridge expandoBridge = tvShow.getExpandoBridge();
+
+        expandoBridge.setAttributes(serviceContext);
+        
+        
+        // Asset
+        
+        long[] assetCategoryIds = serviceContext.getAssetCategoryIds();
+		String[] assetTagNames = serviceContext.getAssetTagNames();
+		long[] assetLinkEntryIds = serviceContext.getAssetLinkEntryIds();
+		
+		updateTvShowAsset(userId, tvShow, assetCategoryIds, assetTagNames, assetLinkEntryIds);
+        
+		
+        // Search/Index
+		
+		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(TvShow.class);
+		
+		indexer.reindex(tvShow);
+		
+
+		return tvShow;
+	}
+	
+	/***************************************************************************/
+	/********** BLL - DELETE Entity ********************************************/
+	/***************************************************************************/
+	
+	public TvShow deleteTvShow(long tvShowId, ServiceContext serviceContext) 
+			throws PortalException, SystemException {
+		
+		// retrieve the deletable entity instance from the database
+		
+		TvShow tvShow = getTvShow(tvShowId);
+		
+		return deleteTvShow(tvShow, serviceContext);
+	}
+	
+	public TvShow deleteTvShow(long groupId, long tvShowId, ServiceContext serviceContext) 
+			throws PortalException, SystemException {
+		
+		TvShow tvShow = getTvShow(groupId, tvShowId);
+		
+		return deleteTvShow(tvShow);
+		
+	}
+	
+	public TvShow deleteTvShow(TvShow tvShow, ServiceContext serviceContext) 
+			throws PortalException, SystemException {
+		
+		// unbox and prepare the necessary parameters
+		
+		long companyId = serviceContext.getCompanyId();
+		long tvShowId = tvShow.getTvShowId();
+		
+		// prepare some parameters for permission/resource deleting
+		
+		String className = TvShow.class.getName();
+		
+		
+		// Permission/Resource 
+		
+		resourceLocalService.deleteResource(companyId, className, ResourceConstants.SCOPE_INDIVIDUAL, tvShowId);
+		
+		
+		// Expando
+
+        expandoValueLocalService.deleteValues(className, tvShowId);
+
+		
+		// Asset
+        
+        AssetEntry assetEntry = assetEntryLocalService.getEntry(className, tvShowId);
+        
+        long entryId = assetEntry.getEntryId();
+        
+        assetLinkLocalService.deleteLinks(entryId);
+        
+		assetEntryLocalService.deleteEntry(className, tvShowId);
+		
+		
+		// Search/Index
+		
+		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(TvShow.class);
+		
+		indexer.reindex(tvShow);
+		
+		
+		// delete the entity instance
+		
+		tvShowPersistence.remove(tvShow);
+		
+		
+		return tvShow;
+	}
+	
+	/***************************************************************************/
+	/********** Resource adding ************************************************/
+	/***************************************************************************/
+	
+    public void addTvShowResources(TvShow tvShow, boolean addGroupPermissions, boolean addGuestPermissions) 
+    		throws PortalException, SystemException {
+
+    	long companyId = tvShow.getCompanyId();
+    	long groupId = tvShow.getGroupId();
+    	long userId = tvShow.getUserId();
+    	
+    	String className = TvShow.class.getName();
+    	
+    	long tvShowId = tvShow.getTvShowId();
+    	
+    	boolean portletActions = false;
+    	
+        resourceLocalService.addResources(
+            companyId, groupId, userId, className, 
+            tvShowId, portletActions, 
+            addGroupPermissions, addGuestPermissions);
+    }
+
+    public void addTvShowModelResources(TvShow tvShow, String[] groupPermissions, String[] guestPermissions) 
+    		throws PortalException, SystemException {
+
+    	long companyId = tvShow.getCompanyId();
+    	long groupId = tvShow.getGroupId();
+    	long userId = tvShow.getUserId();
+    	
+    	String className = TvShow.class.getName();
+    	
+    	long tvShowId = tvShow.getTvShowId();
+    	
+        resourceLocalService.addModelResources(
+            companyId, groupId, userId, className,
+            tvShowId, groupPermissions, guestPermissions);
+    }
+   
+    /***************************************************************************/
+	/********** Resource updating **********************************************/
+	/***************************************************************************/
+	
+    public void updateTvShowResources(TvShow tvShow, String[] groupPermissions, String[] guestPermissions) 
+    		throws PortalException, SystemException {
+
+    	long companyId = tvShow.getCompanyId();
+    	long groupId = tvShow.getGroupId();
+    	
+    	String className = TvShow.class.getName();
+    	
+    	long tvShowId = tvShow.getTvShowId();
+    	
+        resourceLocalService.updateResources(companyId, groupId, className, tvShowId, groupPermissions, guestPermissions);
+    }
+
+    public void updateTvShowModelResources(TvShow tvShow, ServiceContext serviceContext) 
+    		throws PortalException, SystemException {
+    	
+        resourceLocalService.updateModelResources(tvShow, serviceContext);
+    }
+    
+    /***************************************************************************/
+	/********** Asset updating *************************************************/
+	/***************************************************************************/
+
+    public void updateTvShowAsset(long userId, TvShow tvShow, long[] assetCategoryIds, String[] assetTagNames, long[] assetLinkEntryIds) 
+    		throws PortalException, SystemException {
+    	
+    	long groupId = tvShow.getGroupId();
+    	Date createDate = tvShow.getCreateDate();
+    	Date modifiedDate = tvShow.getModifiedDate();
+    	String className = TvShow.class.getName();
+    	long tvShowId = tvShow.getTvShowId();
+    	String uuid = tvShow.getUuid();
+    	
+    	long classTypeId = 0;
+		boolean visible = true;
+		Date startDate = null; 
+		Date endDate = null;
+		Date expirationDate = null;
+		String mimeType = ContentTypes.TEXT_HTML;
+		String assetTitle = tvShow.getTvShowTitle(); 
+		String assetDescription = null; 
+		String assetSummary = null; 
+		String assetUrl = null; 
+		String assetLayoutUuId = null;
+		int height = 0;
+		int width = 0;
+		Integer priority = null;
+		boolean sync = false;
+		
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(
+				userId, groupId, createDate, modifiedDate, 
+				className, tvShowId, uuid, classTypeId, 
+				assetCategoryIds, assetTagNames, visible, 
+				startDate, endDate, expirationDate, mimeType, 
+				assetTitle, assetDescription, 
+				assetSummary, assetUrl, assetLayoutUuId, 
+				height, width, priority, sync);
+
+		long entryId = assetEntry.getEntryId();
+		int typeId = AssetLinkConstants.TYPE_RELATED;
+		
+		assetLinkLocalService.updateLinks(userId, entryId, assetLinkEntryIds, typeId);
+    }
+    
+	/***************************************************************************/
+	/********** Validation *****************************************************/
+	/***************************************************************************/
+	
+	private void validate(
+			String tvShowTitle, 
+			Date tvShowPremierDate, 
+			String tvShowDescription, 
+			String tvShowImageUrl, 
+			String tvShowImageUuid, 
+			String tvShowImageTitle, 
+			String tvShowImageVersion) throws PortalException{
+		
+		// checking if the paramaters are acceptable
+		
+		if(Validator.isNull(tvShowTitle)){
+			
+			throw new TvShowTitleException("The tvshow's title is mandatory!");
+		}
+		
+		if(Validator.isNull(tvShowPremierDate)){
+			
+			throw new TvShowPremierDateException("The tvshow's premier date is mandatory!");
+		}
+		
+		if(Validator.isNull(tvShowDescription)){
+			
+			throw new TvShowDescriptionException("The tvshow's description is mandatory!");
+		}
+		
+		if(tvShowImageUrl == null || tvShowImageUuid == null || tvShowImageTitle == null || tvShowImageVersion == null){
+			
+			throw new TvShowImageException("The tvshow's image musn't be null!");
+		}
 	}
 }
