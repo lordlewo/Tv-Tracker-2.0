@@ -31,4 +31,11 @@ public interface TvShow extends TvShowModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link hu.webtown.liferay.portlet.model.impl.TvShowImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public int getTvShowPremierYear();
+
+	public void setTvShowPremierYear(int tvShowPremierYear);
+
+	public int getTvShowSeasonCount();
+
+	public void setTvShowSeasonCount(int tvShowSeasonCount);
 }

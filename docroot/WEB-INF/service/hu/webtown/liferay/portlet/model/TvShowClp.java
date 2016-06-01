@@ -549,6 +549,76 @@ public class TvShowClp extends BaseModelImpl<TvShow> implements TvShow {
 	}
 
 	@Override
+	public int getTvShowPremierYear() {
+		try {
+			String methodName = "getTvShowPremierYear";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			Integer returnObj = (Integer)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public void setTvShowSeasonCount(int tvShowSeasonCount) {
+		try {
+			String methodName = "setTvShowSeasonCount";
+
+			Class<?>[] parameterTypes = new Class<?>[] { int.class };
+
+			Object[] parameterValues = new Object[] { tvShowSeasonCount };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public int getTvShowSeasonCount() {
+		try {
+			String methodName = "getTvShowSeasonCount";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			Integer returnObj = (Integer)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public void setTvShowPremierYear(int tvShowPremierYear) {
+		try {
+			String methodName = "setTvShowPremierYear";
+
+			Class<?>[] parameterTypes = new Class<?>[] { int.class };
+
+			Object[] parameterValues = new Object[] { tvShowPremierYear };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
 				TvShow.class.getName()));

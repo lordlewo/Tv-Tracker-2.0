@@ -609,6 +609,26 @@ public class TvShowWrapper implements TvShow, ModelWrapper<TvShow> {
 	}
 
 	@Override
+	public int getTvShowPremierYear() {
+		return _tvShow.getTvShowPremierYear();
+	}
+
+	@Override
+	public void setTvShowPremierYear(int tvShowPremierYear) {
+		_tvShow.setTvShowPremierYear(tvShowPremierYear);
+	}
+
+	@Override
+	public int getTvShowSeasonCount() {
+		return _tvShow.getTvShowSeasonCount();
+	}
+
+	@Override
+	public void setTvShowSeasonCount(int tvShowSeasonCount) {
+		_tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

@@ -110,10 +110,15 @@
 	</entity>
 	<entity class="hu.webtown.liferay.portlet.model.impl.SeasonImpl" name="Season">
 		<table name="TvT_Season" />
-		<attributes />
+		<attributes>
+			<transient name="seasonEpisodeCount" />
+		</attributes>
 	</entity>
 	<entity class="hu.webtown.liferay.portlet.model.impl.TvShowImpl" name="TvShow">
 		<table name="TvT_TvShow" />
-		<attributes />
+		<attributes>
+			<transient name="tvShowPremierYear" />
+			<transient name="tvShowSeasonCount" />
+		</attributes>
 	</entity>
 </entity-mappings>

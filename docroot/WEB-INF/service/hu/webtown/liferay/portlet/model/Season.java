@@ -31,4 +31,7 @@ public interface Season extends SeasonModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link hu.webtown.liferay.portlet.model.impl.SeasonImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public int getSeasonEpisodeCount();
+
+	public void setSeasonEpisodeCount(int seasonEpisodeCount);
 }

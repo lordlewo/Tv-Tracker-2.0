@@ -663,6 +663,16 @@ public class SeasonWrapper implements Season, ModelWrapper<Season> {
 	}
 
 	@Override
+	public int getSeasonEpisodeCount() {
+		return _season.getSeasonEpisodeCount();
+	}
+
+	@Override
+	public void setSeasonEpisodeCount(int seasonEpisodeCount) {
+		_season.setSeasonEpisodeCount(seasonEpisodeCount);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

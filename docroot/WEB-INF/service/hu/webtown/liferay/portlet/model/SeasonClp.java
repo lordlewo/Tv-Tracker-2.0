@@ -609,6 +609,41 @@ public class SeasonClp extends BaseModelImpl<Season> implements Season {
 	}
 
 	@Override
+	public void setSeasonEpisodeCount(int seasonEpisodeCount) {
+		try {
+			String methodName = "setSeasonEpisodeCount";
+
+			Class<?>[] parameterTypes = new Class<?>[] { int.class };
+
+			Object[] parameterValues = new Object[] { seasonEpisodeCount };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public int getSeasonEpisodeCount() {
+		try {
+			String methodName = "getSeasonEpisodeCount";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			Integer returnObj = (Integer)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
 				Season.class.getName()));
