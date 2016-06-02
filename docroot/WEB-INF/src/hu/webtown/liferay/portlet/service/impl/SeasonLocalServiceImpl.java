@@ -63,17 +63,6 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.SeasonLocalServiceUtil} to access the season local service.
 	 */
 	
-	protected void setCalculatedProps(long groupId, Season season) throws SystemException{
-		
-		// episode count
-		
-		long seasonId = season.getSeasonId();
-		
-		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-		season.setSeasonEpisodeCount(seasonEpisodeCount);
-		
-	}
-	
 	/***************************************************************************/
 	/********** BLL - GET Entity ***********************************************/
 	/***************************************************************************/
@@ -654,6 +643,21 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		assetLinkLocalService.updateLinks(userId, entryId, assetLinkEntryIds, typeId);
     }
+    
+    /***************************************************************************/
+	/********** Calculated props ***********************************************/
+	/***************************************************************************/
+    
+	protected void setCalculatedProps(long groupId, Season season) throws SystemException{
+		
+		// episode count
+		
+		long seasonId = season.getSeasonId();
+		
+		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+		season.setSeasonEpisodeCount(seasonEpisodeCount);
+		
+	}
 	
     /***************************************************************************/
 	/********** Validation *****************************************************/
