@@ -525,7 +525,7 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(Season.class);
 		
-		indexer.reindex(season);
+		indexer.delete(season);
 		
 		
 		// delete the entity instance

@@ -514,7 +514,7 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(TvShow.class);
 		
-		indexer.reindex(tvShow);
+		indexer.delete(tvShow);
 		
 		
 		// delete the entity instance

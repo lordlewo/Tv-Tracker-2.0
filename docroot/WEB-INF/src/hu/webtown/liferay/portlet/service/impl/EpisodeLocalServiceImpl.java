@@ -455,7 +455,7 @@ public class EpisodeLocalServiceImpl extends EpisodeLocalServiceBaseImpl {
 		
 		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(Episode.class);
 		
-		indexer.reindex(episode);
+		indexer.delete(episode);
 		
 		
 		// delete the entity instance
