@@ -86,7 +86,7 @@ public class EpisodeModelImpl extends BaseModelImpl<Episode>
 			{ "episodeImageVersion", Types.VARCHAR },
 			{ "seasonId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TvT_Episode (uuid_ VARCHAR(75) null,episodeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,episodeTitle VARCHAR(75) null,episodeAirDate DATE null,episodeNumber INTEGER,episodeDescription VARCHAR(75) null,episodeImageUrl VARCHAR(75) null,episodeImageUuid VARCHAR(75) null,episodeImageTitle VARCHAR(75) null,episodeImageVersion VARCHAR(75) null,seasonId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table TvT_Episode (uuid_ VARCHAR(75) null,episodeId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,episodeTitle VARCHAR(100) null,episodeAirDate DATE null,episodeNumber INTEGER,episodeDescription VARCHAR(1000) null,episodeImageUrl VARCHAR(1000) null,episodeImageUuid VARCHAR(75) null,episodeImageTitle VARCHAR(75) null,episodeImageVersion VARCHAR(75) null,seasonId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table TvT_Episode";
 	public static final String ORDER_BY_JPQL = " ORDER BY episode.episodeAirDate ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TvT_Episode.episodeAirDate ASC";

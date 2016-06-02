@@ -85,7 +85,7 @@ public class SeasonModelImpl extends BaseModelImpl<Season>
 			{ "seasonImageVersion", Types.VARCHAR },
 			{ "tvShowId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TvT_Season (uuid_ VARCHAR(75) null,seasonId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,seasonTitle VARCHAR(75) null,seasonPremierDate DATE null,seasonNumber INTEGER,seasonDescription VARCHAR(75) null,seasonImageUrl VARCHAR(75) null,seasonImageUuid VARCHAR(75) null,seasonImageTitle VARCHAR(75) null,seasonImageVersion VARCHAR(75) null,tvShowId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table TvT_Season (uuid_ VARCHAR(75) null,seasonId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,seasonTitle VARCHAR(100) null,seasonPremierDate DATE null,seasonNumber INTEGER,seasonDescription VARCHAR(1000) null,seasonImageUrl VARCHAR(1000) null,seasonImageUuid VARCHAR(75) null,seasonImageTitle VARCHAR(75) null,seasonImageVersion VARCHAR(75) null,tvShowId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table TvT_Season";
 	public static final String ORDER_BY_JPQL = " ORDER BY season.seasonNumber ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TvT_Season.seasonNumber ASC";

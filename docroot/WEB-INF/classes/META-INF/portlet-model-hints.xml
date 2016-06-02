@@ -10,11 +10,19 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="episodeTitle" type="String" />
-		<field name="episodeAirDate" type="Date" />
+		<field name="episodeTitle" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="episodeAirDate" type="Date">
+			<hint name="show-time">true</hint>
+		</field>
 		<field name="episodeNumber" type="int" />
-		<field name="episodeDescription" type="String" />
-		<field name="episodeImageUrl" type="String" />
+		<field name="episodeDescription" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
+		<field name="episodeImageUrl" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
 		<field name="episodeImageUuid" type="String" />
 		<field name="episodeImageTitle" type="String" />
 		<field name="episodeImageVersion" type="String" />
@@ -29,11 +37,19 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="seasonTitle" type="String" />
-		<field name="seasonPremierDate" type="Date" />
+		<field name="seasonTitle" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="seasonPremierDate" type="Date">
+			<hint name="show-time">false</hint>
+		</field>
 		<field name="seasonNumber" type="int" />
-		<field name="seasonDescription" type="String" />
-		<field name="seasonImageUrl" type="String" />
+		<field name="seasonDescription" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
+		<field name="seasonImageUrl" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
 		<field name="seasonImageUuid" type="String" />
 		<field name="seasonImageTitle" type="String" />
 		<field name="seasonImageVersion" type="String" />
@@ -48,10 +64,18 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="tvShowTitle" type="String" />
-		<field name="tvShowPremierDate" type="Date" />
-		<field name="tvShowDescription" type="String" />
-		<field name="tvShowImageUrl" type="String" />
+		<field name="tvShowTitle" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="tvShowPremierDate" type="Date">
+			<hint name="show-time">false</hint>
+		</field>
+		<field name="tvShowDescription" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
+		<field name="tvShowImageUrl" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
 		<field name="tvShowImageUuid" type="String" />
 		<field name="tvShowImageTitle" type="String" />
 		<field name="tvShowImageVersion" type="String" />
