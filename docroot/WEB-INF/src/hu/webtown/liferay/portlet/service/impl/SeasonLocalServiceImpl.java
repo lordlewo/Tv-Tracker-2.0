@@ -39,6 +39,8 @@ import hu.webtown.liferay.portlet.service.base.SeasonLocalServiceBaseImpl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * The implementation of the season local service.
@@ -61,6 +63,17 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link hu.webtown.liferay.portlet.service.SeasonLocalServiceUtil} to access the season local service.
 	 */
 	
+	protected void setCalculatedProps(long groupId, Season season) throws SystemException{
+		
+		// episode count
+		
+		long seasonId = season.getSeasonId();
+		
+		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
+		season.setSeasonEpisodeCount(seasonEpisodeCount);
+		
+	}
+	
 	/***************************************************************************/
 	/********** BLL - GET Entity ***********************************************/
 	/***************************************************************************/
@@ -72,12 +85,12 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		Season season = seasonPersistence.findByPrimaryKey(seasonId);
 
 		
-		// episode count
+		// init calculeted props
 		
 		long groupId = season.getGroupId();
 		
-		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-		season.setSeasonEpisodeCount(seasonEpisodeCount);
+		setCalculatedProps(groupId, season);
+		
 		
 		return season;
 	}
@@ -89,10 +102,8 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		Season season = seasonPersistence.findByG_S(groupId, seasonId);
 
 		
-		// episode count
+		setCalculatedProps(groupId, season);
 		
-		int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-		season.setSeasonEpisodeCount(seasonEpisodeCount);
 
 		return season;
 	}
@@ -108,13 +119,10 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId);
 
 		
-		// episode count
-		
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -125,14 +133,11 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		
 		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId);
 
-		
-		// episode count
-		
+
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -144,13 +149,10 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end);
 
 		
-		// episode count
-		
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -162,13 +164,10 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		List<Season> seasons =  seasonPersistence.findByG_T(groupId, tvShowId, start, end);
 
 		
-		// episode count
-		
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -196,13 +195,10 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		List<Season> seasons = seasonPersistence.findByGroupId(groupId, start, end, orderByComparator);
 
 		
-		// episode count
-		
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -214,13 +210,10 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		List<Season> seasons = seasonPersistence.findByG_T(groupId, tvShowId, start, end, orderByComparator);
 
 		
-		// episode count
-		
 		for (Season season : seasons) {
-			long seasonId = season.getSeasonId();
-			int seasonEpisodeCount = episodeLocalService.getEpisodesCount(groupId, seasonId);
-			season.setSeasonEpisodeCount(seasonEpisodeCount);
+			setCalculatedProps(groupId, season);
 		}
+		
 		
 		return seasons;
 	}
@@ -307,6 +300,11 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		season.setSeasonImageTitle(seasonImageTitle);
 		season.setSeasonImageVersion(seasonImageVersion);
 		season.setTvShowId(tvShowId);
+		
+		
+		// set calculated properties, to be indexed by these props
+		
+		setCalculatedProps(groupId, season);
 		
 		
 		// persist the properly created instance
@@ -421,6 +419,11 @@ public class SeasonLocalServiceImpl extends SeasonLocalServiceBaseImpl {
 		season.setSeasonImageTitle(seasonImageTitle);
 		season.setSeasonImageVersion(seasonImageVersion);
 		season.setTvShowId(tvShowId);
+		
+		
+		// set calculated properties, to be indexed by these props
+		
+		setCalculatedProps(groupId, season);
 		
 		
 		// persist the updated entity instance

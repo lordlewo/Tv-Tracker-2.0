@@ -75,30 +75,16 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		TvShow tvShow = tvShowPersistence.findByPrimaryKey(tvShowId);
 		
 		
-		// premier year
-		
-		long userId = tvShow.getUserId();
-		User user = userLocalService.fetchUserById(userId);
-		
-		Locale locale = user.getLocale();
-		TimeZone timeZone = user.getTimeZone();
-		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
-		
-		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
-		calendar.setTime(tvShowPremierDate);
-		
-		int tvShowPremierYear = calendar.get(Calendar.YEAR);
-		tvShow.setTvShowPremierYear(tvShowPremierYear);
-		
-		calendar.clear();
-		
-		
-		// season count
+		// init calculeted props
 		
 		long groupId = tvShow.getGroupId();
+		long userId = tvShow.getUserId();
+		User user = userLocalService.fetchUserById(userId);
+		Locale locale = user.getLocale();
+		TimeZone timeZone = user.getTimeZone();
 		
-		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
-		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		setCalculatedProps(groupId, tvShow, locale, timeZone);
+		
 		
 		return tvShow;
 	}
@@ -110,28 +96,15 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		TvShow tvShow = tvShowPersistence.findByG_T(tvShowId, groupId);
 
 
-		// premier year
+		// init calculeted props
 		
 		long userId = tvShow.getUserId();
 		User user = userLocalService.fetchUserById(userId);
-		
 		Locale locale = user.getLocale();
 		TimeZone timeZone = user.getTimeZone();
-		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
 		
-		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
-		calendar.setTime(tvShowPremierDate);
+		setCalculatedProps(groupId, tvShow, locale, timeZone);
 		
-		int tvShowPremierYear = calendar.get(Calendar.YEAR);
-		tvShow.setTvShowPremierYear(tvShowPremierYear);
-		
-		calendar.clear();
-		
-		
-		// season count
-		
-		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
-		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
 		
 		return tvShow;
 	}
@@ -149,31 +122,16 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		for (TvShow tvShow : tvShows) {
 			
-			// premier year
+			// init calculeted props
 			
 			long userId = tvShow.getUserId();
 			User user = userLocalService.fetchUserById(userId);
-			
 			Locale locale = user.getLocale();
 			TimeZone timeZone = user.getTimeZone();
-			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
 			
-			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
-			calendar.setTime(tvShowPremierDate);
-			
-			int tvShowPremierYear = calendar.get(Calendar.YEAR);
-			tvShow.setTvShowPremierYear(tvShowPremierYear);
-			
-			calendar.clear();
-			
-			
-			// season count
-			
-			long tvShowId = tvShow.getTvShowId();
-			
-			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
-			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+			setCalculatedProps(groupId, tvShow, locale, timeZone);
 		}
+		
 		
 		return tvShows;
 	}
@@ -187,30 +145,14 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		for (TvShow tvShow : tvShows) {
 			
-			// premier year
+			// init calculeted props
 			
 			long userId = tvShow.getUserId();
 			User user = userLocalService.fetchUserById(userId);
-			
 			Locale locale = user.getLocale();
 			TimeZone timeZone = user.getTimeZone();
-			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
 			
-			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
-			calendar.setTime(tvShowPremierDate);
-			
-			int tvShowPremierYear = calendar.get(Calendar.YEAR);
-			tvShow.setTvShowPremierYear(tvShowPremierYear);
-			
-			calendar.clear();
-			
-			
-			// season count
-			
-			long tvShowId = tvShow.getTvShowId();
-			
-			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
-			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+			setCalculatedProps(groupId, tvShow, locale, timeZone);
 		}
 		
 		return tvShows;
@@ -233,31 +175,16 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		for (TvShow tvShow : tvShows) {
 			
-			// premier year
+			// init calculeted props
 			
 			long userId = tvShow.getUserId();
 			User user = userLocalService.fetchUserById(userId);
-			
 			Locale locale = user.getLocale();
 			TimeZone timeZone = user.getTimeZone();
-			Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
 			
-			Date tvShowPremierDate = tvShow.getTvShowPremierDate();
-			calendar.setTime(tvShowPremierDate);
-			
-			int tvShowPremierYear = calendar.get(Calendar.YEAR);
-			tvShow.setTvShowPremierYear(tvShowPremierYear);
-			
-			calendar.clear();
-			
-			
-			// season count
-			
-			long tvShowId = tvShow.getTvShowId();
-			
-			int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
-			tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+			setCalculatedProps(groupId, tvShow, locale, timeZone);
 		}
+		
 		
 		return tvShows;
 	}
@@ -335,6 +262,21 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		tvShow.setTvShowImageUuid(tvShowImageUuid);
 		tvShow.setTvShowImageTitle(tvShowImageTitle);
 		tvShow.setTvShowImageVersion(tvShowImageVersion);
+		
+		
+		// init calculated properties, to be indexed by these props
+		
+		Locale locale = serviceContext.getLocale();
+		TimeZone timeZone = serviceContext.getTimeZone();
+		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+		
+		calendar.setTime(tvShowPremierDate);
+		int tvShowPremierYear = calendar.get(Calendar.YEAR);
+		tvShow.setTvShowPremierYear(tvShowPremierYear);
+		calendar.clear();
+		
+		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
 		
 		
 		// persist the properly created instance
@@ -445,6 +387,21 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		tvShow.setTvShowImageUuid(tvShowImageUuid);
 		tvShow.setTvShowImageTitle(tvShowImageTitle);
 		tvShow.setTvShowImageVersion(tvShowImageVersion);
+		
+		
+		// init calculated properties, to be indexed by these props
+		
+		Locale locale = serviceContext.getLocale();
+		TimeZone timeZone = serviceContext.getTimeZone();
+		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+		
+		calendar.setTime(tvShowPremierDate);
+		int tvShowPremierYear = calendar.get(Calendar.YEAR);
+		tvShow.setTvShowPremierYear(tvShowPremierYear);
+		calendar.clear();
+		
+		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
 		
 		
 		// persist the updated entity instance
@@ -674,6 +631,26 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		assetLinkLocalService.updateLinks(userId, entryId, assetLinkEntryIds, typeId);
     }
+    
+    /***************************************************************************/
+	/********** Calculated props ***********************************************/
+	/***************************************************************************/
+    
+    protected void setCalculatedProps(long groupId, TvShow tvShow, Locale locale, TimeZone timeZone) throws SystemException{
+		
+		long tvShowId = tvShow.getTvShowId();
+		Calendar calendar = CustomCalendarUtil.getCalendar(locale, timeZone);
+		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+		calendar.setTime(tvShowPremierDate);
+		
+		int tvShowPremierYear = calendar.get(Calendar.YEAR);
+		int tvShowSeasonCount = seasonLocalService.getSeasonsCount(groupId, tvShowId);
+		
+		tvShow.setTvShowSeasonCount(tvShowSeasonCount);
+		tvShow.setTvShowPremierYear(tvShowPremierYear);
+		
+		calendar.clear();
+	}
     
 	/***************************************************************************/
 	/********** Validation *****************************************************/
