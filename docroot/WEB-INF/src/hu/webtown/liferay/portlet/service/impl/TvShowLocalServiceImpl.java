@@ -35,7 +35,7 @@ import hu.webtown.liferay.portlet.TvShowPremierDateException;
 import hu.webtown.liferay.portlet.TvShowTitleException;
 import hu.webtown.liferay.portlet.model.TvShow;
 import hu.webtown.liferay.portlet.service.base.TvShowLocalServiceBaseImpl;
-import hu.webtown.liferay.portlet.util.CustomCalendarUtil;
+import hu.webtown.liferay.portlet.tvtracker.util.CustomCalendarUtil;
 
 import java.util.Calendar;
 import java.util.Date;

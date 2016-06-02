@@ -1,4 +1,4 @@
-package hu.webtown.liferay.portlet.util;
+package hu.webtown.liferay.portlet.tvtracker.util;
 
 import com.liferay.portal.kernel.util.CalendarUtil;
 
