@@ -7,7 +7,7 @@
 		<portlet-class>hu.webtown.liferay.portlet.tvtracker.tvtpublic.TvTrackerPublicPortlet</portlet-class>
       	<init-param>
             <name>action.package.prefix</name>
-            <value>hu.webtown.liferay.portlet.tvtracker.tvtadmin.action</value>
+            <value>hu.webtown.liferay.portlet.tvtracker.tvtadmin.action.test</value>
         </init-param>
         <init-param>
             <name>template-path</name>
