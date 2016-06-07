@@ -6,9 +6,7 @@
 		<portlet-name>tv-tracker-public</portlet-name>
 		<icon>/icon.png</icon>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>tv-tracker-public-portlet</css-class-wrapper>
 	</portlet>
 	<portlet>
@@ -16,33 +14,24 @@
 		<icon>/icon.png</icon>
 		<indexer-class>hu.webtown.liferay.portlet.tvtracker.util.TvShowIndexer</indexer-class>
 		<indexer-class>hu.webtown.liferay.portlet.tvtracker.util.SeasonIndexer</indexer-class>
-		<control-panel-entry-category>
-			site_administration.content
-		</control-panel-entry-category>
+		<control-panel-entry-category>site_administration.content</control-panel-entry-category>
 		<control-panel-entry-weight>1.0</control-panel-entry-weight>
+		<asset-renderer-factory>hu.webtown.liferay.portlet.tvtracker.tvtadmin.asset.TvShowAssetRendererFactory</asset-renderer-factory>
+		<asset-renderer-factory>hu.webtown.liferay.portlet.tvtracker.tvtadmin.asset.SeasonAssetRendererFactory</asset-renderer-factory>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
-		<css-class-wrapper>
-			tv-tracker-tv-show-admin-portlet
-		</css-class-wrapper>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+		<css-class-wrapper>tv-tracker-tv-show-admin-portlet</css-class-wrapper>
 	</portlet>
 	<portlet>
 		<portlet-name>tv-tracker-episode-admin</portlet-name>
 		<icon>/icon.png</icon>
 		<indexer-class>hu.webtown.liferay.portlet.tvtracker.util.EpisodeIndexer</indexer-class>
-		<control-panel-entry-category>
-			site_administration.content
-		</control-panel-entry-category>
+		<control-panel-entry-category>site_administration.content</control-panel-entry-category>
 		<control-panel-entry-weight>1.5</control-panel-entry-weight>
+		<asset-renderer-factory>hu.webtown.liferay.portlet.tvtracker.tvtadmin.asset.EpisodeAssetRendererFactory</asset-renderer-factory>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
-		<css-class-wrapper>
-			tv-tracker-episode-admin-portlet
-		</css-class-wrapper>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+		<css-class-wrapper>tv-tracker-episode-admin-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
