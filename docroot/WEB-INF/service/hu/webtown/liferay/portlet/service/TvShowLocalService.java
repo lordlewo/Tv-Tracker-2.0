@@ -347,6 +347,15 @@ public interface TvShowLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public java.util.List<com.liferay.portal.model.PersistedModel> addTvShowWithSeason(
+		long userId, long groupId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
+		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
+		com.liferay.portal.service.ServiceContext serviceContextForSeason)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	public hu.webtown.liferay.portlet.model.TvShow updateTvShow(long userId,
 		long groupId, long tvShowId, java.lang.String tvShowTitle,
 		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,

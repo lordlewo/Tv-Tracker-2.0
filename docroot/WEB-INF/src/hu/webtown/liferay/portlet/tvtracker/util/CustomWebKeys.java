@@ -6,6 +6,7 @@ public class CustomWebKeys implements WebKeys {
 	
 	public static final String TVSHOW = "TVSHOW";
 	public static final String SEASON = "SEASON";
+	public static final String SEASONS = "SEASONS";
 	public static final String EPISODE = "EPISODE";
 	
 	private CustomWebKeys() {}

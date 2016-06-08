@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.PersistedModel;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
@@ -33,10 +34,12 @@ import hu.webtown.liferay.portlet.TvShowDescriptionException;
 import hu.webtown.liferay.portlet.TvShowImageException;
 import hu.webtown.liferay.portlet.TvShowPremierDateException;
 import hu.webtown.liferay.portlet.TvShowTitleException;
+import hu.webtown.liferay.portlet.model.Season;
 import hu.webtown.liferay.portlet.model.TvShow;
 import hu.webtown.liferay.portlet.service.base.TvShowLocalServiceBaseImpl;
 import hu.webtown.liferay.portlet.tvtracker.util.CustomCalendarUtil;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -326,6 +329,60 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		
 		return tvShow;
+	}
+	
+	public List<PersistedModel> addTvShowWithSeason(
+			long userId, long groupId, TvShow tvShow, List<Season> seasons, 
+			ServiceContext serviceContextForTvShow, ServiceContext serviceContextForSeason) throws PortalException, SystemException {
+		
+		List<PersistedModel> createdModels = new ArrayList<PersistedModel>();
+		
+		String tvShowTitle = tvShow.getTvShowTitle();
+		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+		String tvShowDescription = tvShow.getTvShowDescription();
+		
+		String tvShowImageUrl = tvShow.getTvShowImageUrl();
+		String tvShowImageUuid = tvShow.getTvShowImageUuid();
+		String tvShowImageTitle = tvShow.getTvShowImageTitle();
+		String tvShowImageVersion = tvShow.getTvShowImageVersion();
+		
+		TvShow createdTvShow = addTvShow(
+				userId, groupId, 
+				tvShowTitle, tvShowPremierDate, 
+				tvShowDescription, tvShowImageUrl, 
+				tvShowImageUuid, tvShowImageTitle, 
+				tvShowImageVersion, serviceContextForTvShow);
+		
+		createdModels.add(0,createdTvShow);
+		
+		long tvShowId = tvShow.getTvShowId();
+		
+		for (int i = 0; i < seasons.size(); i++) {
+			
+			Season season = seasons.get(i);
+			
+			Date seasonPremierDate = season.getSeasonPremierDate();
+			String seasonTitle = season.getSeasonTitle();
+			int seasonNumber = season.getSeasonNumber();
+			String seasonDescription = season.getSeasonDescription();
+			
+			String seasonImageUrl = season.getSeasonImageUrl();
+			String seasonImageUuid = season.getSeasonImageUuid();
+			String seasonImageTitle = season.getSeasonImageUrl();
+			String seasonImageVersion = season.getSeasonImageVersion();
+			
+			Season createdSeason = seasonLocalService.addSeason(
+					userId, groupId, tvShowId, seasonTitle, 
+					seasonPremierDate, seasonNumber, 
+					seasonDescription, seasonImageUrl, 
+					seasonImageUuid, seasonImageTitle, 
+					seasonImageVersion, serviceContextForSeason);
+		
+			createdModels.add((i + 1), createdSeason);
+		}
+		
+		
+		return createdModels;
 	}
 	
 	/***************************************************************************/

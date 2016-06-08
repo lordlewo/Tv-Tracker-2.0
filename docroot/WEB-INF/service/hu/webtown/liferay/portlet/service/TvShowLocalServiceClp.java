@@ -168,64 +168,72 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName30 = "updateTvShow";
+		_methodName30 = "addTvShowWithSeason";
 
 		_methodParameterTypes30 = new String[] {
+				"long", "long", "hu.webtown.liferay.portlet.model.TvShow",
+				"java.util.List", "com.liferay.portal.service.ServiceContext",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName31 = "updateTvShow";
+
+		_methodParameterTypes31 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.util.Date",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName31 = "deleteTvShow";
-
-		_methodParameterTypes31 = new String[] {
-				"long", "com.liferay.portal.service.ServiceContext"
-			};
-
 		_methodName32 = "deleteTvShow";
 
 		_methodParameterTypes32 = new String[] {
-				"long", "long", "com.liferay.portal.service.ServiceContext"
+				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName33 = "deleteTvShow";
 
 		_methodParameterTypes33 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName34 = "deleteTvShow";
+
+		_methodParameterTypes34 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName34 = "addTvShowResources";
+		_methodName35 = "addTvShowResources";
 
-		_methodParameterTypes34 = new String[] {
+		_methodParameterTypes35 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow", "boolean", "boolean"
 			};
 
-		_methodName35 = "addTvShowModelResources";
-
-		_methodParameterTypes35 = new String[] {
-				"hu.webtown.liferay.portlet.model.TvShow",
-				"java.lang.String[][]", "java.lang.String[][]"
-			};
-
-		_methodName36 = "updateTvShowResources";
+		_methodName36 = "addTvShowModelResources";
 
 		_methodParameterTypes36 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
 
-		_methodName37 = "updateTvShowModelResources";
+		_methodName37 = "updateTvShowResources";
 
 		_methodParameterTypes37 = new String[] {
+				"hu.webtown.liferay.portlet.model.TvShow",
+				"java.lang.String[][]", "java.lang.String[][]"
+			};
+
+		_methodName38 = "updateTvShowModelResources";
+
+		_methodParameterTypes38 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName38 = "updateTvShowAsset";
+		_methodName39 = "updateTvShowAsset";
 
-		_methodParameterTypes38 = new String[] {
+		_methodParameterTypes39 = new String[] {
 				"long", "hu.webtown.liferay.portlet.model.TvShow", "long[][]",
 				"java.lang.String[][]", "long[][]"
 			};
@@ -1162,6 +1170,57 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 	}
 
 	@Override
+	public java.util.List<com.liferay.portal.model.PersistedModel> addTvShowWithSeason(
+		long userId, long groupId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
+		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
+		com.liferay.portal.service.ServiceContext serviceContextForSeason)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
+					new Object[] {
+						userId,
+						
+					groupId,
+						
+					ClpSerializer.translateInput(tvShow),
+						
+					ClpSerializer.translateInput(seasons),
+						
+					ClpSerializer.translateInput(serviceContextForTvShow),
+						
+					ClpSerializer.translateInput(serviceContextForSeason)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.liferay.portal.model.PersistedModel>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public hu.webtown.liferay.portlet.model.TvShow updateTvShow(long userId,
 		long groupId, long tvShowId, java.lang.String tvShowTitle,
 		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
@@ -1173,8 +1232,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName30,
-					_methodParameterTypes30,
+			returnObj = _invokableLocalService.invokeMethod(_methodName31,
+					_methodParameterTypes31,
 					new Object[] {
 						userId,
 						
@@ -1230,8 +1289,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName31,
-					_methodParameterTypes31,
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32,
 					new Object[] {
 						tvShowId,
 						
@@ -1269,8 +1328,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName32,
-					_methodParameterTypes32,
+			returnObj = _invokableLocalService.invokeMethod(_methodName33,
+					_methodParameterTypes33,
 					new Object[] {
 						groupId,
 						
@@ -1311,8 +1370,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName33,
-					_methodParameterTypes33,
+			returnObj = _invokableLocalService.invokeMethod(_methodName34,
+					_methodParameterTypes34,
 					new Object[] {
 						ClpSerializer.translateInput(tvShow),
 						
@@ -1349,8 +1408,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName34,
-				_methodParameterTypes34,
+			_invokableLocalService.invokeMethod(_methodName35,
+				_methodParameterTypes35,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1382,44 +1441,6 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 
 	@Override
 	public void addTvShowModelResources(
-		hu.webtown.liferay.portlet.model.TvShow tvShow,
-		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		try {
-			_invokableLocalService.invokeMethod(_methodName35,
-				_methodParameterTypes35,
-				new Object[] {
-					ClpSerializer.translateInput(tvShow),
-					
-				ClpSerializer.translateInput(groupPermissions),
-					
-				ClpSerializer.translateInput(guestPermissions)
-				});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-	}
-
-	@Override
-	public void updateTvShowResources(
 		hu.webtown.liferay.portlet.model.TvShow tvShow,
 		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -1457,14 +1478,52 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 	}
 
 	@Override
+	public void updateTvShowResources(
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName37,
+				_methodParameterTypes37,
+				new Object[] {
+					ClpSerializer.translateInput(tvShow),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
 	public void updateTvShowModelResources(
 		hu.webtown.liferay.portlet.model.TvShow tvShow,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName37,
-				_methodParameterTypes37,
+			_invokableLocalService.invokeMethod(_methodName38,
+				_methodParameterTypes38,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1500,8 +1559,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName38,
-				_methodParameterTypes38,
+			_invokableLocalService.invokeMethod(_methodName39,
+				_methodParameterTypes39,
 				new Object[] {
 					userId,
 					
@@ -1612,4 +1671,6 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 	private String[] _methodParameterTypes37;
 	private String _methodName38;
 	private String[] _methodParameterTypes38;
+	private String _methodName39;
+	private String[] _methodParameterTypes39;
 }

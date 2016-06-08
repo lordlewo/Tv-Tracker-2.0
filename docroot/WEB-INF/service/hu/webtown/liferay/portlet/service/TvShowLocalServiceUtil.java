@@ -387,6 +387,19 @@ public class TvShowLocalServiceUtil {
 			tvShowImageTitle, tvShowImageVersion, serviceContext);
 	}
 
+	public static java.util.List<com.liferay.portal.model.PersistedModel> addTvShowWithSeason(
+		long userId, long groupId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
+		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
+		com.liferay.portal.service.ServiceContext serviceContextForSeason)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTvShowWithSeason(userId, groupId, tvShow, seasons,
+			serviceContextForTvShow, serviceContextForSeason);
+	}
+
 	public static hu.webtown.liferay.portlet.model.TvShow updateTvShow(
 		long userId, long groupId, long tvShowId, java.lang.String tvShowTitle,
 		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
