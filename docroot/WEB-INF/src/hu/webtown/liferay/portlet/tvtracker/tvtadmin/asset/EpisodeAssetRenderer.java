@@ -66,7 +66,7 @@ public class EpisodeAssetRenderer extends BaseAssetRenderer {
 
 	@Override
 	public String getTitle(Locale locale) {
-		return episode.getEpisodeDescription();
+		return episode.getEpisodeTitle();
 	}
 	
 	@Override
