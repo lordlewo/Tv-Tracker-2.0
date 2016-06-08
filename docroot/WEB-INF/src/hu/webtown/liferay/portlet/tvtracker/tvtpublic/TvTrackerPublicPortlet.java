@@ -46,4 +46,21 @@ public class TvTrackerPublicPortlet extends MVCPortlet {
         	super.doDispatch(renderRequest, renderResponse);
 		}
 	}
+	
+	@Override
+	protected boolean isSessionErrorException(Throwable cause) {
+		
+		boolean result = false;
+		
+		if (
+			cause instanceof NoSuchTvShowException || 
+			cause instanceof NoSuchSeasonException ||
+			cause instanceof NoSuchEpisodeException ||
+			cause instanceof PrincipalException ) {
+			
+			result = true;
+		}
+		
+		return result;
+	}
 }

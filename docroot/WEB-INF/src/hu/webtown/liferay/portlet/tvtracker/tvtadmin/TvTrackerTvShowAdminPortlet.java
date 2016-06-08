@@ -9,6 +9,15 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 import hu.webtown.liferay.portlet.NoSuchEpisodeException;
 import hu.webtown.liferay.portlet.NoSuchSeasonException;
 import hu.webtown.liferay.portlet.NoSuchTvShowException;
+import hu.webtown.liferay.portlet.SeasonDescriptionException;
+import hu.webtown.liferay.portlet.SeasonImageException;
+import hu.webtown.liferay.portlet.SeasonNumberException;
+import hu.webtown.liferay.portlet.SeasonPremierDateException;
+import hu.webtown.liferay.portlet.SeasonTitleException;
+import hu.webtown.liferay.portlet.TvShowDescriptionException;
+import hu.webtown.liferay.portlet.TvShowImageException;
+import hu.webtown.liferay.portlet.TvShowPremierDateException;
+import hu.webtown.liferay.portlet.TvShowTitleException;
 
 import java.io.IOException;
 
@@ -46,5 +55,52 @@ public class TvTrackerTvShowAdminPortlet extends MVCPortlet {
         	super.doDispatch(renderRequest, renderResponse);
 		}
 	}
-
+	
+	@Override
+	protected boolean isSessionErrorException(Throwable cause) {
+		
+		boolean result = false;
+		
+		if(isTvShowException(cause) || isSeasonException(cause) ||  cause instanceof PrincipalException ) {
+			
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	protected boolean isTvShowException(Throwable cause){
+		
+		boolean result = false;
+		
+		if (
+			cause instanceof TvShowDescriptionException || 
+			cause instanceof TvShowImageException ||
+			cause instanceof TvShowPremierDateException ||
+			cause instanceof TvShowTitleException || 
+			cause instanceof NoSuchTvShowException ) {
+			
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	protected boolean isSeasonException(Throwable cause){
+		
+		boolean result = false;
+		
+		if (
+			cause instanceof SeasonDescriptionException || 
+			cause instanceof SeasonImageException ||
+			cause instanceof SeasonNumberException ||
+			cause instanceof SeasonPremierDateException || 
+			cause instanceof SeasonTitleException ||
+			cause instanceof NoSuchSeasonException ) {
+			
+			result = true;
+		}
+		
+		return result;
+	}
 }
