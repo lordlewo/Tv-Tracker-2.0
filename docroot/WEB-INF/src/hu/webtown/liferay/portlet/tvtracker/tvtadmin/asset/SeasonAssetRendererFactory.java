@@ -27,7 +27,7 @@ public class SeasonAssetRendererFactory extends BaseAssetRendererFactory {
 
 	private static final String CLASS_NAME = Season.class.getName();
 	private static final String TYPE = "season";
-	private static final boolean _LINKABLE = true;
+	private static final boolean LINKABLE = true;
 	
 	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type) throws PortalException, SystemException {
@@ -50,17 +50,17 @@ public class SeasonAssetRendererFactory extends BaseAssetRendererFactory {
 	
 	@Override
 	public String getClassName() {
-		return CLASS_NAME;
+		return SeasonAssetRendererFactory.CLASS_NAME;
 	}
 
 	@Override
 	public String getType() {
-		return TYPE;
+		return SeasonAssetRendererFactory.TYPE;
 	}
 	
 	@Override
 	public boolean isLinkable() {
-		return _LINKABLE;
+		return SeasonAssetRendererFactory.LINKABLE;
 	}
 	
 	@Override

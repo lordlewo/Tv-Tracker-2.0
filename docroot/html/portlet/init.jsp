@@ -22,16 +22,20 @@
 
 <%@page import="com.liferay.portal.kernel.log.Log"%>
 <%@page import="com.liferay.portal.kernel.log.LogFactoryUtil"%>
-<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
-<%@page import="com.liferay.portal.kernel.util.Validator"%>
-<%@page import="com.liferay.portal.kernel.util.HtmlUtil" %>
-<%@page import="com.liferay.portal.kernel.util.StringPool" %>
+
 <%@page import="com.liferay.portal.kernel.util.GetterUtil" %>
+<%@page import="com.liferay.portal.kernel.util.HtmlUtil" %>
 <%@page import="com.liferay.portal.kernel.util.ListUtil" %>
+<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
+<%@page import="com.liferay.portal.kernel.util.StringPool" %>
+<%@page import="com.liferay.portal.kernel.util.StringUtil"%>
+<%@page import="com.liferay.portal.kernel.util.Validator"%>
+
 <%@page import="com.liferay.portal.util.PortalUtil" %>
-<%@page import="com.liferay.portal.service.permission.PortletPermissionUtil"%>
 <%@page import="com.liferay.portlet.PortletPreferencesFactoryUtil"%>
 <%@page import="com.liferay.portlet.PortletURLUtil"%>
+
+<%@page import="com.liferay.portal.service.permission.PortletPermissionUtil"%>
 
 <portlet:defineObjects />
 <liferay-theme:defineObjects />
@@ -39,11 +43,11 @@
 <%
 	PortletPreferences preferences = liferayPortletRequest.getPreferences();
 	
-	String portletResource = ParamUtil.getString(request, "portletResource");
+// 	String portletResource = ParamUtil.getString(request, "portletResource");
 	
-	if (Validator.isNotNull(portletResource)) {
-	    preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-	}
+// 	if (Validator.isNotNull(portletResource)) {
+// 	    preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
+// 	}
 	
 	WindowState windowState = liferayPortletRequest.getWindowState();
 	PortletMode portletMode = liferayPortletRequest.getPortletMode();

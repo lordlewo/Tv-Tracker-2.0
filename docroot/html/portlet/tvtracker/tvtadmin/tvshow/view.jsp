@@ -1,5 +1,3 @@
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-
-<portlet:defineObjects />
+<%@ include file="/html/portlet/tvtracker/tvtadmin/init.jsp" %>
 
 This is the <b>Tv Tracker Tv Show Admin</b> portlet in View mode.

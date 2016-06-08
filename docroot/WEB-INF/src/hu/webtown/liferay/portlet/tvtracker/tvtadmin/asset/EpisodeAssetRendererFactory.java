@@ -26,7 +26,7 @@ public class EpisodeAssetRendererFactory extends BaseAssetRendererFactory {
 
 	private static final String CLASS_NAME = Episode.class.getName();
 	private static final String TYPE = "episode";
-	private static final boolean _LINKABLE = true;
+	private static final boolean LINKABLE = true;
 	
 	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type) throws PortalException, SystemException {
@@ -49,17 +49,17 @@ public class EpisodeAssetRendererFactory extends BaseAssetRendererFactory {
 
 	@Override
 	public String getClassName() {
-		return CLASS_NAME;
+		return EpisodeAssetRendererFactory.CLASS_NAME;
 	}
 
 	@Override
 	public String getType() {
-		return TYPE;
+		return EpisodeAssetRendererFactory.TYPE;
 	}
 	
 	@Override
 	public boolean isLinkable() {
-		return _LINKABLE;
+		return EpisodeAssetRendererFactory.LINKABLE;
 	}
 	
 	@Override

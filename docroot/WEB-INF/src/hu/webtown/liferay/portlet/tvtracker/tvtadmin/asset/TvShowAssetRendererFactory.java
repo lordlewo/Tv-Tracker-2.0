@@ -28,7 +28,7 @@ public class TvShowAssetRendererFactory extends BaseAssetRendererFactory {
 
 	private static final String CLASS_NAME = TvShow.class.getName();
     private static final String TYPE = "tvshow";
-    private static final boolean _LINKABLE = true;
+    private static final boolean LINKABLE = true;
     
     private static final Log _logger = LogFactoryUtil.getLog(TvShowAssetRendererFactory.class);
 	
@@ -54,17 +54,17 @@ public class TvShowAssetRendererFactory extends BaseAssetRendererFactory {
 	
 	@Override
 	public String getClassName() {
-		return CLASS_NAME;
+		return TvShowAssetRendererFactory.CLASS_NAME;
 	}
 
 	@Override
 	public String getType() {
-		return TYPE;
+		return TvShowAssetRendererFactory.TYPE;
 	}
 	
 	@Override
 	public boolean isLinkable() {
-		return _LINKABLE;
+		return TvShowAssetRendererFactory.LINKABLE;
 	}
 	
 	@Override

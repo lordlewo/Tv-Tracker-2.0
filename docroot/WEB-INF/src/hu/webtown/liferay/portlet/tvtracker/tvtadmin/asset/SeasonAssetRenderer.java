@@ -30,6 +30,8 @@ public class SeasonAssetRenderer extends BaseAssetRenderer {
 
 	private static final Log _logger = LogFactoryUtil.getLog(SeasonAssetRenderer.class);
 	
+	private static final boolean ISPRINTABLE = true;
+	
 	private Season season;
 	
 	public SeasonAssetRenderer(Season season) {
@@ -164,7 +166,7 @@ public class SeasonAssetRenderer extends BaseAssetRenderer {
 	
 	@Override
 	public boolean isPrintable() {
-		return true;
+		return SeasonAssetRenderer.ISPRINTABLE;
 	}
 
 	@Override

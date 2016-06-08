@@ -32,6 +32,8 @@ public class EpisodeAssetRenderer extends BaseAssetRenderer {
 	
 	private static final Log _logger = LogFactoryUtil.getLog(EpisodeAssetRenderer.class);
 	
+	private static final boolean ISPRINTABLE = true;
+	
 	private Episode episode;
 	
 	public EpisodeAssetRenderer(Episode episode) {
@@ -169,7 +171,7 @@ public class EpisodeAssetRenderer extends BaseAssetRenderer {
 	
 	@Override
 	public boolean isPrintable() {
-		return true;
+		return EpisodeAssetRenderer.ISPRINTABLE;
 	}
 
 	@Override

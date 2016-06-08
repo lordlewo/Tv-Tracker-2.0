@@ -1,4 +1,4 @@
-<%@ include file="/html/portlet/tvtracker/init.jsp" %>
+<%@ include file="/html/portlet/tvtracker/tvtpublic/init.jsp" %>
 	
 <liferay-portlet:renderURL var="navigateToTestURL">
 	<liferay-portlet:param name="mvcPath" value="/html/portlet/tvtracker/tvtpublic/test.jsp"/>

@@ -1,4 +1,4 @@
-<%@ include file="/html/portlet/tvtracker/init.jsp" %>
+<%@ include file="/html/portlet/tvtracker/tvtpublic/init.jsp" %>
 
 <h3>Testing:</h3>
 <br> 

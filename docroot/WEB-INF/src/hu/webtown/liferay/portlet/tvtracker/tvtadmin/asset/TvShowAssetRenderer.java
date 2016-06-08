@@ -30,6 +30,8 @@ public class TvShowAssetRenderer extends BaseAssetRenderer {
 	
 	private static final Log _logger = LogFactoryUtil.getLog(TvShowAssetRenderer.class);
 	
+	private static final boolean ISPRINTABLE = true;
+	
 	private TvShow tvShow;
 	
 	public TvShowAssetRenderer(TvShow tvShow) {
@@ -161,7 +163,7 @@ public class TvShowAssetRenderer extends BaseAssetRenderer {
 	
 	@Override
 	public boolean isPrintable() {
-		return true;
+		return TvShowAssetRenderer.ISPRINTABLE;
 	}
 
 	@Override
