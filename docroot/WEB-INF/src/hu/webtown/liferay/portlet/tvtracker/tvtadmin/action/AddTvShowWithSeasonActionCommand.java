@@ -9,9 +9,9 @@ import com.liferay.util.bridges.mvc.BaseActionCommand;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletResponse;
 
-public class AddTvShowActionCommand extends BaseActionCommand{
+public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 
-	private static final Log _logger = LogFactoryUtil.getLog(AddTvShowActionCommand.class);
+	private static final Log _logger = LogFactoryUtil.getLog(AddTvShowWithSeasonActionCommand.class);
 
 	@Override
 	protected void doProcessCommand(PortletRequest portletRequest, PortletResponse portletResponse) 

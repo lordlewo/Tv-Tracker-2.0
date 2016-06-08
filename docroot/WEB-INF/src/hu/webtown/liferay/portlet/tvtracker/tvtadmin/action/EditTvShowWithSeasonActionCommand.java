@@ -1,5 +1,5 @@
 package hu.webtown.liferay.portlet.tvtracker.tvtadmin.action;
 
-public class EditTvShowActionCommand {
+public class EditTvShowWithSeasonActionCommand {
 
 }
