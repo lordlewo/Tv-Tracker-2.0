@@ -405,8 +405,7 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 	}
 
 	@Override
-	public java.util.List<com.liferay.portal.model.PersistedModel> addTvShowWithSeason(
-		long userId, long groupId,
+	public java.util.List addTvShowWithSeason(long userId, long groupId,
 		hu.webtown.liferay.portlet.model.TvShow tvShow,
 		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
 		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
@@ -433,6 +432,18 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 	}
 
 	@Override
+	public java.util.List updateTvShowWithSeason(long userId, long groupId,
+		hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
+		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
+		com.liferay.portal.service.ServiceContext serviceContextForSeason)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.updateTvShowWithSeason(userId, groupId,
+			tvShow, seasons, serviceContextForTvShow, serviceContextForSeason);
+	}
+
+	@Override
 	public hu.webtown.liferay.portlet.model.TvShow deleteTvShow(long tvShowId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -456,6 +467,15 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _tvShowLocalService.deleteTvShow(tvShow, serviceContext);
+	}
+
+	@Override
+	public java.util.List deleteTvShowWithSeason(long groupId, long tvShowId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.deleteTvShowWithSeason(groupId, tvShowId,
+			serviceContext);
 	}
 
 	@Override

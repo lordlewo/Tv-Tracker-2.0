@@ -387,8 +387,7 @@ public class TvShowLocalServiceUtil {
 			tvShowImageTitle, tvShowImageVersion, serviceContext);
 	}
 
-	public static java.util.List<com.liferay.portal.model.PersistedModel> addTvShowWithSeason(
-		long userId, long groupId,
+	public static java.util.List addTvShowWithSeason(long userId, long groupId,
 		hu.webtown.liferay.portlet.model.TvShow tvShow,
 		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
 		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
@@ -415,6 +414,18 @@ public class TvShowLocalServiceUtil {
 			serviceContext);
 	}
 
+	public static java.util.List updateTvShowWithSeason(long userId,
+		long groupId, hu.webtown.liferay.portlet.model.TvShow tvShow,
+		java.util.List<hu.webtown.liferay.portlet.model.Season> seasons,
+		com.liferay.portal.service.ServiceContext serviceContextForTvShow,
+		com.liferay.portal.service.ServiceContext serviceContextForSeason)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateTvShowWithSeason(userId, groupId, tvShow, seasons,
+			serviceContextForTvShow, serviceContextForSeason);
+	}
+
 	public static hu.webtown.liferay.portlet.model.TvShow deleteTvShow(
 		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -436,6 +447,14 @@ public class TvShowLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService().deleteTvShow(tvShow, serviceContext);
+	}
+
+	public static java.util.List deleteTvShowWithSeason(long groupId,
+		long tvShowId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .deleteTvShowWithSeason(groupId, tvShowId, serviceContext);
 	}
 
 	public static void addTvShowResources(

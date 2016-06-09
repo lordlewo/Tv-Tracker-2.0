@@ -49,25 +49,18 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 
 	private static final Log _logger = LogFactoryUtil.getLog(AddTvShowWithSeasonActionCommand.class);
 
+	
 	@Override
+	@SuppressWarnings("unchecked")
 	protected void doProcessCommand(PortletRequest portletRequest, PortletResponse portletResponse) 
 			throws PortletException {
 		
 		try{
 			
-			List<PersistedModel> createdModels = addTvShowWithSeason(portletRequest, portletResponse);
+			List<List<? extends PersistedModel>> returnedModels = addTvShowWithSeason(portletRequest, portletResponse);
 			
-			TvShow createdTvShow = (TvShow) createdModels.get(0);
-			
-			List<Season> createdSeasons = new ArrayList<Season>();
-			
-			for(int i = 1; i < createdModels.size(); i++){
-				Season createdSeason = (Season) createdModels.get(i);
-				createdSeasons.add(createdSeason);
-			}
-			
-			portletRequest.setAttribute(CustomWebKeys.TVSHOW, createdTvShow);
-			portletRequest.setAttribute(CustomWebKeys.SEASONS, createdSeasons);
+			TvShow createdTvShow = (TvShow) returnedModels.get(0).get(0);
+			List<Season> createdSeasons = (List<Season>) returnedModels.get(1);
 			
 			String redirectWhenSuccess = ParamUtil.getString(portletRequest, "redirectWhenSuccess");
 			
@@ -131,7 +124,8 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 		}
 	}
 	
-	protected List<PersistedModel> addTvShowWithSeason(PortletRequest portletRequest, PortletResponse portletResponse) 
+	@SuppressWarnings("unchecked")
+	protected List<List<? extends PersistedModel>> addTvShowWithSeason(PortletRequest portletRequest, PortletResponse portletResponse) 
 			throws Exception {
 		
 		ServiceContext serviceContextForTvShow = ServiceContextFactory
@@ -221,14 +215,13 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 			seasons.add(i, season);
 		}
 		
-		// the first element is Tvshow, the other elements are Season-s
-		List<PersistedModel> createdModels = TvShowLocalServiceUtil
+		List<List<? extends PersistedModel>> returnedModels = (List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
 				.addTvShowWithSeason(
 						userId, groupId, 
 						tvShow, seasons, 
 						serviceContextForTvShow, 
 						serviceContextForSeason);
 		
-		return createdModels;
+		return returnedModels;
 	}
 }

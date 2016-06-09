@@ -38,3 +38,9 @@ Add Episodes:
 <br>
 Delete Episodes:
 <aui:button name="deleteEpisodeButton" value="Delete Episodes" onClick="<%= testDeleteEpisodeURL %>" />
+
+<br>
+<br>
+Add TvShow with Season:
+<portlet:actionURL name="TestAddTvShowWithSeason" var="testAddTvShowWithSeasonURL"/>
+<aui:button name="addTvShowWithSeasonButton" value="Add TvShow With Season" onClick="<%= testAddTvShowWithSeasonURL %>" />

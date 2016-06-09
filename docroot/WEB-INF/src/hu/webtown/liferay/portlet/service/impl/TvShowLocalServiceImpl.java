@@ -36,14 +36,17 @@ import hu.webtown.liferay.portlet.TvShowPremierDateException;
 import hu.webtown.liferay.portlet.TvShowTitleException;
 import hu.webtown.liferay.portlet.model.Season;
 import hu.webtown.liferay.portlet.model.TvShow;
+import hu.webtown.liferay.portlet.service.SeasonLocalServiceUtil;
 import hu.webtown.liferay.portlet.service.base.TvShowLocalServiceBaseImpl;
 import hu.webtown.liferay.portlet.tvtracker.util.CustomCalendarUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.TimeZone;
 
 /**
@@ -331,11 +334,18 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		return tvShow;
 	}
 	
-	public List<PersistedModel> addTvShowWithSeason(
+	@SuppressWarnings("rawtypes")
+	public List addTvShowWithSeason(
 			long userId, long groupId, TvShow tvShow, List<Season> seasons, 
 			ServiceContext serviceContextForTvShow, ServiceContext serviceContextForSeason) throws PortalException, SystemException {
 		
-		List<PersistedModel> createdModels = new ArrayList<PersistedModel>();
+		List<List<? extends PersistedModel>> returnedModels = new ArrayList<List<? extends PersistedModel>>();
+		
+		List<Season> createdSeasons = new ArrayList<Season>();
+		List<TvShow> createdTvShows = new ArrayList<TvShow>();
+		
+		
+		// tvshow
 		
 		String tvShowTitle = tvShow.getTvShowTitle();
 		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
@@ -353,9 +363,12 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 				tvShowImageUuid, tvShowImageTitle, 
 				tvShowImageVersion, serviceContextForTvShow);
 		
-		createdModels.add(0,createdTvShow);
+		createdTvShows.add(createdTvShow);
 		
-		long tvShowId = tvShow.getTvShowId();
+		
+		// seasons
+		
+		long tvShowId = createdTvShow.getTvShowId();
 		
 		for (int i = 0; i < seasons.size(); i++) {
 			
@@ -378,11 +391,13 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 					seasonImageUuid, seasonImageTitle, 
 					seasonImageVersion, serviceContextForSeason);
 		
-			createdModels.add((i + 1), createdSeason);
+			createdSeasons.add(createdSeason);
 		}
 		
+		returnedModels.add(createdTvShows);
+		returnedModels.add(createdSeasons);
 		
-		return createdModels;
+		return returnedModels;
 	}
 	
 	/***************************************************************************/
@@ -510,6 +525,117 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		return tvShow;
 	}
 	
+	@SuppressWarnings("rawtypes")
+	public List updateTvShowWithSeason(
+			long userId, long groupId, TvShow tvShow, List<Season> seasons, 
+			ServiceContext serviceContextForTvShow, ServiceContext serviceContextForSeason) throws PortalException, SystemException {
+		
+		List<List<? extends PersistedModel>> returnedModels = new ArrayList<List<? extends PersistedModel>>();
+		
+		List<TvShow> updatedTvShows = new ArrayList<TvShow>();
+		List<Season> createdSeasons = new ArrayList<Season>();
+		List<Season> updatedSeasons = new ArrayList<Season>();
+		List<Season> deletedSeasons = new ArrayList<Season>();
+		
+		
+		// tvshow
+		
+		long tvShowId = tvShow.getTvShowId();
+		String tvShowTitle = tvShow.getTvShowTitle();
+		Date tvShowPremierDate = tvShow.getTvShowPremierDate();
+		String tvShowDescription = tvShow.getTvShowDescription();
+		
+		String tvShowImageUrl = tvShow.getTvShowImageUrl();
+		String tvShowImageUuid = tvShow.getTvShowImageUuid();
+		String tvShowImageTitle = tvShow.getTvShowImageTitle();
+		String tvShowImageVersion = tvShow.getTvShowImageVersion();
+		
+		TvShow updatedTvShow = updateTvShow(
+				userId, groupId, tvShowId, 
+				tvShowTitle, tvShowPremierDate, 
+				tvShowDescription, 
+				tvShowImageUrl, tvShowImageUuid, 
+				tvShowImageTitle, tvShowImageVersion, 
+				serviceContextForTvShow);
+		
+		updatedTvShows.add(updatedTvShow);
+		
+
+		// seasons
+		
+		List<Season> currentSeasons = SeasonLocalServiceUtil.getSeasons(groupId, tvShowId);
+		
+		Set<Long> createdSeasonIds = new HashSet<Long>();
+		Set<Long> updatedSeasonIds = new HashSet<Long>();
+		Set<Long> deletedSeasonIds = new HashSet<Long>();
+		
+		for (int i = 0; i < seasons.size(); i++) { 
+			
+			Season season = seasons.get(i);
+			
+			long seasonId = season.getSeasonId();
+			Date seasonPremierDate = season.getSeasonPremierDate();
+			String seasonTitle = season.getSeasonTitle();
+			int seasonNumber = season.getSeasonNumber();
+			String seasonDescription = season.getSeasonDescription();
+			
+			String seasonImageUrl = season.getSeasonImageUrl();
+			String seasonImageUuid = season.getSeasonImageUuid();
+			String seasonImageTitle = season.getSeasonImageUrl();
+			String seasonImageVersion = season.getSeasonImageVersion();
+			
+			if(seasonId > 0) {
+			
+				Season updatedSeason = seasonLocalService.updateSeason(
+						userId, groupId, tvShowId, seasonId, 
+						seasonTitle, seasonPremierDate, 
+						seasonNumber, seasonDescription, 
+						seasonImageUrl, seasonImageUuid, 
+						seasonImageTitle, seasonImageVersion, 
+						serviceContextForSeason);
+			
+				updatedSeasons.add(updatedSeason);
+				
+				long updatedSeasonId = updatedSeason.getSeasonId();
+				updatedSeasonIds.add(updatedSeasonId);
+			} else {
+				
+				Season createdSeason = seasonLocalService.addSeason(
+						userId, groupId, tvShowId, 
+						seasonTitle, seasonPremierDate, 
+						seasonNumber, seasonDescription, 
+						seasonImageUrl, seasonImageUuid, 
+						seasonImageTitle, seasonImageVersion, 
+						serviceContextForSeason);
+				
+				createdSeasons.add(createdSeason);
+				
+				long createdSeasonId = createdSeason.getSeasonId();
+				createdSeasonIds.add(createdSeasonId);
+			}
+		}
+		
+		for (Season curSeason : currentSeasons) {
+			long curSeasonId = curSeason.getSeasonId();
+			
+			if(!updatedSeasonIds.contains(curSeasonId)){
+				Season deletedSeason = SeasonLocalServiceUtil.deleteSeason(groupId, curSeasonId, serviceContextForSeason);
+				
+				deletedSeasons.add(deletedSeason);
+				
+				long deletedSeasonId = deletedSeason.getSeasonId();
+				deletedSeasonIds.add(deletedSeasonId);
+			}
+		}
+		
+		returnedModels.add(updatedTvShows);
+		returnedModels.add(updatedSeasons);
+		returnedModels.add(createdSeasons);
+		returnedModels.add(deletedSeasons);
+		
+		return returnedModels;
+	}
+	
 	/***************************************************************************/
 	/********** BLL - DELETE Entity ********************************************/
 	/***************************************************************************/
@@ -580,6 +706,36 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 		
 		
 		return tvShow;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List deleteTvShowWithSeason(long groupId, long tvShowId, ServiceContext serviceContext) 
+			throws PortalException, SystemException { 
+		
+		List<List<? extends PersistedModel>> returnedModels = new ArrayList<List<? extends PersistedModel>>();
+		
+		List<TvShow> deletedTvShows = new ArrayList<TvShow>();
+		List<Season> deletedSeasons = new ArrayList<Season>();
+		
+		List<Season> seasons = getSeasonLocalService().getSeasons(groupId, tvShowId);
+		
+		for (int i = 0; i < seasons.size(); i++) {
+			
+			Season season = seasons.get(i);
+			long seasonId = season.getSeasonId(); 
+			
+			Season deletedSeason = getSeasonLocalService().deleteSeason(groupId, seasonId, serviceContext);
+			
+			deletedSeasons.add(deletedSeason);
+		}
+		
+		TvShow deletedTvShow = deleteTvShow(groupId, tvShowId, serviceContext);
+		deletedTvShows.add(deletedTvShow);
+		
+		returnedModels.add(deletedTvShows);
+		returnedModels.add(deletedSeasons);
+		
+		return returnedModels;
 	}
 	
 	/***************************************************************************/
