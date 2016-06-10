@@ -123,8 +123,12 @@ public class AddEpisodeActionCommand extends BaseActionCommand{
 		int episodeAirDateHour = ParamUtil.getInteger(portletRequest, "episodeAirDateHour");
 		int episodeAirDateAmPm = ParamUtil.getInteger(portletRequest, "episodeAirDateAmPm");
 		
-		calendar.set(episodeAirDateYear, episodeAirDateMonth, 
-				episodeAirDateDay, episodeAirDateHour, episodeAirDateMinute);
+		calendar.set(
+				episodeAirDateYear, 
+				episodeAirDateMonth, 
+				episodeAirDateDay, 
+				episodeAirDateHour, 
+				episodeAirDateMinute);
 		calendar.set(Calendar.AM_PM, episodeAirDateAmPm);
 		
 		Date episodeAirDate = calendar.getTime();
@@ -139,13 +143,14 @@ public class AddEpisodeActionCommand extends BaseActionCommand{
 		
 		long seasonId = ParamUtil.getLong(portletRequest, "seasonId");
 	
-		Episode createdEpisode = EpisodeLocalServiceUtil.addEpisode(
-				userId, groupId, seasonId, 
-				episodeTitle, episodeAirDate, 
-				episodeNumber, episodeDescription, 
-				episodeImageUrl, episodeImageUuid, 
-				episodeImageTitle, episodeImageVersion, 
-				serviceContext);			
+		Episode createdEpisode = 
+				EpisodeLocalServiceUtil.addEpisode(
+					userId, groupId, seasonId, 
+					episodeTitle, episodeAirDate, 
+					episodeNumber, episodeDescription, 
+					episodeImageUrl, episodeImageUuid, 
+					episodeImageTitle, episodeImageVersion, 
+					serviceContext);			
 		
 		return createdEpisode;
 	}

@@ -238,12 +238,13 @@ public class EditTvShowWithSeasonActionCommand extends BaseActionCommand{
 			seasons.add(season);
 		}
 		
-		List<List<? extends PersistedModel>> returnedModels = (List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
-				.updateTvShowWithSeason(
-						userId, groupId, 
-						tvShow, seasons, 
-						serviceContextForTvShow, 
-						serviceContextForSeason);
+		List<List<? extends PersistedModel>> returnedModels = 
+				(List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
+					.updateTvShowWithSeason(
+							userId, groupId, 
+							tvShow, seasons, 
+							serviceContextForTvShow, 
+							serviceContextForSeason);
 		
 		return returnedModels;
 	}

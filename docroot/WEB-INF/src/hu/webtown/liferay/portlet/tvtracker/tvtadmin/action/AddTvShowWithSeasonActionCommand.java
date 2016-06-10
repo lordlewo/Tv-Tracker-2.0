@@ -152,7 +152,10 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 		int tvShowPremierDateMonth = ParamUtil.getInteger(portletRequest, "tvShowPremierDateMonth");
 		int tvShowPremierDateYear = ParamUtil.getInteger(portletRequest, "tvShowPremierDateYear");
 		
-		calendar.set(tvShowPremierDateYear, tvShowPremierDateMonth, tvShowPremierDateDay);
+		calendar.set(
+				tvShowPremierDateYear, 
+				tvShowPremierDateMonth, 
+				tvShowPremierDateDay);
 		
 		Date tvShowPremierDate = calendar.getTime();
 		String tvShowTitle = ParamUtil.getString(portletRequest, "tvShowTitle");
@@ -190,7 +193,10 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 			int seasonPremierDateMonth = ParamUtil.getInteger(portletRequest, "seasonPremierDateMonth" + rowIndex);
 			int seasonPremierDateYear = ParamUtil.getInteger(portletRequest, "seasonPremierDateYear" + rowIndex);
 			
-			calendar.set(seasonPremierDateYear, seasonPremierDateMonth, seasonPremierDateDay);
+			calendar.set(
+					seasonPremierDateYear, 
+					seasonPremierDateMonth, 
+					seasonPremierDateDay);
 			
 			Date seasonPremierDate = calendar.getTime();
 			String seasonTitle = ParamUtil.getString(portletRequest, "seasonTitle" + rowIndex);
@@ -212,15 +218,16 @@ public class AddTvShowWithSeasonActionCommand extends BaseActionCommand{
 			season.setSeasonImageTitle(seasonImageTitle);
 			season.setSeasonImageVersion(seasonImageVersion);
 			
-			seasons.add(i, season);
+			seasons.add(season);
 		}
 		
-		List<List<? extends PersistedModel>> returnedModels = (List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
-				.addTvShowWithSeason(
-						userId, groupId, 
-						tvShow, seasons, 
-						serviceContextForTvShow, 
-						serviceContextForSeason);
+		List<List<? extends PersistedModel>> returnedModels = 
+				(List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
+					.addTvShowWithSeason(
+							userId, groupId, 
+							tvShow, seasons, 
+							serviceContextForTvShow, 
+							serviceContextForSeason);
 		
 		return returnedModels;
 	}

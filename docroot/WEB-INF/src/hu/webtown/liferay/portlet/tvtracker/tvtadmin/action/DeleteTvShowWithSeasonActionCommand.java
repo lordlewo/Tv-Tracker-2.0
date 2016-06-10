@@ -94,8 +94,9 @@ public class DeleteTvShowWithSeasonActionCommand extends BaseActionCommand{
 		
 		long tvShowId = ParamUtil.getLong(portletRequest, "tvShowId");
 		
-		List<List<? extends PersistedModel>> returnedModels = (List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
-				.deleteTvShowWithSeason(groupId, tvShowId, serviceContext);
+		List<List<? extends PersistedModel>> returnedModels = 
+				(List<List<? extends PersistedModel>>) TvShowLocalServiceUtil
+					.deleteTvShowWithSeason(groupId, tvShowId, serviceContext);
 		
 		return returnedModels;
 	}

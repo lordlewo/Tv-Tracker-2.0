@@ -140,7 +140,8 @@ public class EditEpisodeActionCommand extends BaseActionCommand {
 		long episodeId = ParamUtil.getLong(portletRequest, "episodeId");
 		long seasonId = ParamUtil.getLong(portletRequest, "seasonId");
 		
-		Episode updatedEpisode = EpisodeLocalServiceUtil.updateEpisode(
+		Episode updatedEpisode = 
+				EpisodeLocalServiceUtil.updateEpisode(
 				userId, groupId, seasonId, episodeId, 
 				episodeTitle, episodeAirDate, 
 				episodeNumber, episodeDescription, 

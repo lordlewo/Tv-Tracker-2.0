@@ -75,7 +75,9 @@ public class DeleteEpisodeActionCommand extends BaseActionCommand {
 		
 		long episodeId = ParamUtil.getLong(portletRequest, "episodeId");
 	
-		Episode deletedEpisode = EpisodeLocalServiceUtil.deleteEpisode(groupId, episodeId, serviceContext);
+		Episode deletedEpisode = 
+				EpisodeLocalServiceUtil
+					.deleteEpisode(groupId, episodeId, serviceContext);
 		
 		return deletedEpisode;
 	}
