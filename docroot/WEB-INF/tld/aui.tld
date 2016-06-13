@@ -434,7 +434,7 @@
 			<description><![CDATA[<p>
 	Lifecycle event for the init phase, fired prior to initialization.
 	Invoking the preventDefault() method on the event object provided
-	to subscribers will prevent initialization from occuring.
+	to subscribers will prevent initialization from occurring.
 	</p>
 	<p>
 	Subscribers to the "after" momemt of this event, will be notified
@@ -732,7 +732,7 @@
 			<description><![CDATA[<p>
 	Lifecycle event for the init phase, fired prior to initialization.
 	Invoking the preventDefault() method on the event object provided
-	to subscribers will prevent initialization from occuring.
+	to subscribers will prevent initialization from occurring.
 	</p>
 	<p>
 	Subscribers to the "after" momemt of this event, will be notified

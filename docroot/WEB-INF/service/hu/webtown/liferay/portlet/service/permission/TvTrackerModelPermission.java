@@ -32,7 +32,7 @@ public class TvTrackerModelPermission {
 	public static boolean contains(PermissionChecker permissionChecker,
 			long groupId, String actionId) {
 
-		// decide, if exist the apropriate permission against the action
+		// decide, if exist the appropriate permission against the action
 
 		boolean hasPermission = permissionChecker.hasPermission(groupId,
 				TvTrackerModelPermission.RESOURCE_NAME, groupId, actionId);

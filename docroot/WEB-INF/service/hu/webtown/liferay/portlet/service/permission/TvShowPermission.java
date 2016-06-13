@@ -78,7 +78,7 @@ public class TvShowPermission {
 		long userId = tvShow.getUserId();
 		long tvShowId = tvShow.getTvShowId();
 		
-		// decide, if exist the apropriate owner permission for the action against the
+		// decide, if exist the appropriate owner permission for the action against the
 		// particular entity instance
 		
 		boolean hasOwnerPermission = permissionChecker.hasOwnerPermission(
@@ -88,7 +88,7 @@ public class TvShowPermission {
 				userId, 
 				actionId);
 
-		// decide, if exist the apropriate permission for the action against the
+		// decide, if exist the appropriate permission for the action against the
 		// particular entity instance
 
 		boolean hasPermission = permissionChecker.hasPermission(
