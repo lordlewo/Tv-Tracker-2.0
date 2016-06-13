@@ -130,8 +130,7 @@
 		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
 	</entity>
 
-	<entity uuid="true" name="TvShow" local-service="true"
-		remote-service="true">
+	<entity uuid="true" name="TvShow" local-service="true" remote-service="true">
 
 		<!-- PK fields -->
 
