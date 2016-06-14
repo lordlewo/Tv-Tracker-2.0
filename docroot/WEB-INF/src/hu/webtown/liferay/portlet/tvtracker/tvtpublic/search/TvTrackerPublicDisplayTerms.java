@@ -5,23 +5,21 @@ import com.liferay.portal.kernel.util.CalendarFactoryUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 
-import java.util.Calendar;
-
 import hu.webtown.liferay.portlet.model.constant.DateRangeType;
 import hu.webtown.liferay.portlet.tvtracker.util.CustomWebKeys;
+
+import java.util.Calendar;
 
 import javax.portlet.PortletRequest;
 
 public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 	
 	public static final String GROUP_ID = "groupId";
-	public static final String TVSHOW_ID = "tvShowId";
 	public static final String TVSHOW_TITLE = "tvShowTitle";
 	public static final String TVSHOW_PREMIER_YEAR = "tvShowPremierYear";
 	public static final String TVSHOW_PREMIER_MONTH = "tvShowPremierMonth";
 	public static final String TVSHOW_PREMIER_DAY = "tvShowPremierDay";
 	public static final String TVSHOW_DESCRIPTION = "tvShowDescription";
-	public static final String TVSHOW_SEASON_COUNT = "tvShowSeasonCount";
 	
 	public static final String DATE_RANGE_TYPE = "dateRangeType";
     public static final String END_DATE_DAY = "endDateDay";
@@ -32,13 +30,11 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
     public static final String START_DATE_YEAR = "startDateYear";
 
 	private long groupId;
-	private long tvShowId;
 	private String tvShowTitle;
 	private int tvShowPremierYear;
 	private int tvShowPremierMonth;
 	private int tvShowPremierDay;
 	private String tvShowDescription;
-	private int tvShowSeasonCount;
 	
 	private int dateRangeType;
     private int endDateDay;
@@ -57,13 +53,11 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 		ThemeDisplay themeDisplay = (ThemeDisplay) portletRequest
 				.getAttribute(CustomWebKeys.THEME_DISPLAY);
 		
-		tvShowId = ParamUtil.getLong(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_ID);
 		tvShowTitle = ParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE);
 		tvShowPremierYear = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_YEAR);
 		tvShowPremierMonth = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_MONTH);
 		tvShowPremierDay = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_DAY);
 		tvShowDescription = ParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION);
-		tvShowSeasonCount = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_SEASON_COUNT);
 		groupId = setGroupId(portletRequest);
 		
 		Calendar today = CalendarFactoryUtil
@@ -117,14 +111,6 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 		this.groupId = groupId;
 	}
 
-	public long getTvShowId() {
-		return tvShowId;
-	}
-
-	public void setTvShowId(long tvShowId) {
-		this.tvShowId = tvShowId;
-	}
-
 	public String getTvShowTitle() {
 		return tvShowTitle;
 	}
@@ -163,14 +149,6 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 
 	public void setTvShowDescription(String tvShowDescription) {
 		this.tvShowDescription = tvShowDescription;
-	}
-
-	public int getTvShowSeasonCount() {
-		return tvShowSeasonCount;
-	}
-
-	public void setTvShowSeasonCount(int tvShowSeasonCount) {
-		this.tvShowSeasonCount = tvShowSeasonCount;
 	}
 
 	public int getDateRangeType() {

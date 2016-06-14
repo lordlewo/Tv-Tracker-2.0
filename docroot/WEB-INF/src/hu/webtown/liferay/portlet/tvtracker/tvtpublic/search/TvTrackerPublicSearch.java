@@ -1,8 +1,19 @@
 package hu.webtown.liferay.portlet.tvtracker.tvtpublic.search;
 
 import com.liferay.portal.kernel.dao.search.SearchContainer;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portlet.PortalPreferences;
+import com.liferay.portlet.PortletPreferencesFactoryUtil;
+
+import hu.webtown.liferay.portlet.model.TvShow;
+import hu.webtown.liferay.portlet.tvtracker.util.CustomPortletKeys;
+import hu.webtown.liferay.portlet.tvtracker.util.PortletPropsKeys;
+import hu.webtown.liferay.portlet.tvtracker.util.TvTrackerUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +22,6 @@ import java.util.Map;
 
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
-
-import hu.webtown.liferay.portlet.model.TvShow;
 
 public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 	
@@ -40,10 +49,6 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 		orderableHeaders.put(TvTrackerPublicSearch.PREMIER_YEAR, TvTrackerPublicSearch.PREMIER_YEAR);
 	}
 	
-	{
-		
-	}
-	
 	public TvTrackerPublicSearch(PortletRequest portletRequest, PortletURL iteratorURL) {
 		super(
 				portletRequest, 
@@ -54,6 +59,106 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 				iteratorURL, 
 				headerNames, 
 				TvTrackerPublicSearch.EMPTY_RESULT_MSG);
+		
+		TvTrackerPublicDisplayTerms displayTerms = (TvTrackerPublicDisplayTerms) getDisplayTerms();
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.GROUP_ID, 
+				String.valueOf(displayTerms.getGroupId()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.TVSHOW_TITLE, 
+				displayTerms.getTvShowTitle());
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION, 
+				displayTerms.getTvShowDescription());
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.END_DATE_DAY, 
+				String.valueOf(displayTerms.getEndDateDay()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.END_DATE_MONTH, 
+				String.valueOf(displayTerms.getEndDateMonth()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.END_DATE_YEAR, 
+				String.valueOf(displayTerms.getEndDateYear()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.START_DATE_DAY, 
+				String.valueOf(displayTerms.getEndDateDay()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.START_DATE_MONTH, 
+				String.valueOf(displayTerms.getEndDateMonth()));
+		
+		setParameter(
+				iteratorURL, 
+				TvTrackerPublicDisplayTerms.START_DATE_YEAR, 
+				String.valueOf(displayTerms.getEndDateYear()));
+		
+		try {
+			
+			PortalPreferences portalPreferences = 
+					PortletPreferencesFactoryUtil.getPortalPreferences(portletRequest);
+			
+			String orderByCol = 
+					ParamUtil.getString(portletRequest, getOrderByColParam());
+            String orderByType = 
+            		ParamUtil.getString(portletRequest, getOrderByTypeParam());
+			
+            if (Validator.isNotNull(orderByCol) && Validator.isNotNull(orderByType)) {
+            	
+            	portalPreferences.setValue(
+            			CustomPortletKeys.TVTRACKER_PUBLIC, 
+            			PortletPropsKeys.PUBLIC_SEARCH_ORDERBY_COL, 
+            			orderByCol);
+            	
+            	portalPreferences.setValue(
+            			CustomPortletKeys.TVTRACKER_PUBLIC, 
+            			PortletPropsKeys.PUBLIC_SEARCH_ORDERBY_TYPE, 
+            			orderByType);
+            	
+            } else {
+            	
+            	orderByCol = portalPreferences.getValue(
+            			CustomPortletKeys.TVTRACKER_PUBLIC, 
+            			PortletPropsKeys.PUBLIC_SEARCH_ORDERBY_COL, 
+            			TvTrackerPublicSearch.TITLE);
+            	
+            	orderByType = portalPreferences.getValue(
+            			CustomPortletKeys.TVTRACKER_PUBLIC, 
+            			PortletPropsKeys.PUBLIC_SEARCH_ORDERBY_TYPE, 
+            			"asc");
+            
+            }
+            
+            OrderByComparator orderByComparator = 
+            		TvTrackerUtil.getTvShowOrderByComparator(orderByCol, orderByType);
+            
+            setOrderableHeaders(orderableHeaders);
+            setOrderByCol(orderByCol);
+            setOrderByType(orderByType);
+            setOrderByComparator(orderByComparator);
+
+		} catch (SystemException e) {
+			_logger.equals(e);
+		}
 	}
 	
+    private static void setParameter(PortletURL portletURL, String name, String value) {
+        if (Validator.isNotNull(value)) {
+            portletURL.setParameter(name, value);
+        }
+    }
 }

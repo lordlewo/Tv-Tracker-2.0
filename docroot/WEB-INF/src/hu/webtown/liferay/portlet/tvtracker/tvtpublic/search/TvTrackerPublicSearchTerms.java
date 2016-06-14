@@ -17,7 +17,6 @@ public class TvTrackerPublicSearchTerms extends TvTrackerPublicDisplayTerms {
 	public TvTrackerPublicSearchTerms(PortletRequest portletRequest) {
 		super(portletRequest);
 
-		setTvShowId(DAOParamUtil.getLong(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_ID));
 		setTvShowTitle(DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE));
 		setTvShowDescription(DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION));
 	}
