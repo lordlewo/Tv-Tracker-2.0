@@ -67,21 +67,20 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 				.getCalendar(themeDisplay.getTimeZone(), themeDisplay.getLocale());
 		calendar.add(Calendar.MONTH, -1);
 
-		dateRangeType = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE, DateRangeType.ANYTIME.getKey());
-		
-		endDateDay = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.END_DATE_DAY, today.get(Calendar.DATE));    
-		endDateMonth =ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.END_DATE_MONTH, today.get(Calendar.MONTH));
-		endDateYear = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.END_DATE_YEAR, today.get(Calendar.YEAR));
-		startDateDay = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.START_DATE_DAY, calendar.get(Calendar.DATE));
-		startDateMonth = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.START_DATE_MONTH, calendar.get(Calendar.MONTH));
-		startDateYear = ParamUtil
-				.getInteger(portletRequest, TvTrackerPublicDisplayTerms.START_DATE_YEAR, calendar.get(Calendar.YEAR));
+		dateRangeType = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE, DateRangeType.ANYTIME.getKey());
+		endDateDay = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_DAY, today.get(Calendar.DATE));    
+		endDateMonth = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_MONTH, today.get(Calendar.MONTH));
+		endDateYear = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_YEAR, today.get(Calendar.YEAR));
+		startDateDay = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_DAY, calendar.get(Calendar.DATE));
+		startDateMonth = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_MONTH, calendar.get(Calendar.MONTH));
+		startDateYear = ParamUtil.getInteger(
+				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_YEAR, calendar.get(Calendar.YEAR));
 		
 		firstDayOfWeek = today.getFirstDayOfWeek() - 1;
 		yearRangeEnd = today.get(Calendar.YEAR);

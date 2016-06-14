@@ -17,8 +17,17 @@ public class TvTrackerPublicSearchTerms extends TvTrackerPublicDisplayTerms {
 	public TvTrackerPublicSearchTerms(PortletRequest portletRequest) {
 		super(portletRequest);
 
-		setTvShowTitle(DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE));
-		setTvShowDescription(DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION));
+		String tvShowTitle = DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE);
+		String tvShowDescription = DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION);
+		int tvShowPremierDay = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_DAY);
+		int tvShowPremierMonth = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_MONTH);
+		int tvShowPremierYear = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_MONTH);
+		
+		setTvShowTitle(tvShowTitle);
+		setTvShowDescription(tvShowDescription);
+		setTvShowPremierDay(tvShowPremierDay);
+		setTvShowPremierMonth(tvShowPremierMonth);
+		setTvShowPremierYear(tvShowPremierYear);
 	}
 	
 	public Date getEndDate(TimeZone timeZone) throws PortalException {
