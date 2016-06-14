@@ -47,8 +47,6 @@ public class EditEpisodeActionCommand extends BaseActionCommand {
 		
 			Episode updatedEpisode = editEpisode(portletRequest, portletResponse);
 			
-			portletRequest.setAttribute(CustomWebKeys.EPISODE, updatedEpisode);
-			
 			String redirectWhenSuccess = ParamUtil.getString(portletRequest, "redirectWhenSuccess");
 			
 			if (Validator.isNotNull(redirectWhenSuccess)) {
