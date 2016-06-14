@@ -31,19 +31,18 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 	public static final String TITLE = "Title";
 	public static final String PREMIER_YEAR = "PremierYear";
 	public static final String SEASONS_COUNT = "Seasons";
-	public static final String DETAILS = "Details";
 	
 	public static List<String> headerNames = new ArrayList<String>();
     public static Map<String, String> orderableHeaders = new HashMap<String, String>();
 	
     public static final String EMPTY_RESULT_MSG = "no-tvshow-were-found";
+    public static final int DELTA = 10;
     
 	static {
 		headerNames.add(TvTrackerPublicSearch.COVER);
 		headerNames.add(TvTrackerPublicSearch.TITLE);
 		headerNames.add(TvTrackerPublicSearch.PREMIER_YEAR);
 		headerNames.add(TvTrackerPublicSearch.SEASONS_COUNT);
-		headerNames.add(TvTrackerPublicSearch.DETAILS);
 		
 		orderableHeaders.put(TvTrackerPublicSearch.TITLE, TvTrackerPublicSearch.TITLE);
 		orderableHeaders.put(TvTrackerPublicSearch.PREMIER_YEAR, TvTrackerPublicSearch.PREMIER_YEAR);
@@ -55,7 +54,8 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 				new TvTrackerPublicDisplayTerms(portletRequest), 
 				new TvTrackerPublicSearchTerms(portletRequest), 
 				SearchContainer.DEFAULT_CUR_PARAM, 
-				SearchContainer.DEFAULT_DELTA, 
+				//SearchContainer.DEFAULT_DELTA, 
+				TvTrackerPublicSearch.DELTA,		
 				iteratorURL, 
 				headerNames, 
 				TvTrackerPublicSearch.EMPTY_RESULT_MSG);

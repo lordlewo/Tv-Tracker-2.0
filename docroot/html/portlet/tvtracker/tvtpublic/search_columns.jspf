@@ -1,0 +1,21 @@
+
+<liferay-ui:search-container-column-jsp 
+	name="Cover"
+	path="/html/portlet/tvtracker/tvtpublic/cover.jsp" />
+
+<liferay-ui:search-container-column-text 
+	href="<%= tvShowDetailsURL %>" 
+	name="Title" 
+	orderable="true" 
+	orderableProperty="tvShowTitle"
+	property="tvShowTitle" />
+
+<liferay-ui:search-container-column-text 
+	name="Premier Year" 
+	orderable="true" 
+	orderableProperty="tvShowPremierYear" 
+	property="tvShowPremierYear" />
+
+<liferay-ui:search-container-column-text 
+	name="Seasons" 
+	property="tvShowSeasonCount" />

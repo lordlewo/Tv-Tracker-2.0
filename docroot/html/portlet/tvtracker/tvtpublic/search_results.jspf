@@ -1,0 +1,12 @@
+<%
+results = TvShowLocalServiceUtil.getTvShows(
+			groupId, 
+			searchContainer.getStart(), 
+			searchContainer.getEnd(), 
+			searchContainer.getOrderByComparator());
+
+total = TvShowLocalServiceUtil.getTvShowsCount(groupId);
+
+pageContext.setAttribute("results", results);
+pageContext.setAttribute("total", total);
+%>
