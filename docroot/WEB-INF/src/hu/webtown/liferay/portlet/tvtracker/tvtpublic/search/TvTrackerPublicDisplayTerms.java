@@ -16,34 +16,19 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 	
 	public static final String GROUP_ID = "groupId";
 	public static final String TVSHOW_TITLE = "tvShowTitle";
-	public static final String TVSHOW_PREMIER_YEAR = "tvShowPremierYear";
-	public static final String TVSHOW_PREMIER_MONTH = "tvShowPremierMonth";
-	public static final String TVSHOW_PREMIER_DAY = "tvShowPremierDay";
 	public static final String TVSHOW_DESCRIPTION = "tvShowDescription";
 	
 	public static final String DATE_RANGE_TYPE = "dateRangeType";
-    public static final String END_DATE_DAY = "endDateDay";
-    public static final String END_DATE_MONTH = "endDateMonth";
     public static final String END_DATE_YEAR = "endDateYear";
-    public static final String START_DATE_DAY = "startDateDay";
-    public static final String START_DATE_MONTH = "startDateMonth";
     public static final String START_DATE_YEAR = "startDateYear";
 
 	private long groupId;
 	private String tvShowTitle;
-	private int tvShowPremierYear;
-	private int tvShowPremierMonth;
-	private int tvShowPremierDay;
 	private String tvShowDescription;
 	
 	private int dateRangeType;
-    private int endDateDay;
-    private int endDateMonth;
     private int endDateYear;
-    private int startDateDay;
-    private int startDateMonth;
     private int startDateYear;
-    private int firstDayOfWeek;
     private int yearRangeEnd;
     private int yearRangeStart;
 	
@@ -54,37 +39,21 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 				.getAttribute(CustomWebKeys.THEME_DISPLAY);
 		
 		tvShowTitle = ParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE);
-		tvShowPremierYear = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_YEAR);
-		tvShowPremierMonth = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_MONTH);
-		tvShowPremierDay = ParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_PREMIER_DAY);
 		tvShowDescription = ParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION);
 		groupId = setGroupId(portletRequest);
 		
 		Calendar today = CalendarFactoryUtil
 				.getCalendar(themeDisplay.getTimeZone(), themeDisplay.getLocale());
 
-		Calendar calendar = CalendarFactoryUtil
-				.getCalendar(themeDisplay.getTimeZone(), themeDisplay.getLocale());
-		calendar.add(Calendar.MONTH, -1);
-
 		dateRangeType = ParamUtil.getInteger(
 				portletRequest, TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE, DateRangeType.ANYTIME.getKey());
-		endDateDay = ParamUtil.getInteger(
-				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_DAY, today.get(Calendar.DATE));    
-		endDateMonth = ParamUtil.getInteger(
-				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_MONTH, today.get(Calendar.MONTH));
 		endDateYear = ParamUtil.getInteger(
 				portletRequest, TvTrackerPublicDisplayTerms.END_DATE_YEAR, today.get(Calendar.YEAR));
-		startDateDay = ParamUtil.getInteger(
-				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_DAY, calendar.get(Calendar.DATE));
-		startDateMonth = ParamUtil.getInteger(
-				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_MONTH, calendar.get(Calendar.MONTH));
 		startDateYear = ParamUtil.getInteger(
-				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_YEAR, calendar.get(Calendar.YEAR));
-		
-		firstDayOfWeek = today.getFirstDayOfWeek() - 1;
-		yearRangeEnd = today.get(Calendar.YEAR);
-		yearRangeStart = today.get(Calendar.YEAR) - 100;
+				portletRequest, TvTrackerPublicDisplayTerms.START_DATE_YEAR, today.get(Calendar.YEAR));
+
+		yearRangeEnd = today.get(Calendar.YEAR) + 5;
+		yearRangeStart = today.get(Calendar.YEAR) - 50;
 	}
 
     public long setGroupId(PortletRequest portletRequest) {
@@ -118,30 +87,6 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 		this.tvShowTitle = tvShowTitle;
 	}
 
-	public int getTvShowPremierYear() {
-		return tvShowPremierYear;
-	}
-
-	public void setTvShowPremierYear(int tvShowPremierYear) {
-		this.tvShowPremierYear = tvShowPremierYear;
-	}
-
-	public int getTvShowPremierMonth() {
-		return tvShowPremierMonth;
-	}
-
-	public void setTvShowPremierMonth(int tvShowPremierMonth) {
-		this.tvShowPremierMonth = tvShowPremierMonth;
-	}
-
-	public int getTvShowPremierDay() {
-		return tvShowPremierDay;
-	}
-
-	public void setTvShowPremierDay(int tvShowPremierDay) {
-		this.tvShowPremierDay = tvShowPremierDay;
-	}
-
 	public String getTvShowDescription() {
 		return tvShowDescription;
 	}
@@ -158,22 +103,6 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 		this.dateRangeType = dateRangeType;
 	}
 
-	public int getEndDateDay() {
-		return endDateDay;
-	}
-
-	public void setEndDateDay(int endDateDay) {
-		this.endDateDay = endDateDay;
-	}
-
-	public int getEndDateMonth() {
-		return endDateMonth;
-	}
-
-	public void setEndDateMonth(int endDateMonth) {
-		this.endDateMonth = endDateMonth;
-	}
-
 	public int getEndDateYear() {
 		return endDateYear;
 	}
@@ -182,36 +111,12 @@ public class TvTrackerPublicDisplayTerms extends DisplayTerms {
 		this.endDateYear = endDateYear;
 	}
 
-	public int getStartDateDay() {
-		return startDateDay;
-	}
-
-	public void setStartDateDay(int startDateDay) {
-		this.startDateDay = startDateDay;
-	}
-
-	public int getStartDateMonth() {
-		return startDateMonth;
-	}
-
-	public void setStartDateMonth(int startDateMonth) {
-		this.startDateMonth = startDateMonth;
-	}
-
 	public int getStartDateYear() {
 		return startDateYear;
 	}
 
 	public void setStartDateYear(int startDateYear) {
 		this.startDateYear = startDateYear;
-	}
-
-	public int getFirstDayOfWeek() {
-		return firstDayOfWeek;
-	}
-
-	public void setFirstDayOfWeek(int firstDayOfWeek) {
-		this.firstDayOfWeek = firstDayOfWeek;
 	}
 
 	public int getYearRangeEnd() {

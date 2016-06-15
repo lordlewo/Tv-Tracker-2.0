@@ -16,6 +16,8 @@
 <%@page import="hu.webtown.liferay.portlet.tvtracker.tvtpublic.search.TvTrackerPublicDisplayTerms"%>
 <%@page import="hu.webtown.liferay.portlet.tvtracker.tvtpublic.search.TvTrackerPublicSearchTerms"%>
 
+<%@page import="hu.webtown.liferay.portlet.model.constant.DateRangeType"%>
+
 <%@page import="hu.webtown.liferay.portlet.model.TvShow"%>
 <%@page import="hu.webtown.liferay.portlet.model.Season"%>
 <%@page import="hu.webtown.liferay.portlet.model.Episode"%>

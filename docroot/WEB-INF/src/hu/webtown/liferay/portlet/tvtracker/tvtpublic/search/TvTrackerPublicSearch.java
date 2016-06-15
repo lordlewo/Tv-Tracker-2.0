@@ -79,28 +79,8 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 		
 		setParameter(
 				iteratorURL, 
-				TvTrackerPublicDisplayTerms.END_DATE_DAY, 
-				String.valueOf(displayTerms.getEndDateDay()));
-		
-		setParameter(
-				iteratorURL, 
-				TvTrackerPublicDisplayTerms.END_DATE_MONTH, 
-				String.valueOf(displayTerms.getEndDateMonth()));
-		
-		setParameter(
-				iteratorURL, 
 				TvTrackerPublicDisplayTerms.END_DATE_YEAR, 
 				String.valueOf(displayTerms.getEndDateYear()));
-		
-		setParameter(
-				iteratorURL, 
-				TvTrackerPublicDisplayTerms.START_DATE_DAY, 
-				String.valueOf(displayTerms.getEndDateDay()));
-		
-		setParameter(
-				iteratorURL, 
-				TvTrackerPublicDisplayTerms.START_DATE_MONTH, 
-				String.valueOf(displayTerms.getEndDateMonth()));
 		
 		setParameter(
 				iteratorURL, 
