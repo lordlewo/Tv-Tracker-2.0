@@ -29,6 +29,7 @@ public class TvTrackerPublicPortlet extends MVCPortlet {
 			throws PortletException, IOException {
 
 		super.render(renderRequest, renderResponse);
+		
 	}
 	
 	@Override

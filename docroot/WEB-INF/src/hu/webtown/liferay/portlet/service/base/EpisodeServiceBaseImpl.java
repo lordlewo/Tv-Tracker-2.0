@@ -30,6 +30,7 @@ import hu.webtown.liferay.portlet.model.Episode;
 import hu.webtown.liferay.portlet.service.EpisodeService;
 import hu.webtown.liferay.portlet.service.persistence.EpisodePersistence;
 import hu.webtown.liferay.portlet.service.persistence.SeasonPersistence;
+import hu.webtown.liferay.portlet.service.persistence.TvShowFinder;
 import hu.webtown.liferay.portlet.service.persistence.TvShowPersistence;
 
 import javax.sql.DataSource;
@@ -220,6 +221,24 @@ public abstract class EpisodeServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setTvShowPersistence(TvShowPersistence tvShowPersistence) {
 		this.tvShowPersistence = tvShowPersistence;
+	}
+
+	/**
+	 * Returns the tv show finder.
+	 *
+	 * @return the tv show finder
+	 */
+	public TvShowFinder getTvShowFinder() {
+		return tvShowFinder;
+	}
+
+	/**
+	 * Sets the tv show finder.
+	 *
+	 * @param tvShowFinder the tv show finder
+	 */
+	public void setTvShowFinder(TvShowFinder tvShowFinder) {
+		this.tvShowFinder = tvShowFinder;
 	}
 
 	/**
@@ -563,6 +582,8 @@ public abstract class EpisodeServiceBaseImpl extends BaseServiceImpl
 	protected hu.webtown.liferay.portlet.service.TvShowService tvShowService;
 	@BeanReference(type = TvShowPersistence.class)
 	protected TvShowPersistence tvShowPersistence;
+	@BeanReference(type = TvShowFinder.class)
+	protected TvShowFinder tvShowFinder;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)

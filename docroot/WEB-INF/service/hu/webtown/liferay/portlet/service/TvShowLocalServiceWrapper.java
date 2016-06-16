@@ -390,6 +390,32 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 	}
 
 	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
+		long groupId, java.lang.String keywords, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.search(groupId, keywords, start, end, obc);
+	}
+
+	@Override
+	public int searchCount(long groupId, java.lang.String keywords)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.searchCount(groupId, keywords);
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
+		long companyId, long groupId, java.lang.String tvShowTitle,
+		java.lang.String tvShowDescription, int tvShowPremierYearGT,
+		int tvShowPremierYearLT, boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.search(companyId, groupId, tvShowTitle,
+			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
+			andOperator, start, end, obc);
+	}
+
+	@Override
 	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,
 		long groupId, java.lang.String tvShowTitle,
 		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,

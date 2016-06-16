@@ -10,4 +10,5 @@
 	<bean id="hu.webtown.liferay.portlet.service.TvShowLocalService" class="hu.webtown.liferay.portlet.service.impl.TvShowLocalServiceImpl" />
 	<bean id="hu.webtown.liferay.portlet.service.TvShowService" class="hu.webtown.liferay.portlet.service.impl.TvShowServiceImpl" />
 	<bean id="hu.webtown.liferay.portlet.service.persistence.TvShowPersistence" class="hu.webtown.liferay.portlet.service.persistence.TvShowPersistenceImpl" parent="basePersistence" />
+	<bean id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder" class="hu.webtown.liferay.portlet.service.persistence.TvShowFinderImpl" parent="basePersistence" />
 </beans>

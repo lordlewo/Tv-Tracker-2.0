@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<custom-sql>
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByPremierYear">
+	<![CDATA[
+		SELECT TvT_TvShow.* 
+		FROM TvT_TvShow 
+		WHERE 
+			(YEAR(TvT_TvShow.tvShowPremierDate) LIKE ?)
+	]]>
+	</sql>
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByG_P">
+	<![CDATA[
+		SELECT TvT_TvShow.* 
+		FROM TvT_TvShow 
+		WHERE 
+			(TvT_TvShow.groupId = ?) AND 
+			(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?)
+	]]>
+	</sql>
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByG_P_T_D">
+	<![CDATA[
+		SELECT TvT_TvShow.* 
+			FROM TvT_TvShow 
+			WHERE 
+				(TvT_TvShow.groupId = ?) AND 
+				(
+					(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?) OR
+					(TvT_TvShow.tvShowTitle LIKE ?) OR
+					(TvT_TvShow.tvShowDescription LIKE ?)
+				)
+	]]>
+	</sql>
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.countByG_P_T_D">
+	<![CDATA[
+		SELECT COUNT(*) AS COUNT_VALUE
+			FROM TvT_TvShow 
+			WHERE 
+				(TvT_TvShow.groupId = ?) AND 
+				(
+					(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?) OR
+					(TvT_TvShow.tvShowTitle LIKE ?) OR
+					(TvT_TvShow.tvShowDescription LIKE ?)
+				)
+	]]>
+	</sql>
+</custom-sql>

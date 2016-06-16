@@ -1,11 +1,21 @@
+<%@page import="hu.webtown.liferay.portlet.service.TvShowLocalServiceUtil"%>
 <%
-results = TvShowLocalServiceUtil.getTvShows(
-			groupId, 
+if (searchTerms.isAdvancedSearch()) {
+	
+} else {
+	
+	results = TvShowLocalServiceUtil.search(
+			searchTerms.getGroupId(), 
+			searchTerms.getKeywords(), 
 			searchContainer.getStart(), 
 			searchContainer.getEnd(), 
 			searchContainer.getOrderByComparator());
 
-total = TvShowLocalServiceUtil.getTvShowsCount(groupId);
+	total = TvShowLocalServiceUtil.searchCount(
+			searchTerms.getGroupId(), 
+			searchTerms.getKeywords());
+	
+}
 
 pageContext.setAttribute("results", results);
 pageContext.setAttribute("total", total);

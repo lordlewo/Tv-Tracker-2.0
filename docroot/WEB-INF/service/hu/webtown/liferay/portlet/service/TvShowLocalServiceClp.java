@@ -159,95 +159,114 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 
 		_methodParameterTypes28 = new String[] { "long" };
 
-		_methodName29 = "addTvShow";
+		_methodName29 = "search";
 
 		_methodParameterTypes29 = new String[] {
+				"long", "java.lang.String", "int", "int",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			};
+
+		_methodName30 = "searchCount";
+
+		_methodParameterTypes30 = new String[] { "long", "java.lang.String" };
+
+		_methodName31 = "search";
+
+		_methodParameterTypes31 = new String[] {
+				"long", "long", "java.lang.String", "java.lang.String", "int",
+				"int", "boolean", "int", "int",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			};
+
+		_methodName32 = "addTvShow";
+
+		_methodParameterTypes32 = new String[] {
 				"long", "long", "java.lang.String", "java.util.Date",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName30 = "addTvShowWithSeason";
+		_methodName33 = "addTvShowWithSeason";
 
-		_methodParameterTypes30 = new String[] {
+		_methodParameterTypes33 = new String[] {
 				"long", "long", "hu.webtown.liferay.portlet.model.TvShow",
 				"java.util.List", "com.liferay.portal.service.ServiceContext",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName31 = "updateTvShow";
+		_methodName34 = "updateTvShow";
 
-		_methodParameterTypes31 = new String[] {
+		_methodParameterTypes34 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.util.Date",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName32 = "updateTvShowWithSeason";
+		_methodName35 = "updateTvShowWithSeason";
 
-		_methodParameterTypes32 = new String[] {
+		_methodParameterTypes35 = new String[] {
 				"long", "long", "hu.webtown.liferay.portlet.model.TvShow",
 				"java.util.List", "com.liferay.portal.service.ServiceContext",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName33 = "deleteTvShow";
+		_methodName36 = "deleteTvShow";
 
-		_methodParameterTypes33 = new String[] {
+		_methodParameterTypes36 = new String[] {
 				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName34 = "deleteTvShow";
-
-		_methodParameterTypes34 = new String[] {
-				"long", "long", "com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName35 = "deleteTvShow";
-
-		_methodParameterTypes35 = new String[] {
-				"hu.webtown.liferay.portlet.model.TvShow",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName36 = "deleteTvShowWithSeason";
-
-		_methodParameterTypes36 = new String[] {
-				"long", "long", "com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName37 = "addTvShowResources";
+		_methodName37 = "deleteTvShow";
 
 		_methodParameterTypes37 = new String[] {
-				"hu.webtown.liferay.portlet.model.TvShow", "boolean", "boolean"
+				"long", "long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName38 = "addTvShowModelResources";
+		_methodName38 = "deleteTvShow";
 
 		_methodParameterTypes38 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
-				"java.lang.String[][]", "java.lang.String[][]"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName39 = "updateTvShowResources";
+		_methodName39 = "deleteTvShowWithSeason";
 
 		_methodParameterTypes39 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName40 = "addTvShowResources";
+
+		_methodParameterTypes40 = new String[] {
+				"hu.webtown.liferay.portlet.model.TvShow", "boolean", "boolean"
+			};
+
+		_methodName41 = "addTvShowModelResources";
+
+		_methodParameterTypes41 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
 
-		_methodName40 = "updateTvShowModelResources";
+		_methodName42 = "updateTvShowResources";
 
-		_methodParameterTypes40 = new String[] {
+		_methodParameterTypes42 = new String[] {
+				"hu.webtown.liferay.portlet.model.TvShow",
+				"java.lang.String[][]", "java.lang.String[][]"
+			};
+
+		_methodName43 = "updateTvShowModelResources";
+
+		_methodParameterTypes43 = new String[] {
 				"hu.webtown.liferay.portlet.model.TvShow",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName41 = "updateTvShowAsset";
+		_methodName44 = "updateTvShowAsset";
 
-		_methodParameterTypes41 = new String[] {
+		_methodParameterTypes44 = new String[] {
 				"long", "hu.webtown.liferay.portlet.model.TvShow", "long[][]",
 				"java.lang.String[][]", "long[][]"
 			};
@@ -1125,6 +1144,130 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 	}
 
 	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
+		long groupId, java.lang.String keywords, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29,
+					new Object[] {
+						groupId,
+						
+					ClpSerializer.translateInput(keywords),
+						
+					start,
+						
+					end,
+						
+					ClpSerializer.translateInput(obc)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<hu.webtown.liferay.portlet.model.TvShow>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int searchCount(long groupId, java.lang.String keywords)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
+					new Object[] { groupId, ClpSerializer.translateInput(
+							keywords) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
+		long companyId, long groupId, java.lang.String tvShowTitle,
+		java.lang.String tvShowDescription, int tvShowPremierYearGT,
+		int tvShowPremierYearLT, boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName31,
+					_methodParameterTypes31,
+					new Object[] {
+						companyId,
+						
+					groupId,
+						
+					ClpSerializer.translateInput(tvShowTitle),
+						
+					ClpSerializer.translateInput(tvShowDescription),
+						
+					tvShowPremierYearGT,
+						
+					tvShowPremierYearLT,
+						
+					andOperator,
+						
+					start,
+						
+					end,
+						
+					ClpSerializer.translateInput(obc)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<hu.webtown.liferay.portlet.model.TvShow>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,
 		long groupId, java.lang.String tvShowTitle,
 		java.util.Date tvShowPremierDate, java.lang.String tvShowDescription,
@@ -1136,8 +1279,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName29,
-					_methodParameterTypes29,
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32,
 					new Object[] {
 						userId,
 						
@@ -1194,8 +1337,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName30,
-					_methodParameterTypes30,
+			returnObj = _invokableLocalService.invokeMethod(_methodName33,
+					_methodParameterTypes33,
 					new Object[] {
 						userId,
 						
@@ -1245,8 +1388,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName31,
-					_methodParameterTypes31,
+			returnObj = _invokableLocalService.invokeMethod(_methodName34,
+					_methodParameterTypes34,
 					new Object[] {
 						userId,
 						
@@ -1305,8 +1448,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName32,
-					_methodParameterTypes32,
+			returnObj = _invokableLocalService.invokeMethod(_methodName35,
+					_methodParameterTypes35,
 					new Object[] {
 						userId,
 						
@@ -1352,8 +1495,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName33,
-					_methodParameterTypes33,
+			returnObj = _invokableLocalService.invokeMethod(_methodName36,
+					_methodParameterTypes36,
 					new Object[] {
 						tvShowId,
 						
@@ -1391,8 +1534,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName34,
-					_methodParameterTypes34,
+			returnObj = _invokableLocalService.invokeMethod(_methodName37,
+					_methodParameterTypes37,
 					new Object[] {
 						groupId,
 						
@@ -1433,8 +1576,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName35,
-					_methodParameterTypes35,
+			returnObj = _invokableLocalService.invokeMethod(_methodName38,
+					_methodParameterTypes38,
 					new Object[] {
 						ClpSerializer.translateInput(tvShow),
 						
@@ -1472,8 +1615,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName36,
-					_methodParameterTypes36,
+			returnObj = _invokableLocalService.invokeMethod(_methodName39,
+					_methodParameterTypes39,
 					new Object[] {
 						groupId,
 						
@@ -1512,8 +1655,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName37,
-				_methodParameterTypes37,
+			_invokableLocalService.invokeMethod(_methodName40,
+				_methodParameterTypes40,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1550,8 +1693,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName38,
-				_methodParameterTypes38,
+			_invokableLocalService.invokeMethod(_methodName41,
+				_methodParameterTypes41,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1588,8 +1731,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName39,
-				_methodParameterTypes39,
+			_invokableLocalService.invokeMethod(_methodName42,
+				_methodParameterTypes42,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1626,8 +1769,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName40,
-				_methodParameterTypes40,
+			_invokableLocalService.invokeMethod(_methodName43,
+				_methodParameterTypes43,
 				new Object[] {
 					ClpSerializer.translateInput(tvShow),
 					
@@ -1663,8 +1806,8 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName41,
-				_methodParameterTypes41,
+			_invokableLocalService.invokeMethod(_methodName44,
+				_methodParameterTypes44,
 				new Object[] {
 					userId,
 					
@@ -1781,4 +1924,10 @@ public class TvShowLocalServiceClp implements TvShowLocalService {
 	private String[] _methodParameterTypes40;
 	private String _methodName41;
 	private String[] _methodParameterTypes41;
+	private String _methodName42;
+	private String[] _methodParameterTypes42;
+	private String _methodName43;
+	private String[] _methodParameterTypes43;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
 }

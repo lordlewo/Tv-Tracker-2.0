@@ -17,10 +17,8 @@ package hu.webtown.liferay.portlet.service.impl;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.search.Indexer;
 import com.liferay.portal.kernel.search.IndexerRegistryUtil;
-import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
@@ -44,9 +42,9 @@ import hu.webtown.liferay.portlet.tvtracker.util.CustomCalendarUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -213,16 +211,66 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	/********** BLL - Search Entity ********************************************/
 	/***************************************************************************/
 	
-	public Hits search(
-			long companyId, long groupId, 
-			String tvShowTitle, String tvShowDescription,
-	        boolean andSearch, 
-	        int start, int end, 
-	        Sort sort) throws SystemException {
+	public List<TvShow> search(
+			long groupId, 
+			String keywords, 
+			int start, int end, 
+			OrderByComparator obc)
+	        throws SystemException { 
 		
-		return null;
+		List<TvShow> searchResult = tvShowFinder
+				.findByKeyWords(groupId, keywords, start, end, obc);
+		
+		List<TvShow> copy = new ArrayList<>(searchResult);
+		
+		Collections.sort(copy, obc);
+		
+		for (TvShow tvShow : copy) {
+			
+			// init calculeted props
+			
+			long userId = tvShow.getUserId();
+			User user = userLocalService.fetchUserById(userId);
+			Locale locale = user.getLocale();
+			TimeZone timeZone = user.getTimeZone();
+			
+			setCalculatedProps(groupId, tvShow, locale, timeZone);
+		}
+		
+		return copy;
 	}
 	
+	public int searchCount(
+			long groupId, 
+			String keywords)
+	        throws SystemException { 
+		
+		int countResult = tvShowFinder.countByKeyWords(groupId, keywords);
+		
+		return countResult;
+	}
+	
+	public List<TvShow> search(
+			long companyId, long groupId, 
+			String tvShowTitle, 
+			String tvShowDescription,
+			int tvShowPremierYearGT,
+			int tvShowPremierYearLT,
+			boolean andOperator,
+			int start, int end, 
+			OrderByComparator obc)
+	        throws SystemException { 
+		
+		return tvShowFinder.findByC_G_T_D_PG_PL(
+				groupId, 
+				tvShowTitle, 
+				tvShowDescription, 
+				tvShowPremierYearGT, 
+				tvShowPremierYearLT, 
+				andOperator, 
+				start, end, obc);
+	}
+
 	/***************************************************************************/
 	/********** BLL - CREATE Entity ********************************************/
 	/***************************************************************************/
