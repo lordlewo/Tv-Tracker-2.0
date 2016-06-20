@@ -96,6 +96,19 @@
 </aui:nav-bar>
 
 <aui:script>
-	Liferay.Util.toggleSelectBox("<portlet:namespace /><%= TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE %>", function(currentValue, value) { return currentValue == <%= DateRangeType.BETWEEN.getKey() %> || currentValue == <%= DateRangeType.DATE_FROM.getKey() %>; }, "<portlet:namespace />premierYearFrom");
-	Liferay.Util.toggleSelectBox("<portlet:namespace /><%= TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE %>", function(currentValue, value) { return currentValue == <%= DateRangeType.BETWEEN.getKey() %> || currentValue == <%= DateRangeType.DATE_TO.getKey() %>; }, "<portlet:namespace />premierYearTo");
+	Liferay.Util.toggleSelectBox(
+			"<portlet:namespace /><%= TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE %>", 
+			function(currentValue, value) { 
+				return (currentValue == <%= DateRangeType.BETWEEN.getKey() %>) || 
+					(currentValue == <%= DateRangeType.DATE_FROM.getKey() %>); 
+			}, 
+			"<portlet:namespace />premierYearFrom");
+	
+	Liferay.Util.toggleSelectBox(
+			"<portlet:namespace /><%= TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE %>",
+			function(currentValue, value) { 
+				return (currentValue == <%= DateRangeType.BETWEEN.getKey() %>) || 
+					(currentValue == <%= DateRangeType.DATE_TO.getKey() %>); 
+			}, 
+			"<portlet:namespace />premierYearTo");
 </aui:script>
