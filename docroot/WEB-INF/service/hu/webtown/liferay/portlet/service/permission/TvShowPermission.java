@@ -110,7 +110,7 @@ public class TvShowPermission {
 		return contains(permissionChecker, tvShow, actionId);
 	}
 	
-	public static boolean contains(PermissionChecker permissionChecker,long groupId, long tvShowId, String actionId)
+	public static boolean contains(PermissionChecker permissionChecker, long groupId, long tvShowId, String actionId)
 			throws PortalException,	SystemException {
 
 		// retrieve the appropriate entity instance from the database

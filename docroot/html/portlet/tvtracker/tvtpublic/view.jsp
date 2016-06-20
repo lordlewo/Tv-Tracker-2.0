@@ -1,4 +1,3 @@
-<%@page import="com.liferay.portal.kernel.dao.search.SearchContainer"%>
 <%@ include file="/html/portlet/tvtracker/tvtpublic/init.jsp" %>
 	
 <liferay-portlet:renderURL var="navigateToTestURL">
@@ -49,9 +48,11 @@ Go to <strong>test.jsp</strong>:
 					<portlet:renderURL var="tvShowDetailsURL">
 						<portlet:param name="mvcPath" value='<%= templatePath + "detail/tvshow_detail.jsp" %>' />
 						<portlet:param name="backURL" value="<%= searchContainer.getIteratorURL().toString() %>" />
+						<portlet:param name="groupId" value="<%= String.valueOf(tvShow.getGroupId()) %>"/>
 						<portlet:param name="<%= CustomWebKeys.TVSHOW_ID %>" value="<%= String.valueOf(tvShow.getTvShowId()) %>"/>
-						<%-- (value = 0) -> tvshow.details tab selected | (value != 0) -> tvshow.seasons tab selected --%>
-						<portlet:param name="selected_tab_tvshow" value="0" />
+						<portlet:param 
+							name="<%= CustomConstants.PUBLIC_SEARCH_TVSHOW_DETAIL_SELECTED_TAB %>" 
+							value="<%= CustomConstants.PUBLIC_TVSHOW_DETAILS_TAB %>"/>
 					</portlet:renderURL>
 		        	
 	        		<%@ include file="/html/portlet/tvtracker/tvtpublic/search_columns.jspf" %>

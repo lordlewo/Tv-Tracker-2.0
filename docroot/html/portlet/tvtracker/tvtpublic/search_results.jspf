@@ -1,22 +1,45 @@
-<%@page import="hu.webtown.liferay.portlet.service.TvShowLocalServiceUtil"%>
+
 <%
-if (searchTerms.isAdvancedSearch()) {
+	if (searchTerms.isAdvancedSearch()) {
+		
+		results = TvShowLocalServiceUtil.search(
+				company.getCompanyId(), 
+				searchTerms.getGroupId(), 
+				searchTerms.getTvShowTitle(), 
+				searchTerms.getTvShowDescription(), 
+				searchTerms.getStartDateYear(), 
+				searchTerms.getEndDateYear(),
+				searchTerms.isAndOperator(),
+				searchContainer.getStart(), 
+				searchContainer.getEnd(), 
+				searchContainer.getOrderByComparator());
+		
+		total = TvShowLocalServiceUtil.searchCount(
+				company.getCompanyId(), 
+				searchTerms.getGroupId(), 
+				searchTerms.getTvShowTitle(), 
+				searchTerms.getTvShowDescription(), 
+				searchTerms.getStartDateYear(), 
+				searchTerms.getEndDateYear(), 
+				searchTerms.isAndOperator());
+		
+	} else {
+		
+		results = TvShowLocalServiceUtil.search(
+				company.getCompanyId(), 
+				searchTerms.getGroupId(), 
+				searchTerms.getKeywords(), 
+				searchContainer.getStart(), 
+				searchContainer.getEnd(), 
+				searchContainer.getOrderByComparator());
 	
-} else {
+		total = TvShowLocalServiceUtil.searchCount(
+				company.getCompanyId(), 
+				searchTerms.getGroupId(), 
+				searchTerms.getKeywords());
+		
+	}
 	
-	results = TvShowLocalServiceUtil.search(
-			searchTerms.getGroupId(), 
-			searchTerms.getKeywords(), 
-			searchContainer.getStart(), 
-			searchContainer.getEnd(), 
-			searchContainer.getOrderByComparator());
-
-	total = TvShowLocalServiceUtil.searchCount(
-			searchTerms.getGroupId(), 
-			searchTerms.getKeywords());
-	
-}
-
-pageContext.setAttribute("results", results);
-pageContext.setAttribute("total", total);
+	pageContext.setAttribute("results", results);
+	pageContext.setAttribute("total", total);
 %>

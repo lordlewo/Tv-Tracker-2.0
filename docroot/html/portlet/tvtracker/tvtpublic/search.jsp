@@ -1,4 +1,3 @@
-<%@page import="java.util.Date"%>
 <%@ include file="/html/portlet/tvtracker/tvtpublic/init.jsp" %>
 
 <%
@@ -64,7 +63,8 @@
 							min="<%= displayTerms.getYearRangeStart() %>" 
 							name="<%= TvTrackerPublicDisplayTerms.START_DATE_YEAR %>" 
 							size="20" 
-							type="number" />
+							type="number" 
+							value="<%= displayTerms.getStartDateYear() %>" />
 					</div>
 				</div>
 	
@@ -77,7 +77,7 @@
 										(displayTerms.getDateRangeType() == DateRangeType.DATE_FROM.getKey())
 									) ? "aui-helper-hidden" : StringPool.BLANK;
 				%>
-				<div class='aui-field aui-field-wrapper wt-field-wrapper wt-datetime-field-wrapper <%= toClass%>' id="<portlet:namespace/>premierYearTo">
+				<div class='aui-field aui-field-wrapper wt-field-wrapper wt-datetime-field-wrapper <%= toClass %>' id="<portlet:namespace/>premierYearTo">
 					<div class="aui-field-wrapper-content">
 						<aui:input 
 							label="premier-year-interval-to" 
@@ -85,7 +85,8 @@
 							min="<%= displayTerms.getYearRangeStart() %>" 
 							name="<%= TvTrackerPublicDisplayTerms.END_DATE_YEAR %>" 
 							size="20" 
-							type="number"/>
+							type="number" 
+							value="<%= displayTerms.getEndDateYear() %>" />
 					</div>
 				</div>
 			</div>

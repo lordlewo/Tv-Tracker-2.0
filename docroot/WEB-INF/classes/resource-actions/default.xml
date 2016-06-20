@@ -92,6 +92,7 @@
 	<model-resource>
 		<model-name>hu.webtown.liferay.portlet.model.Episode</model-name>
 		<portlet-ref>
+			<portlet-name>tv-tracker-public</portlet-name>
 			<portlet-name>tv-tracker-episode-admin</portlet-name>
 		</portlet-ref>
 		<permissions>
@@ -111,13 +112,13 @@
 				<action-key>DELETE</action-key>
 				<action-key>PERMISSIONS</action-key>
 				<action-key>UPDATE</action-key>
-				<action-key>VIEW</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>
 	<model-resource>
 		<model-name>hu.webtown.liferay.portlet.model.Season</model-name>
 		<portlet-ref>
+			<portlet-name>tv-tracker-public</portlet-name>
 			<portlet-name>tv-tracker-tv-show-admin</portlet-name>
 		</portlet-ref>
 		<permissions>
@@ -137,13 +138,13 @@
 				<action-key>DELETE</action-key>
 				<action-key>PERMISSIONS</action-key>
 				<action-key>UPDATE</action-key>
-				<action-key>VIEW</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>
 	<model-resource>
 		<model-name>hu.webtown.liferay.portlet.model.TvShow</model-name>
 		<portlet-ref>
+			<portlet-name>tv-tracker-public</portlet-name>
 			<portlet-name>tv-tracker-tv-show-admin</portlet-name>
 		</portlet-ref>
 		<permissions>
@@ -165,7 +166,6 @@
 				<action-key>DELETE</action-key>
 				<action-key>PERMISSIONS</action-key>
 				<action-key>UPDATE</action-key>
-				<action-key>VIEW</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>

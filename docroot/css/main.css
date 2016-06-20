@@ -1,0 +1,134 @@
+/********************************************************************/
+/************** Public **********************************************/
+/********************************************************************/
+
+.aui .table th, .aui .table td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.tvShowHeaderRow, .seasonHeaderRow {
+	margin-bottom: 20px; 
+	border-bottom: 2px solid #ccc;
+}
+
+.aui img.tvShowImage, .aui img.seasonImage {
+	border-radius: 25px; 
+	border:2px solid #ccc; 
+	padding:2px; 
+	background:#eee;
+}
+
+.tvShowDetailsTab, .tvShowSeasonsTab, .seasonDetailsTab, .seasonEpisodesTab {
+	border-radius: 0px 0px 25px 25px;
+	border:2px solid #ccc;
+	padding: 20px;
+	background:#eee;
+ 	margin: 10px 0px;
+}
+
+.tvShowDetailsTabRow, .seasonDetailsTabRow {
+	padding-left: 10px; 
+	padding-top: 10px;
+}
+
+.tvShowDetailsRowTitle, .seasonDetailsRowTitle {
+	margin-bottom: 10px; 
+	border-bottom: 2px solid #ccc;
+}
+
+.tvShowDetailsRowText, .seasonDetailsRowText {
+	padding-left: 5px;
+	padding-right: 10px; 
+}
+
+.tvShowDeatilsRowTextDetails, .seasonDetailsRowTextDetails {
+	text-align: justify;
+}
+
+/*************************************************************/
+
+.tvShowSeasonsTabHeader{
+	padding: 10px; 
+	text-align: center;
+}
+
+.tvShowSeasonsTabRow {
+	padding: 10px; 
+	border-top: 2px solid #cacaca
+}
+
+.tvShowSeasonsTabRowImage, .seasonEpisodesTabRowImage {
+	padding: 10px;
+}
+
+.tvShowSeasonsTabRowText {
+	text-align: center; 
+	margin-top: 20px;
+}
+
+/******************************************************************/
+
+.seasonEpisodesTabRow{
+	padding: 10px; 
+	border-bottom: 2px solid #cacaca;
+}
+
+.seasonEpisodesTabRowTitle {
+	padding-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+}
+
+.seasonEpisodesTabRowText {
+	padding-left: 20px;
+}
+
+.seasonEpisodesTabRowDescription {
+	padding-left: 10px;
+}
+
+.seasonEpisodesTabRowDescriptionText {
+	border-top: 2px solid #ccc; 
+	padding: 10px; 
+	text-align: justify;
+}
+
+/********************************************************************/
+/************** Admin ***********************************************/
+/********************************************************************/
+
+.tvShowAdmin, .episodeAdmin {
+	margin-right: 20px; 
+	margin-left: 20px;
+}
+
+.tvShowAdminCoverSelectionRow, .episodeAdminCoverSelectionRow {
+	margin: 30px 20px 30px 20px;
+}
+
+.tvShowAdminRow, .episodeAdminRow {
+	margin-left: 20px;
+}
+
+.tvShowAdminAssetCategories {
+	margin-bottom: 30px;
+}
+
+textarea.tvShowAdminDescriptionTextArea, textarea.episodeAdminDescriptionTextArea {
+	width: 600px; 
+	height: 200px;
+}
+
+.tvShowAdminAddSeasonRow {
+	padding-top: 20px;
+}
+
+.tvShowAdminAddSeasonCoverImage {
+	margin-bottom: 20px;
+}
+
+textarea.tvShowAdminAddSeasonDescriptionTextArea {
+	width: 400px; 
+	height: 200px;
+}

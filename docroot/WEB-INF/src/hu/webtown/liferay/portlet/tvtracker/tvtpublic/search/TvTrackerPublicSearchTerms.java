@@ -20,7 +20,15 @@ public class TvTrackerPublicSearchTerms extends TvTrackerPublicDisplayTerms {
 		String tvShowTitle = DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_TITLE);
 		String tvShowDescription = DAOParamUtil.getString(portletRequest, TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION);
 		
+		Integer dateRangeType = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE);
+		Integer endDateYear = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.END_DATE_YEAR);
+		Integer startDateYear = DAOParamUtil.getInteger(portletRequest, TvTrackerPublicDisplayTerms.START_DATE_YEAR);
+		
 		setTvShowTitle(tvShowTitle);
 		setTvShowDescription(tvShowDescription);
+		
+		setDateRangeType(dateRangeType);
+		setEndDateYear(endDateYear);
+		setStartDateYear(startDateYear);
 	}
 }

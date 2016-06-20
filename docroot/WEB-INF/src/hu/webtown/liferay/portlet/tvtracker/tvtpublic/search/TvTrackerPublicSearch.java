@@ -77,6 +77,11 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 				TvTrackerPublicDisplayTerms.TVSHOW_DESCRIPTION, 
 				displayTerms.getTvShowDescription());
 		
+        setParameter(
+                iteratorURL, 
+                TvTrackerPublicDisplayTerms.DATE_RANGE_TYPE,
+                String.valueOf(displayTerms.getDateRangeType()));
+		
 		setParameter(
 				iteratorURL, 
 				TvTrackerPublicDisplayTerms.END_DATE_YEAR, 
@@ -85,7 +90,7 @@ public class TvTrackerPublicSearch extends SearchContainer<TvShow> {
 		setParameter(
 				iteratorURL, 
 				TvTrackerPublicDisplayTerms.START_DATE_YEAR, 
-				String.valueOf(displayTerms.getEndDateYear()));
+				String.valueOf(displayTerms.getStartDateYear()));
 		
 		try {
 			

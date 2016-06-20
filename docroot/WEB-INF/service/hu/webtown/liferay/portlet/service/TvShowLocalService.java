@@ -340,12 +340,13 @@ public interface TvShowLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
-		long groupId, java.lang.String keywords, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator obc)
+		long companyId, long groupId, java.lang.String keywords, int start,
+		int end, com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public int searchCount(long groupId, java.lang.String keywords)
+	public int searchCount(long companyId, long groupId,
+		java.lang.String keywords)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -354,6 +355,12 @@ public interface TvShowLocalService extends BaseLocalService,
 		java.lang.String tvShowDescription, int tvShowPremierYearGT,
 		int tvShowPremierYearLT, boolean andOperator, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int searchCount(long companyId, long groupId,
+		java.lang.String tvShowTitle, java.lang.String tvShowDescription,
+		int tvShowPremierYearGT, int tvShowPremierYearLT, boolean andOperator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public hu.webtown.liferay.portlet.model.TvShow addTvShow(long userId,

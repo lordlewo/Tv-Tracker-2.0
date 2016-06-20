@@ -212,6 +212,7 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	/***************************************************************************/
 	
 	public List<TvShow> search(
+			long companyId,
 			long groupId, 
 			String keywords, 
 			int start, int end, 
@@ -219,7 +220,7 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	        throws SystemException { 
 		
 		List<TvShow> searchResult = tvShowFinder
-				.findByKeyWords(groupId, keywords, start, end, obc);
+				.findByKeyWords(companyId, groupId, keywords, start, end, obc);
 		
 		List<TvShow> copy = new ArrayList<>(searchResult);
 		
@@ -241,17 +242,19 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 	}
 	
 	public int searchCount(
+			long companyId,
 			long groupId, 
 			String keywords)
 	        throws SystemException { 
 		
-		int countResult = tvShowFinder.countByKeyWords(groupId, keywords);
+		int countResult = tvShowFinder.countByKeyWords(companyId, groupId, keywords);
 		
 		return countResult;
 	}
 	
 	public List<TvShow> search(
-			long companyId, long groupId, 
+			long companyId, 
+			long groupId, 
 			String tvShowTitle, 
 			String tvShowDescription,
 			int tvShowPremierYearGT,
@@ -261,14 +264,50 @@ public class TvShowLocalServiceImpl extends TvShowLocalServiceBaseImpl {
 			OrderByComparator obc)
 	        throws SystemException { 
 		
-		return tvShowFinder.findByC_G_T_D_PG_PL(
-				groupId, 
-				tvShowTitle, 
-				tvShowDescription, 
-				tvShowPremierYearGT, 
-				tvShowPremierYearLT, 
-				andOperator, 
-				start, end, obc);
+		List<TvShow> searchResult = tvShowFinder
+				.findByC_G_T_D_PG_PL(
+					companyId, groupId, 
+					tvShowTitle, tvShowDescription, 
+					tvShowPremierYearGT, tvShowPremierYearLT, 
+					andOperator, start, end, obc);
+		
+		List<TvShow> copy = new ArrayList<>(searchResult);
+		
+		Collections.sort(copy, obc);
+		
+		for (TvShow tvShow : copy) {
+			
+			// init calculeted props
+			
+			long userId = tvShow.getUserId();
+			User user = userLocalService.fetchUserById(userId);
+			Locale locale = user.getLocale();
+			TimeZone timeZone = user.getTimeZone();
+			
+			setCalculatedProps(groupId, tvShow, locale, timeZone);
+		}
+		
+		return copy;
+
+	}
+	
+	public int searchCount(
+			long companyId,
+			long groupId, 
+			String tvShowTitle, 
+			String tvShowDescription,
+			int tvShowPremierYearGT,
+			int tvShowPremierYearLT,
+			boolean andOperator) throws SystemException {
+		
+		int countResult = tvShowFinder
+				.countByC_G_T_D_PG_PL(
+						companyId, groupId, 
+						tvShowTitle, tvShowDescription, 
+						tvShowPremierYearGT, tvShowPremierYearLT, 
+						andOperator);
+		
+		return countResult;
 	}
 
 	/***************************************************************************/

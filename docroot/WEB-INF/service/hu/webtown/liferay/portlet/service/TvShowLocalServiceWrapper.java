@@ -391,16 +391,18 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 
 	@Override
 	public java.util.List<hu.webtown.liferay.portlet.model.TvShow> search(
-		long groupId, java.lang.String keywords, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator obc)
+		long companyId, long groupId, java.lang.String keywords, int start,
+		int end, com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _tvShowLocalService.search(groupId, keywords, start, end, obc);
+		return _tvShowLocalService.search(companyId, groupId, keywords, start,
+			end, obc);
 	}
 
 	@Override
-	public int searchCount(long groupId, java.lang.String keywords)
+	public int searchCount(long companyId, long groupId,
+		java.lang.String keywords)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _tvShowLocalService.searchCount(groupId, keywords);
+		return _tvShowLocalService.searchCount(companyId, groupId, keywords);
 	}
 
 	@Override
@@ -413,6 +415,16 @@ public class TvShowLocalServiceWrapper implements TvShowLocalService,
 		return _tvShowLocalService.search(companyId, groupId, tvShowTitle,
 			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
 			andOperator, start, end, obc);
+	}
+
+	@Override
+	public int searchCount(long companyId, long groupId,
+		java.lang.String tvShowTitle, java.lang.String tvShowDescription,
+		int tvShowPremierYearGT, int tvShowPremierYearLT, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tvShowLocalService.searchCount(companyId, groupId, tvShowTitle,
+			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
+			andOperator);
 	}
 
 	@Override

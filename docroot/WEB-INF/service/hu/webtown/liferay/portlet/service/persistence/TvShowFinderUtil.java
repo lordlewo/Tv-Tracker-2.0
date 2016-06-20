@@ -46,40 +46,76 @@ public class TvShowFinderUtil {
 	}
 
 	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByC_G_T_D_PG_PL(
-		long groupId, java.lang.String tvShowTitle,
+		long companyId, long groupId, java.lang.String tvShowTitle,
 		java.lang.String tvShowDescription, int tvShowPremierYearGT,
 		int tvShowPremierYearLT, boolean andOperator, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getFinder()
-				   .findByC_G_T_D_PG_PL(groupId, tvShowTitle,
+				   .findByC_G_T_D_PG_PL(companyId, groupId, tvShowTitle,
 			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
 			andOperator, start, end, obc);
 	}
 
-	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByKeyWords(
-		long groupId, java.lang.String keywords, int start, int end,
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByC_G_T_D_PG_PL(
+		long companyId, long groupId, java.lang.String tvShowTitle,
+		java.lang.String tvShowDescription, int tvShowPremierYearGT,
+		int tvShowPremierYearLT, boolean andOperator,
 		com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getFinder().findByKeyWords(groupId, keywords, start, end, obc);
+		return getFinder()
+				   .findByC_G_T_D_PG_PL(companyId, groupId, tvShowTitle,
+			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
+			andOperator, obc);
 	}
 
-	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByKeyWords(
-		long groupId, java.lang.String keywords,
-		com.liferay.portal.kernel.util.OrderByComparator obc)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getFinder().findByKeyWords(groupId, keywords, obc);
-	}
-
-	public static int countByKeyWords(long groupId, java.lang.String keywords,
+	public static int countByC_G_T_D_PG_PL(long companyId, long groupId,
+		java.lang.String tvShowTitle, java.lang.String tvShowDescription,
+		int tvShowPremierYearGT, int tvShowPremierYearLT, boolean andOperator,
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getFinder().countByKeyWords(groupId, keywords, start, end);
+		return getFinder()
+				   .countByC_G_T_D_PG_PL(companyId, groupId, tvShowTitle,
+			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
+			andOperator, start, end);
 	}
 
-	public static int countByKeyWords(long groupId, java.lang.String keywords)
+	public static int countByC_G_T_D_PG_PL(long companyId, long groupId,
+		java.lang.String tvShowTitle, java.lang.String tvShowDescription,
+		int tvShowPremierYearGT, int tvShowPremierYearLT, boolean andOperator)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getFinder().countByKeyWords(groupId, keywords);
+		return getFinder()
+				   .countByC_G_T_D_PG_PL(companyId, groupId, tvShowTitle,
+			tvShowDescription, tvShowPremierYearGT, tvShowPremierYearLT,
+			andOperator);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByKeyWords(
+		long companyId, long groupId, java.lang.String keywords, int start,
+		int end, com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getFinder()
+				   .findByKeyWords(companyId, groupId, keywords, start, end, obc);
+	}
+
+	public static java.util.List<hu.webtown.liferay.portlet.model.TvShow> findByKeyWords(
+		long companyId, long groupId, java.lang.String keywords,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getFinder().findByKeyWords(companyId, groupId, keywords, obc);
+	}
+
+	public static int countByKeyWords(long companyId, long groupId,
+		java.lang.String keywords, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getFinder()
+				   .countByKeyWords(companyId, groupId, keywords, start, end);
+	}
+
+	public static int countByKeyWords(long companyId, long groupId,
+		java.lang.String keywords)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getFinder().countByKeyWords(companyId, groupId, keywords);
 	}
 
 	public static TvShowFinder getFinder() {

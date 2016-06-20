@@ -18,29 +18,65 @@
 			(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?)
 	]]>
 	</sql>
-	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByG_P_T_D">
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByC_G_T_D_P">
 	<![CDATA[
 		SELECT TvT_TvShow.* 
 			FROM TvT_TvShow 
 			WHERE 
+				(TvT_TvShow.companyId = ?) AND 
 				(TvT_TvShow.groupId = ?) AND 
 				(
-					(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?) OR
 					(TvT_TvShow.tvShowTitle LIKE ?) OR
-					(TvT_TvShow.tvShowDescription LIKE ?)
+					(TvT_TvShow.tvShowDescription LIKE ?) OR 
+					(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?)
 				)
 	]]>
 	</sql>
-	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.countByG_P_T_D">
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.countByC_G_T_D_P">
 	<![CDATA[
 		SELECT COUNT(*) AS COUNT_VALUE
 			FROM TvT_TvShow 
 			WHERE 
+				(TvT_TvShow.companyId = ?) AND 
 				(TvT_TvShow.groupId = ?) AND 
 				(
-					(YEAR(TvT_TvShow.TvShowPremierDate) LIKE ?) OR
 					(TvT_TvShow.tvShowTitle LIKE ?) OR
-					(TvT_TvShow.tvShowDescription LIKE ?)
+					(TvT_TvShow.tvShowDescription LIKE ?) OR 
+					(YEAR(TvT_TvShow.TvShowPremierDate) = ?)
+				)
+	]]>
+	</sql>
+		<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.findByC_G_T_D_PG_PL">
+	<![CDATA[
+		SELECT TvT_TvShow.* 
+			FROM TvT_TvShow 
+			WHERE 
+				(TvT_TvShow.companyId = ?) AND 
+				(TvT_TvShow.groupId = ?) AND 
+				(
+					(TvT_TvShow.tvShowTitle LIKE ?) OR
+					(TvT_TvShow.tvShowDescription LIKE ?) OR
+					(
+						(YEAR(TvT_TvShow.TvShowPremierDate) >= ?) AND 
+						(YEAR(TvT_TvShow.TvShowPremierDate) <= ?)
+					)
+				)
+	]]>
+	</sql>
+	<sql id="hu.webtown.liferay.portlet.service.persistence.TvShowFinder.countByC_G_T_D_PG_PL">
+	<![CDATA[
+		SELECT COUNT(*) AS COUNT_VALUE
+			FROM TvT_TvShow 
+			WHERE 
+				(TvT_TvShow.companyId = ?) AND 
+				(TvT_TvShow.groupId = ?) AND 
+				(
+					(TvT_TvShow.tvShowTitle LIKE ?) OR
+					(TvT_TvShow.tvShowDescription LIKE ?) OR
+					(
+						(YEAR(TvT_TvShow.TvShowPremierDate) >= ?) AND 
+						(YEAR(TvT_TvShow.TvShowPremierDate) <= ?)
+					)
 				)
 	]]>
 	</sql>
